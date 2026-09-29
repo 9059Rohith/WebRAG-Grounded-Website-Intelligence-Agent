@@ -2,6 +2,24 @@
 
 ![Ingestion and query architecture](architecture.svg)
 
+## Deployed application
+
+```mermaid
+flowchart LR
+  Owner[Owner CLI crawl / ingest] --> Seed[Validated immutable index bundle]
+  Seed --> Tmp[Cold-start copy to writable /tmp]
+  Browser[React / Vite workspace] --> API[Same-origin Vercel FastAPI]
+  API --> Graph[Original grounded LangGraph workflow]
+  Tmp --> Graph
+  Graph --> OpenAI[Server-side embeddings and synthesis / verification]
+  Graph --> Response[Answer / exact sources / usage]
+  Response --> Browser
+```
+
+The compiled UI and full question-answering backend run together on Vercel. The corpus is durable in the bundle; instance caches and rate limits are ephemeral. Crawling/reingestion remains an owner-operated CLI step, followed by preparation and redeployment. See [deployment instructions](VERCEL.md).
+
+
+
 The main measured assessment path uses OpenAI `text-embedding-3-small` retrieval and `gpt-4o-mini` structured synthesis, followed by a separate semantic `Check` verdict. The credential-free local fallback uses real Sentence Transformers embeddings and returns source excerpts. `Settings` still defaults to local mode; the recorded provider configuration identifies the main run. Both paths share deterministic citation verification and bounded LangGraph control flow. Website content is untrusted data and has no execution privileges.
 
 ```mermaid

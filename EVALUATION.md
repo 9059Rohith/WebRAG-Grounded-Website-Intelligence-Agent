@@ -1,3 +1,20 @@
+# Evaluation status of the deployed revision
+
+The original independent evaluation is preserved below. The follow-up deliberately repairs previously observed failures, so the 38-question rerun is a **regression run**: gold facts, source URLs and scoring expressions are unchanged, and split labels explicitly identify reused data.
+
+| Diagnostic | Original independent 12 | Same 12 after repairs (regression) |
+|---|---:|---:|
+| All-keypoint answerable questions | 6/8 | 8/8 |
+| False refusals | 2/8 | 0/8 |
+| Unknown refusals | 4/4 | 4/4 |
+| Exact quote provenance | 11/11 | 15/15 |
+
+The entire regression run has 37/38 correct answerability decisions, 78.6% regex keypoint coverage, 61/61 exact source quotations, 10/10 unknown refusals, one false refusal among 28 answerable questions, and no request errors. Wall p50/p95: 5.425/8.817 seconds. Regex coverage and quotation provenance do not measure independent semantic correctness. Model outputs can vary; three successful uncached repetitions per repaired question do not establish a universal guarantee.
+
+[Full follow-up report](evaluation/results/followup_regression/EVALUATION.md) · [Raw results](evaluation/results/followup_regression/results.json) · [Unmodified original benchmark](evaluation/submission_questions.json) · [Explicitly relabeled regression benchmark](evaluation/refusal_regression_questions.json)
+
+---
+
 # Evaluation
 
 Run `20260929T142544Z`, 2026-09-29T14:25:44.466874+00:00. Corpus: 40 pages / 1597 chunks from [Python documentation](https://docs.python.org/3/tutorial/index.html). Corpus SHA-256: `b2605c51c659bfd6e32e6e71b8544180412ed7870557ffed45f624424a2c2b2d`. Provider: **openai**; mode: **synthesis**; top-k: **8**. Answer cache disabled. Agent/index initialization: **1393 ms**, separate from query wall time. Recorded local encoder warmup: **0 ms**; paid warmup requests: **0**.

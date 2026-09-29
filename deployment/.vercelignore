@@ -1,0 +1,10 @@
+.env
+.env.*
+.venv
+__pycache__
+**/__pycache__/**
+**/*.pyc
+**/*.tmp
+.prepare-*/**
+node_modules/**
+runtime_cache/**

@@ -72,6 +72,9 @@ class Retriever:
         self.settings, self.store, self.embeddings = settings, store, embeddings
         self.tokens = [tokenize(c.embedded_text) for c in store.chunks]
         self.bm25 = BM25Okapi(self.tokens) if self.tokens else None
+        self.section_positions = {
+            (c.source_url, c.heading_path, c.chunk_index): c.chunk_id for c in store.chunks
+        }
         self.last_usage = Usage(provider=settings.provider)
 
     def retrieve_with_usage(self, question: str) -> tuple[RetrievalResult, Usage]:
@@ -93,6 +96,14 @@ class Retriever:
             : self.settings.retrieve_k_bm25
         ]
         lexical = [i for i in lexical if float(scores[i]) > 0]
+        facet_lexical: list[list[int]] = []
+        if self.bm25 is not None:
+            for facet in facets:
+                facet_scores = self.bm25.get_scores(tokenize(facet))
+                indices = sorted(
+                    range(len(facet_scores)), key=lambda i: float(facet_scores[i]), reverse=True
+                )[: self.settings.retrieve_k_bm25]
+                facet_lexical.append([i for i in indices if float(facet_scores[i]) > 0])
         timings["bm25"] = (time.perf_counter() - start) * 1000
         start = time.perf_counter()
         fused: dict[str, float] = defaultdict(float)
@@ -108,11 +119,22 @@ class Retriever:
         if self.settings.retrieval_mode != "dense":
             for rank, index in enumerate(lexical, 1):
                 fused[self.store.chunks[index].chunk_id] += 1 / (60 + rank)
+            for lexical_results in facet_lexical:
+                for rank, index in enumerate(lexical_results, 1):
+                    fused[self.store.chunks[index].chunk_id] += 0.7 / (60 + rank)
         ranked = sorted(fused, key=lambda cid: fused[cid], reverse=True)
         selected: list[str] = []
         source_counts: dict[str, int] = defaultdict(int)
         # Explicit comparisons need each concept represented. RRF can otherwise
         # crowd out one facet with many high-ranking chunks about the other.
+        if self.settings.retrieval_mode != "dense":
+            for lexical_results in facet_lexical:
+                if lexical_results and len(selected) < self.settings.final_top_k:
+                    chunk = self.store.chunks[lexical_results[0]]
+                    if chunk.chunk_id not in selected:
+                        selected.append(chunk.chunk_id)
+                        source_counts[chunk.source_url] += 1
+                        ranked.remove(chunk.chunk_id)
         if self.settings.retrieval_mode != "bm25":
             for results in facet_dense:
                 if results and len(selected) < self.settings.final_top_k:
@@ -122,6 +144,21 @@ class Retriever:
                         source_counts[chunk.source_url] += 1
                         if chunk.chunk_id in ranked:
                             ranked.remove(chunk.chunk_id)
+        # Token-window chunks can start in the middle of a rule. Restore the
+        # predecessor from that exact source section, with its own citation ID.
+        # This supplies context, not an inferred semantic similarity score.
+        for cid in list(selected):
+            chunk = self.store.by_id[cid]
+            if not chunk.text.lstrip()[:1].islower():
+                continue
+            previous = self.section_positions.get(
+                (chunk.source_url, chunk.heading_path, chunk.chunk_index - 1)
+            )
+            if previous and previous not in selected and len(selected) < self.settings.final_top_k:
+                selected.append(previous)
+                source_counts[chunk.source_url] += 1
+                if previous in ranked:
+                    ranked.remove(previous)
         while ranked and len(selected) < self.settings.final_top_k:
             # A greedy source-diversity penalty approximates MMR without an
             # extra embedding fetch; expose it honestly as source diversification.

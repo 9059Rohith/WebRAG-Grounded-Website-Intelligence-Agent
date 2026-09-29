@@ -21,6 +21,7 @@ from rag_agent.grounding import (
     REFUSAL,
     canonicalize_draft_evidence,
     evidence_occurs,
+    normalize_evidence,
     resolve_quote_references,
     verify_draft,
 )
@@ -62,6 +63,16 @@ def sentence_candidates(hits: list[Hit]) -> list[tuple[Hit, str]]:
     for hit in hits:
         text = re.sub(r"```[\s\S]*?```", " ", hit.chunk.text)
         paragraphs = text.split("\n\n")
+        for paragraph in paragraphs:
+            quote = normalize_evidence(paragraph)
+            if (
+                len(re.split(r"(?<=[.!?])\s+", quote)) > 1
+                and 4 <= len(quote.split()) <= 60
+                and ">>>" not in quote
+                and not INJECTION_PATTERN.search(quote)
+                and evidence_occurs(quote, hit.chunk.text)
+            ):
+                candidates.append((hit, quote))
         contextual_definitions: dict[str, str] = {}
         for previous, following in zip(paragraphs, paragraphs[1:], strict=False):
             label = " ".join(previous.split())
@@ -379,10 +390,20 @@ class Agent:
             system, prompt = build_verification_prompt(
                 state["question"], state["retrieval"].hits, state["draft"]
             )
-            from pydantic import BaseModel
+            from pydantic import BaseModel, Field
 
             class Check(BaseModel):
-                supported: bool
+                explanation: str = Field(
+                    max_length=300,
+                    description="A concise evidence-assessment summary in 1-2 sentences, at most "
+                    "300 characters: state whether each claim follows from its own exact quote "
+                    "and the combined claims answer every requested part. Identify any gap.",
+                )
+                supported: bool = Field(
+                    description="True only when all proposed answer claims are entailed by their "
+                    "own exact quoted evidence and together completely answer the question. "
+                    "A supported negative answer or false-premise correction has supported=true."
+                )
 
             try:
                 result = (
@@ -423,7 +444,12 @@ class Agent:
     def _expand(self, state: State) -> State:
         # One deterministic expansion avoids another paid call and exposes the
         # bounded retry in the graph. Do not inject facts or conversation history.
-        keywords = " ".join(sorted(content_terms(state["question"])))
+        facets = question_facets(state["question"])
+        keywords = (
+            " and ".join(" ".join(sorted(content_terms(facet))) for facet in facets)
+            if facets
+            else " ".join(sorted(content_terms(state["question"])))
+        )
         return {"normalized_question": keywords or state["question"], "attempt": 1}
 
     def _refuse(self, state: State) -> State:

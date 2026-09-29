@@ -1,3 +1,10 @@
+FROM node:22-slim AS frontend
+WORKDIR /web
+COPY web/package*.json ./
+RUN npm ci
+COPY web/ ./
+RUN npm run build
+
 FROM python:3.11-slim AS builder
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1 PIP_NO_CACHE_DIR=1
 WORKDIR /build
@@ -20,6 +27,7 @@ RUN groupadd --gid 10001 app && useradd --uid 10001 --gid app --create-home app 
 COPY --from=builder /install /usr/local
 WORKDIR /app
 COPY --chown=app:app evaluation/ ./evaluation/
+COPY --from=frontend --chown=app:app /web/dist/ ./web/dist/
 USER app
 VOLUME ["/data"]
 EXPOSE 8000

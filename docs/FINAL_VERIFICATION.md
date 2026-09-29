@@ -1,3 +1,19 @@
+# Follow-up verification — deployed revision
+
+[Live app](https://webrag-assessment.vercel.app) is public and includes the React interface plus the real FastAPI/LangGraph/OpenAI/Chroma backend. `/`, `/healthz`, `/readyz`, `/v1/stats` and `/favicon.svg` returned 200. The corpus is 40 pages / 1,597 passages. Public HTTP checks passed five queries, unknown/injection refusals, cache accounting and invalid-input handling; both repaired queries separately passed uncached on Vercel with exact source quotes. Desktop/mobile browser interaction, source focus, copying, history, keyboard submission, motion preference was tested and the OS reduced-motion branch was audited with no public console warnings/errors.
+
+The current source passes **204 offline tests, 94.39% application coverage**, Ruff/format, strict mypy, Bandit, and the dependency audit with the documented embedded-Chroma exceptions. The frontend production build and npm audit pass. The Vercel Python 3.12 build succeeded at 407.32 MB before optimization/bytecode. The Docker configuration builds the React UI into the Python runtime; a successful Docker build was observed.
+
+Both known false refusals passed three uncached repetitions, and the 38-question regression recorded 37/38 correct answerability decisions, 61/61 exact quotes, 10/10 unknown refusals, and one remaining false refusal among 28 answerable questions. The reused former independent subset now scores 8/8 all-keypoint answers and 0/8 false refusals. These are inspected regression data, not fresh independent validation. Original baseline results and video remain historical evidence.
+
+**Remaining blocker:** GitHub Actions is still inactive because available credentials cannot modify workflow files. The complete Python/Docker/frontend workflow is preserved and locally reviewable; it requires owner authentication with workflow permission. Hosted Actions success is not claimed.
+
+[Public deployment records](verification/followup.json) · [HTTP smoke](verification/vercel-http-smoke.json) · [Target repair checks](verification/vercel-repaired-queries.json) · [Repeated repair checks](verification/refusal-repair-repetitions.json) · [UI research/QA](../web/DESIGN.md) · [Deployment instructions](VERCEL.md)
+
+---
+
+The following records describe the original pre-follow-up assessment revision and its original independent baseline.
+
 # End-to-end verification — 29 September 2026
 
 The source, real website ingestion, persistent retrieval, CLI/API, evaluation, cost analysis, architecture diagrams and deployment configuration are implemented. The final measured path uses real OpenAI embeddings and source-only synthesis; a local excerpt fallback needs no paid credentials. **Independent regex coverage and latency targets remain unmet. Semantic production correctness has not been established.**

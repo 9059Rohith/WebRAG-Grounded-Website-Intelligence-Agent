@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "base_url": "https://webrag-assessment.vercel.app",
+  "rows": [
+    {
+      "id": "ih_m2",
+      "question": "Compare how formatted string literals and string.Template mark substitution expressions or placeholders.",
+      "answer": "Formatted string literals (also called f-strings for short) let you include the value of Python expressions inside a string by prefixing the string with f or F and writing expressions as {expression}. [1]\n\nTemplate strings support $-based substitutions, using the following rules: $identifier names a substitution placeholder matching a mapping key of \"identifier\". By default, \"identifier\" is restricted to any case-insensitive ASCII alphanumeric string (including underscores) that starts with an underscore or ASCII letter. [2]\n\n${identifier} is equivalent to $identifier. It is required when valid identifier characters follow the placeholder but are not part of the placeholder, such as \"${noun}ification\". [3]",
+      "answerable": true,
+      "sources": [
+        {
+          "url": "https://docs.python.org/3/tutorial/inputoutput.html",
+          "title": "7. Input and Output \u2014 Python 3.14.7 documentation",
+          "evidence": "Formatted string literals (also called f-strings for short) let you include the value of Python expressions inside a string by prefixing the string with f or F and writing expressions as {expression} .",
+          "chunk_id": "906ff67021a330800154f194d53df21d7e90e773d3998828fe6e1fb2295ecbaf"
+        },
+        {
+          "url": "https://docs.python.org/3/library/string.html",
+          "title": "string \u2014 Common string operations \u2014 Python 3.14.7 documentation",
+          "evidence": "$identifier names a substitution placeholder matching a mapping key of \"identifier\" . By default, \"identifier\" is restricted to any case-insensitive ASCII alphanumeric string (including underscores) that starts with an underscore or ASCII letter. The first non-identifier character after the $ character terminates this placeholder specification.",
+          "chunk_id": "f2258c84c4016dd71c66b360eacebf38953f59c80686e624670ec310afbc0a00"
+        },
+        {
+          "url": "https://docs.python.org/3/library/string.html",
+          "title": "string \u2014 Common string operations \u2014 Python 3.14.7 documentation",
+          "evidence": "${identifier} is equivalent to $identifier . It is required when valid identifier characters follow the placeholder but are not part of the placeholder, such as \"${noun}ification\" .",
+          "chunk_id": "f2258c84c4016dd71c66b360eacebf38953f59c80686e624670ec310afbc0a00"
+        }
+      ],
+      "usage": {
+        "embedding_tokens": 26,
+        "input_tokens": 10673,
+        "output_tokens": 341,
+        "estimated_usd": 0.00180607,
+        "provider": "openai",
+        "token_source": "api_reported"
+      },
+      "timings_ms": {
+        "embedding": 2064.543323999999,
+        "dense": 4.9625320000075135,
+        "bm25": 13.15992300001767,
+        "fusion": 0.25715600000353334,
+        "retrieval": 2082.922935000028,
+        "generation": 3525.9756949999996,
+        "verification": 2229.910034999989,
+        "total": 7847.579628000005
+      },
+      "cached": false,
+      "request_id": "d54ecd96c9fa4ef4ab574e5372c3d92c",
+      "mode": "llm",
+      "retrieved_urls": [
+        "https://docs.python.org/3/tutorial/inputoutput.html",
+        "https://docs.python.org/3/library/string.html",
+        "https://docs.python.org/3/library/string.html",
+        "https://docs.python.org/3/library/string.html",
+        "https://docs.python.org/3/library/string.templatelib.html",
+        "https://docs.python.org/3/library/string.html",
+        "https://docs.python.org/3/library/string.templatelib.html",
+        "https://docs.python.org/3/builtins/stdtypes.html"
+      ],
+      "retrieval_score": 0.5674148797988892,
+      "attempts": 1
+    },
+    {
+      "id": "ih_f2",
+      "question": "A for-loop else clause runs after break terminates the loop, correct?",
+      "answer": "In either kind of loop, the else clause is not executed if the loop was terminated by a break. [1]\n\nIf the loop finishes without executing the break, the else clause executes. [2]",
+      "answerable": true,
+      "sources": [
+        {
+          "url": "https://docs.python.org/3/tutorial/controlflow.html",
+          "title": "4. More Control Flow Tools \u2014 Python 3.14.7 documentation",
+          "evidence": "In either kind of loop, the else clause is not executed if the loop was terminated by a break .",
+          "chunk_id": "76ce704d32accee6e0e79719174e626c595e021e3a38f001a16a4c65af8ea37c"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/controlflow.html",
+          "title": "4. More Control Flow Tools \u2014 Python 3.14.7 documentation",
+          "evidence": "If the loop finishes without executing the break , the else clause executes.",
+          "chunk_id": "76ce704d32accee6e0e79719174e626c595e021e3a38f001a16a4c65af8ea37c"
+        }
+      ],
+      "usage": {
+        "embedding_tokens": 14,
+        "input_tokens": 9557,
+        "output_tokens": 210,
+        "estimated_usd": 0.00155983,
+        "provider": "openai",
+        "token_source": "api_reported"
+      },
+      "timings_ms": {
+        "embedding": 166.90654199999244,
+        "dense": 1.8916520000118453,
+        "bm25": 6.342391999993424,
+        "fusion": 0.11716399998817906,
+        "retrieval": 175.2577499999859,
+        "generation": 2763.867619999985,
+        "verification": 1592.1908500000086,
+        "total": 4535.18937299998
+      },
+      "cached": false,
+      "request_id": "634b3caa67ea447da5ea55b5b6e24ea5",
+      "mode": "llm",
+      "retrieved_urls": [
+        "https://docs.python.org/3/tutorial/controlflow.html",
+        "https://docs.python.org/3/reference/simple_stmts.html",
+        "https://docs.python.org/3/tutorial/errors.html",
+        "https://docs.python.org/3/tutorial/controlflow.html",
+        "https://docs.python.org/3/tutorial/controlflow.html",
+        "https://docs.python.org/3/reference/simple_stmts.html",
+        "https://docs.python.org/3/tutorial/controlflow.html",
+        "https://docs.python.org/3/tutorial/errors.html"
+      ],
+      "retrieval_score": 0.5465139150619507,
+      "attempts": 1
+    }
+  ]
+}

@@ -2,9 +2,19 @@
 
 Source code is MIT licensed. Third-party dependencies and crawled website content retain their own licenses.
 
-![CI workflow supplied; hosted execution unverified](https://img.shields.io/badge/CI-workflow%20supplied%20%2F%20unverified-grey) ![Measured local test coverage 93.83%](https://img.shields.io/badge/test%20coverage-93.83%25-green) [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+![CI workflow supplied; hosted execution unverified](https://img.shields.io/badge/CI-workflow%20supplied%20%2F%20unverified-grey) ![Measured local test coverage 94.39%](https://img.shields.io/badge/test%20coverage-94.39%25-green) [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-[Supplementary project walkthrough](docs/video/WebRAG-Walkthrough.mp4): the final paid-run replay is verified at **12 minutes 14 seconds**, with H264/AAC media and decoding checks. Narration is explicitly synthetic; this is not the candidate's voice or webcam recording. See [video notes](docs/video/README.md). A personal Vidyard recording is an optional preferred assessment pro tip. [Personal recording script](docs/VIDEO_SCRIPT.md) and [unsent email draft](docs/EMAIL_REPLY.md) are included.
+## Follow-up deployment and refusal repairs
+
+[Open the deployed application](https://webrag-assessment.vercel.app) — the React interface and real FastAPI/LangGraph/OpenAI backend run together on Vercel, using the 40-page, 1,597-passage Python documentation index. The interface includes exact evidence beside answers, clickable citations, query history, copying, usage details, text entrance animation, subtle parallax, and motion controls. Desktop and mobile were tested against the public deployment.
+
+The two formerly false-refused questions now answer correctly in three uncached repetitions each. Follow-up run `20260929T155105Z` over the same 38 questions records **37/38 correct answerability decisions**, **61/61 exact quotations**, **10/10 unknown refusals**, and **one false refusal among 28 answerable questions**. The reused 12-question set now has **8/8 complete regex answers**, **0/8 false refusals**, and **4/4 unknown refusals**. These questions were inspected during repairs, so this is regression evidence, not a new independent holdout. The original independent baseline remains preserved below and in `evaluation/results/results.json`.
+
+[Follow-up report](evaluation/results/followup_regression/EVALUATION.md) · [Current costs](COST_ANALYSIS.md) · [Vercel setup and limitations](docs/VERCEL.md) · [UI design and research](web/DESIGN.md)
+
+GitHub Actions activation remains blocked: the stored owner's OAuth credential has `repo`, `gist`, and `read:org`, but lacks `workflow`; the available connector cannot access this repository and no authorized SSH key is available. The expanded Python/Docker/frontend workflow is preserved in [docs/ci/ci.yml](docs/ci/ci.yml), with activation instructions. Local checks passing does not mean hosted Actions ran.
+
+[Supplementary project walkthrough](docs/video/WebRAG-Walkthrough.mp4): the original paid-run replay is verified at **12 minutes 14 seconds**, with H264/AAC media and decoding checks. Narration is explicitly synthetic; this is not the candidate's voice or webcam recording. See [video notes](docs/video/README.md). A personal Vidyard recording is an optional preferred assessment pro tip. [Personal recording script](docs/VIDEO_SCRIPT.md) and [unsent email draft](docs/EMAIL_REPLY.md) are included.
 
 Recommended measured path: OpenAI embeddings and synthesis. In a fresh checkout, copy `.env.example` to `.env` and privately set `PROVIDER=openai`, `DATA_DIR=data_openai` and `OPENAI_API_KEY` before the commands below. Retain `FINAL_TOP_K=8`, `MIN_RELEVANCE=0.25`, `LLM_MAX_OUTPUT_TOKENS=900` and `VERIFY_WITH_LLM=true`. Use the existing `.env` if one is already configured; keep credentials out of commands and source control.
 
@@ -24,7 +34,7 @@ Answer questions from a public website with traceable supporting URLs, measured 
 
 ## 2 Features
 
-Scoped robots-aware crawling, HTML main-content extraction, heading-aware chunks, real semantic embeddings, persistent Chroma, BM25/RRF retrieval, source diversification, a relevance gate, exact evidence checks, bounded LangGraph retries, CLI, FastAPI, query cache, evaluation and cost reports. The API includes a small browser form; there is no production frontend requirement.
+Scoped robots-aware crawling, HTML main-content extraction, heading-aware chunks, real semantic embeddings, persistent Chroma, BM25/RRF retrieval, source diversification, a relevance gate, exact evidence checks, bounded LangGraph retries, CLI, FastAPI, query cache, evaluation and cost reports. The React/TypeScript workspace shows exact evidence, citation navigation, costs, question history, copying, responsive mobile layouts and accessible motion. A minimal HTML fallback remains for installations without a frontend build.
 
 ## 3 Architecture
 
@@ -34,7 +44,7 @@ Scoped robots-aware crawling, HTML main-content extraction, heading-aware chunks
 
 ## 4 Tech Stack
 
-Python 3.11+, Pydantic Settings, httpx/httpcore, Beautiful Soup/lxml, tiktoken, Sentence Transformers, Chroma, rank-bm25, LangGraph, LangChain OpenAI, Typer, FastAPI, pytest, Ruff, mypy, Bandit and pip-audit. Runtime/dev dependency locks are included. Exact resolved versions are in [requirements.txt](requirements.txt) and [requirements-dev.txt](requirements-dev.txt).
+React, TypeScript, Vite, locally bundled Fraunces/DM Sans fonts, Python 3.11+, Pydantic Settings, httpx/httpcore, Beautiful Soup/lxml, tiktoken, Sentence Transformers, Chroma, rank-bm25, LangGraph, LangChain OpenAI, Typer, FastAPI, pytest, Ruff, mypy, Bandit and pip-audit. Runtime/dev dependency locks are included. Exact resolved versions are in [requirements.txt](requirements.txt) and [requirements-dev.txt](requirements-dev.txt).
 
 ## 5 Website Selected
 
@@ -66,7 +76,7 @@ Chroma is embedded and persistent, so this small assessment needs no database se
 
 ## 11 Retrieval Strategy
 
-Normalize the question, embed it, retrieve 12 dense and 12 BM25 candidates, fuse ranks with RRF (`k=60`), then select **eight** chunks with facet reservations and a greedy repeated-source penalty (`MMR_LAMBDA=0.7`). This approximates source diversification; it is not full vector-pair MMR. The measured OpenAI cosine gate is **0.25**, calibrated on development data; cosine thresholds do not transfer reliably between embedding models. Explicit conjunctions add complementary dense facet searches. Local fallback ranks exact sentences using semantic and lexical coverage. [Evaluation](EVALUATION.md) retains mode/diversity/k=3/5/8 retrieval ablations and a development-only gate diagnostic. No cross-encoder reranker is enabled.
+Normalize the question, embed it, retrieve 12 dense and 12 BM25 candidates, fuse ranks with RRF (`k=60`), then select **eight** chunks with facet reservations and a greedy repeated-source penalty (`MMR_LAMBDA=0.7`). This approximates source diversification; it is not full vector-pair MMR. The measured OpenAI cosine gate is **0.25**, calibrated on development data; cosine thresholds do not transfer reliably between embedding models. Explicit conjunctions add complementary dense and lexical facet searches; seeded fragments can retain their same-source/section predecessor, and retry keeps the original comparison facets. Local fallback ranks exact sentences using semantic and lexical coverage. [Evaluation](EVALUATION.md) retains mode/diversity/k=3/5/8 retrieval ablations and a development-only gate diagnostic. No cross-encoder reranker is enabled.
 
 ## 12 Prompt and Grounding Strategy
 
@@ -126,7 +136,7 @@ Commands for an installed environment:
 .venv\Scripts\python.exe -m uvicorn rag_agent.api:create_app --factory --host 127.0.0.1 --port 8000
 ```
 
-`chat` sends each question independently; conversation history is not retrieval context. The API serves `/`, `/docs`, `/healthz`, `/readyz`, `/v1/stats` and `POST /v1/ask`. Set `API_TOKEN` to require bearer authentication. Public deployment needs HTTPS at the platform proxy and an explicit allowed CORS list if needed.
+`chat` sends each question independently; conversation history is not retrieval context. The API serves `/`, `/openapi.json`, `/healthz`, `/readyz`, `/v1/stats` and `POST /v1/ask`. Build the React workspace with `npm ci --prefix web` and `npm run build --prefix web` before starting the API; otherwise the small HTML form is served. The strict CSP constrains CDN-based Swagger/ReDoc; the hosted UI uses only local assets. Set `API_TOKEN` to require bearer authentication. Public deployment needs HTTPS at the platform proxy and an explicit allowed CORS list if needed.
 
 ```powershell
 Invoke-RestMethod http://127.0.0.1:8000/healthz
@@ -143,7 +153,7 @@ docker compose up -d
 
 The compose volume preserves `/data`; mount a complete matching prebuilt corpus/index to skip crawling at startup. It must include chunks, stats and Chroma, with the same embedding identity.
 
-Deployment templates are prepared and require the owner's accounts:
+The complete UI/API is deployed on [Vercel](https://webrag-assessment.vercel.app); [reproduction and operational limits](docs/VERCEL.md) are documented. Alternative deployment templates remain available:
 
 - **Hugging Face Spaces:** create a Docker SDK Space, copy [README_SPACE.md](README_SPACE.md) to its root README, push this repository including Dockerfile, set `PORT=7860` and `API_TOKEN` as a secret, attach persistent `/data` storage and run ingestion or upload a complete prebuilt index. Free ephemeral storage loses the index on restart. See the template for exact settings; deployment is unverified.
 - **Render:** connect the GitHub repository and create a Blueprint from [render.yaml](render.yaml). Set `API_TOKEN` in the dashboard, retain `/data` disk and trigger a deploy. Run `rag ingest` in the service shell or mount the prebuilt index. `/healthz` is the configured health check; use `/readyz` to confirm a loaded index. Deployment is unverified.
@@ -289,7 +299,7 @@ More decisions, deviations and evidence: [DECISIONS.md](docs/DECISIONS.md).
     The current system preserves evidence/source provenance but has no robust contradiction resolver. A production version should return conflicting quotes with dates and uncertainty instead of merging them silently.
 
 12. **What is the cost at 10,000 queries?**
-    The measured paid query mix extrapolates to $13.7741 at standard rates with no answer cache. It is a scenario rather than a load test/invoice; local API cost remains zero and hosting is unpriced.
+    The measured paid query mix extrapolates to $15.5851 in the follow-up regression at standard rates with no answer cache. It is a scenario rather than a load test/invoice; local API cost remains zero and hosting is unpriced.
 
 13. **What are the evaluation weaknesses?**
     Thirty-eight authored questions include only twelve new independent cases; earlier holdout questions had been inspected. Regex keypoints can miss synonyms or reward incidental matches; human correctness and independent semantic judging remain unmeasured.

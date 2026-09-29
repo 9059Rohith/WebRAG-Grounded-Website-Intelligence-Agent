@@ -19,3 +19,6 @@ build
 dist
 submission*.zip
 data_*/
+web/node_modules/
+web/dist/
+deployment/

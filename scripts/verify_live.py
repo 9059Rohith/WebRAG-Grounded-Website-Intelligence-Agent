@@ -18,7 +18,7 @@ QUESTIONS = [
 ]
 
 
-def verify(base_url: str, output: Path) -> None:
+def verify(base_url: str, output: Path, allow_cold_cache: bool = False) -> None:
     with httpx.Client(base_url=base_url, timeout=180) as client:
         checks = {}
         for route in ("/healthz", "/readyz", "/v1/stats"):
@@ -41,11 +41,16 @@ def verify(base_url: str, output: Path) -> None:
         repeat = client.post("/v1/ask", json={"question": QUESTIONS[0][0]})
         repeat.raise_for_status()
         cached = repeat.json()
-        assert cached["cached"]
-        assert cached["usage"]["embedding_tokens"] == 0
-        assert cached["usage"]["input_tokens"] == 0
-        assert cached["usage"]["output_tokens"] == 0
-        assert cached["usage"]["estimated_usd"] == 0
+        assert cached["cached"] or allow_cold_cache
+        if cached["cached"]:
+            assert cached["usage"]["embedding_tokens"] == 0
+            assert cached["usage"]["input_tokens"] == 0
+            assert cached["usage"]["output_tokens"] == 0
+            assert cached["usage"]["estimated_usd"] == 0
+        else:
+            assert cached["answerable"] and cached["sources"]
+            assert math.isfinite(float(cached["usage"]["estimated_usd"]))
+            assert cached["usage"]["estimated_usd"] >= 0
         invalid = client.post("/v1/ask", json={"question": ""})
         assert invalid.status_code == 422
         error = invalid.json()
@@ -56,6 +61,8 @@ def verify(base_url: str, output: Path) -> None:
         "checks": checks,
         "questions": rows,
         "cache_hit": cached,
+        "cache_hit_observed": cached["cached"],
+        "allow_cold_cache": allow_cold_cache,
         "invalid_status": invalid.status_code,
         "passed": True,
     }
@@ -68,5 +75,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8000")
     parser.add_argument("--out", type=Path, default=Path("artifacts/http-smoke.json"))
+    parser.add_argument(
+        "--allow-cold-cache",
+        action="store_true",
+        help="Allow a cache miss when serverless requests reach different instances.",
+    )
     arguments = parser.parse_args()
-    verify(arguments.url, arguments.out)
+    verify(arguments.url, arguments.out, arguments.allow_cold_cache)

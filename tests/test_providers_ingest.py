@@ -181,7 +181,10 @@ class ScriptedLLM:
                     ],
                 )
                 if schema is Draft
-                else schema(supported=parent.mode != "unsupported")
+                else schema(
+                    explanation="Fixture evidence assessment.",
+                    supported=parent.mode != "unsupported",
+                )
             )
             if parent.mode == "invalid":
                 parsed = None

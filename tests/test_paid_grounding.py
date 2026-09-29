@@ -66,7 +66,11 @@ class RecordedLLM:
         def invoke(messages: list[tuple[str, str]]) -> dict[str, Any]:
             is_generation = schema is Draft
             self.messages.append(("generation" if is_generation else "verification", messages))
-            parsed = valid_draft() if is_generation else schema(supported=True)
+            parsed = (
+                valid_draft()
+                if is_generation
+                else schema(explanation="Fixture evidence assessment.", supported=True)
+            )
             if not is_generation:
                 self.check_json = parsed.model_dump_json()
             return {
@@ -126,7 +130,9 @@ class MixedClaimsLLM(RecordedLLM):
                     )
                 )
             else:
-                parsed = schema(supported=self.supported)
+                parsed = schema(
+                    explanation="Fixture evidence assessment.", supported=self.supported
+                )
                 self.check_json = parsed.model_dump_json()
             return {
                 "parsed": parsed,
@@ -525,7 +531,7 @@ def test_supported_negative_answers_remain_answerable_through_paid_flow(
                         claims=[Claim(text=answer, chunk_id="fixture-source", evidence="q001")],
                     )
                     if generation
-                    else schema(supported=True)
+                    else schema(explanation="Fixture evidence assessment.", supported=True)
                 )
                 return {
                     "parsed": parsed,

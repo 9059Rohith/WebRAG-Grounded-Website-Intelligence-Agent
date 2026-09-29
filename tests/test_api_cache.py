@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import sys
 import threading
+from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 
@@ -102,9 +103,9 @@ def test_rate_limit_capacity_and_window_expiry(monkeypatch: pytest.MonkeyPatch) 
     assert limiter.allow("second")
 
 
-def test_api_injected_agent_contract_and_security_headers() -> None:
+def test_api_injected_agent_contract_and_security_headers(tmp_path: Path) -> None:
     agent = FakeAgent()
-    with TestClient(create_app(settings(), agent)) as client:
+    with TestClient(create_app(settings(), agent, static_dir=tmp_path)) as client:
         assert client.get("/healthz").json() == {"status": "ok"}
         assert client.get("/readyz").status_code == 200
         assert client.get("/stats").json() == {"pages": 3, "chunks": 8}

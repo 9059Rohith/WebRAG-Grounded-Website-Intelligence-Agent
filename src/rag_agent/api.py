@@ -10,13 +10,15 @@ import uuid
 from collections import OrderedDict, deque
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Any
 
 import structlog
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
 from rag_agent.config import Settings
@@ -94,9 +96,16 @@ output.textContent=data.answer+'\\n\\n'+data.sources.map(source=>source.title+'\
 </script></html>"""
 
 
-def create_app(settings: Settings | None = None, agent: Any = None) -> FastAPI:
+def create_app(
+    settings: Settings | None = None,
+    agent: Any = None,
+    *,
+    static_dir: Path | None = None,
+) -> FastAPI:
     """Construct an application; initialization occurs off the event loop at startup."""
     configuration = settings or Settings()
+    ui_directory = static_dir or Path.cwd() / "web" / "dist"
+    ui_index = ui_directory / "index.html"
 
     @asynccontextmanager
     async def lifespan(application: FastAPI) -> AsyncIterator[None]:
@@ -170,7 +179,9 @@ def create_app(settings: Settings | None = None, agent: Any = None) -> FastAPI:
         response.headers["Referrer-Policy"] = "no-referrer"
         response.headers["Cache-Control"] = "no-store"
         response.headers["Content-Security-Policy"] = (
-            "default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; frame-ancestors 'none'; base-uri 'none'"
+            "default-src 'self'; script-src 'self' 'unsafe-inline'; "
+            "style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; "
+            "connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'"
         )
         return response
 
@@ -183,7 +194,9 @@ def create_app(settings: Settings | None = None, agent: Any = None) -> FastAPI:
                 raise _error(401, "unauthorized", "A valid bearer token is required.")
 
     @application.get("/", response_class=HTMLResponse)
-    async def demo() -> str:
+    async def demo() -> Any:
+        if ui_index.is_file():
+            return FileResponse(ui_index, media_type="text/html")
         return DEMO_HTML
 
     @application.get("/healthz")
@@ -265,5 +278,17 @@ def create_app(settings: Settings | None = None, agent: Any = None) -> FastAPI:
             raise _error(
                 502, "provider_unavailable", "The answer service is temporarily unavailable."
             ) from None
+
+    # Mount only the built asset directory, never the repository or data index.
+    assets_directory = ui_directory / "assets"
+    if ui_index.is_file() and assets_directory.is_dir():
+        application.mount("/assets", StaticFiles(directory=assets_directory), name="assets")
+
+    favicon = ui_directory / "favicon.svg"
+    if ui_index.is_file() and favicon.is_file():
+
+        @application.get("/favicon.svg", include_in_schema=False)
+        async def icon() -> FileResponse:
+            return FileResponse(favicon, media_type="image/svg+xml")
 
     return application

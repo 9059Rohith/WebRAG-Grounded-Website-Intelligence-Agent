@@ -10,6 +10,8 @@ Thank you for the assessment. The repository contains a website-grounded retriev
 
 Repository: [WebRAG — Grounded Website Intelligence Agent](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent)
 
+Live application: [WebRAG on Vercel](https://webrag-assessment.vercel.app) — React UI and real grounded backend.
+
 Supplementary walkthrough: [Project walkthrough video on GitHub](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/blob/main/docs/video/WebRAG-Walkthrough.mp4). It uses explicitly disclosed **synthetic narration** and is not my voice or a webcam recording. The GitHub page provides the project-specific file/download; a personal Vidyard recording is an optional preferred format.
 
 - Robots-aware scoped crawling with DNS/redirect guards and persisted source metadata.
@@ -28,3 +30,5 @@ Best regards,
 Rohith
 
 Owner checklist: fill the recipient/name and send personally. The verified 12:14 synthetic walkthrough matches the final paid run. Vidyard is an assessment pro tip; a personal recording can replace the synthetic video link if preferred. **This email is unsent.**
+
+Current follow-up: both known false refusals were repaired; the inspected-question regression and original independent baseline are reported separately. Hosted GitHub Actions remains pending owner workflow authentication. The supplementary recording predates these UI/deployment repairs.

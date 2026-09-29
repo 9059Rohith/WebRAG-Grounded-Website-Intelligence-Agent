@@ -1,4 +1,4 @@
-# Cost analysis — deployed follow-up revision
+# Cost analysis
 
 Generated from `20260929T155105Z` on 2026-09-29T15:51:05.529445+00:00. Provider: **openai**.
 
@@ -55,5 +55,3 @@ Stored reconstructed prompt/answer text counts are diagnostics, not a second usa
 5. Model tiering/local excerpts: the archived local run had $0 API cost. Compare paid synthesis quality on the actual saved benchmark; no semantic-quality improvement is inferred from model selection alone.
 
 The default local embedding index cannot be reused as an OpenAI index: reingestion is required when the embedding identity changes. Context limits, output caps, batching, bounded retries and the answer cache constrain cost. A cache hit should report zero new query API usage; evaluation disables the cache so every result measures fresh query work. Monthly extrapolation is a scenario, not an observed load test or budget guarantee.
-
-The original independent-baseline cost report remains at [evaluation/results/COST_ANALYSIS.md](evaluation/results/COST_ANALYSIS.md). Vercel hosting, network charges, cold-start work, earlier development calls, and account-level billing are excluded. Serverless caches are per instance; the 30% cache-hit scenario is an assumption.

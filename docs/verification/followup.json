@@ -1,0 +1,36 @@
+{
+  "timestamp_utc": "2026-09-29T16:01:21.508459+00:00",
+  "production_url": "https://webrag-assessment.vercel.app",
+  "deployment_id": "dpl_8sRzSXq4TbnA6crVjUuQGw5ZBBVg",
+  "ready_state": "READY",
+  "frontend_bundle": "index-CR5NOpXb.js",
+  "build_bundle_mb": 407.32,
+  "provider": "openai",
+  "pages": 40,
+  "chunks": 1597,
+  "offline_tests": 204,
+  "application_coverage_percent": 94.39,
+  "regression_run_id": "20260929T155105Z",
+  "regression_source_sha256": {
+    "graph.py": "8a4764140f02a8011de84456297a9c4b1a60e02df32595496b1a9423f55cb97d",
+    "retriever.py": "97c377531da324ad71acbbe2b207baa385f5d89f2441c47d8bb2b1689a0d35a0",
+    "grounding.py": "81812ddcaf8f3fe70eca17ee49ce7a43d3027835af424e267ddb9c790a189e85",
+    "prompts.py": "a983c651afbb515764563242aa89eb04704f7ec59b4b6880455fd2f950962e08",
+    "config.py": "743eeb45e4fffd7ad9a1e924a8bedad1822a1c69e5ea3bfd0d3763c08ac65888",
+    "embeddings.py": "073970a2303497839509d76875a19bcf99445f8627dfdd5dd28c16a46671ac20",
+    "vectorstore.py": "0018b461c8cae864230b0d22153d95e177eafab6cc7c8146cc308057e6f40658",
+    "cost.py": "490ec50ab0d3b7c8eb9ddd9655455f7146066badf96fc5a82154911322233e1d",
+    "schemas.py": "3f302e45fbeb56d1dde35373811b1ce0966121cefc6fcfb3df7381dd74c78e49"
+  },
+  "same_source_hashes_match": true,
+  "runtime_matches_current_source": true,
+  "ci_state": "Blocked: OAuth workflow permission absent; hosted Actions not run",
+  "original_independent_baseline_preserved": true,
+  "motion_check": {
+    "text_animation_on": "text-in",
+    "pointer_parallax_offset_changed": true,
+    "motion_off_animation": "none",
+    "motion_off_parallax_style": "",
+    "os_reduced_motion": "Code audited; media emulation unavailable in IAB"
+  }
+}
