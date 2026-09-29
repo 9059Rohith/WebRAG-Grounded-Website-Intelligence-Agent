@@ -19,7 +19,7 @@ The source, real website ingestion, persistent retrieval, CLI/API, evaluation, c
 | Architecture | Rendered SVG and Mermaid; actual compiled LangGraph export |
 | Recorded walkthrough | Final paid-run MP4 734.15 seconds, H264/AAC, 12,211,292 bytes; synthetic narration disclosed; decode checks at 0/360/720 seconds pass |
 | Paid OpenAI provider | Live embeddings/synthesis/semantic checking measured with gpt-4o-mini/text-embedding-3-small; actual returned usage recorded; invoice reconciliation is unmeasured |
-| External delivery | Email draft prepared; no email sent. Hosted Space/Render deployment and remote CI execution are unverified |
+| External delivery | Public repository and video download verified HTTP 200; content commit matched remote main. Submission ZIP integrity/credential checks pass. Email draft prepared; no email sent. Hosted deployment and remote CI remain unverified |
 
 <!-- PROVIDER_EVALUATION_START -->
 ## Final provider and evaluation

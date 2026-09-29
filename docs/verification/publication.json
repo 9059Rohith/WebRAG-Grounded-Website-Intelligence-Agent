@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent",
+  "commit": "69f81ece01947baaaa045eaeb30f662ac2de9286",
+  "remote_head_matches": true,
+  "public": true,
+  "readme_status": 200,
+  "video_file_status": 200,
+  "video_download_status": 200,
+  "video_bytes": 12211292,
+  "video_url": "https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/blob/main/docs/video/WebRAG-Walkthrough.mp4",
+  "email_sent": false,
+  "checked_at_utc": "2026-09-29T14:43:23.853232+00:00",
+  "note": "Initial content commit verified publicly after push; later documentation commits may follow."
+}
