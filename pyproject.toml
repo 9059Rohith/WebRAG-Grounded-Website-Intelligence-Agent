@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "webrag-agent"
+version = "1.0.0"
+description = "Website-grounded retrieval, verified citations and measured evaluation"
+requires-python = ">=3.11"
+dynamic = ["dependencies"]
+
+[project.scripts]
+rag = "rag_agent.cli:app"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools]
+packages = ["rag_agent", "evaluation"]
+
+[tool.setuptools.package-dir]
+rag_agent = "src/rag_agent"
+evaluation = "evaluation"
+
+[tool.setuptools.package-data]
+evaluation = ["questions.json", "dev_questions.json", "holdout_questions.json", "independent_holdout_questions.json", "submission_questions.json"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: paid/network provider checks (opt in)"]
+addopts = "-m 'not live'"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+
+# ML/provider packages have large optional dependency trees. Their untyped
+# responses are validated at our adapters; application code stays strict.
+[[tool.mypy.overrides]]
+module = ["torch.*", "sentence_transformers.*", "transformers.*", "numpy.*", "chromadb.*", "langchain_openai.*", "langgraph.*", "rank_bm25.*"]
+follow_imports = "skip"
+
+[tool.coverage.run]
+source = ["rag_agent"]

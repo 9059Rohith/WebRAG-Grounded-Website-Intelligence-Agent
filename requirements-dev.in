@@ -1,0 +1,11 @@
+-r requirements.in
+pytest
+pytest-cov
+pytest-asyncio
+hypothesis
+respx
+ruff
+mypy
+bandit
+pip-audit
+types-beautifulsoup4

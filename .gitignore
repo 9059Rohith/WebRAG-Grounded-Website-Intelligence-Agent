@@ -1,0 +1,22 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+data/*
+!data/.gitkeep
+data_*/
+artifacts/
+*.egg-info/
+build/
+dist/
+
+# Owner activation requires a GitHub credential with workflow permission.
+.github/workflows/ci.yml

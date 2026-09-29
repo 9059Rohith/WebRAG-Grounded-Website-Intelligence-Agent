@@ -1,0 +1,32 @@
+{
+  "path": "C:\\Users\\BhaviChasvi\\Downloads\\advice\\artifacts\\WebRAG-Walkthrough.mp4",
+  "duration_seconds": 734.0,
+  "speech_seconds": 953.1473922902494,
+  "speed_factor": 1.3238158226253465,
+  "slides": 14,
+  "narration": "Windows synthetic TTS, explicitly disclosed",
+  "source_results": "20260929T142544Z",
+  "actual_container_duration_seconds": 734.15,
+  "codecs": [
+    "H264",
+    "AAC"
+  ],
+  "decode_checks": [
+    {
+      "offset_seconds": 0,
+      "decode_exit_code": 0
+    },
+    {
+      "offset_seconds": 360,
+      "decode_exit_code": 0
+    },
+    {
+      "offset_seconds": 720,
+      "decode_exit_code": 0
+    }
+  ],
+  "sha256": "4c5fd4175aade2236ed6f472ed18ec0713dde4a1d10ea4e6cefe8b113e5ac108",
+  "bytes": 12211292,
+  "test_count": 181,
+  "coverage_percent": 93.83
+}

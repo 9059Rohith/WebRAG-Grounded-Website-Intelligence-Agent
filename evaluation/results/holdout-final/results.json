@@ -1,0 +1,3469 @@
+{
+  "run_id": "20260929T133418Z",
+  "timestamp_utc": "2026-09-29T13:34:18.305889+00:00",
+  "provider": "local",
+  "benchmark_version": 2,
+  "answer_mode": "extractive",
+  "top_k": 5,
+  "initialization_ms": 1379.8194999981206,
+  "settings": {
+    "retrieval_mode": "hybrid",
+    "diversify": true,
+    "min_relevance": 0.4,
+    "local_embedding_model": "sentence-transformers/all-MiniLM-L6-v2"
+  },
+  "corpus": {
+    "pages": 40,
+    "chunks": 1597,
+    "chunk_tokens": 276927,
+    "chunks_sha256": "b2605c51c659bfd6e32e6e71b8544180412ed7870557ffed45f624424a2c2b2d"
+  },
+  "gold_validation": [
+    {
+      "id": "s3",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "s5",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "p3",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "p5",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "m2",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "m3",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "m5",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "f2",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "f4",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "f5",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "u2",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "u4",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    },
+    {
+      "id": "u5",
+      "missing_urls": [],
+      "unsupported_keypoints": [],
+      "valid": true
+    }
+  ],
+  "source_sha256": {
+    "graph.py": "40fa78e37ae0216aa1bda2aec68655fdbf535b57929215b0291735fc5e4e9e1b",
+    "retriever.py": "6f8e45efd203322984777243c3efd4efd30817a72c41a42e8d6cffce8db2ea5e",
+    "grounding.py": "aa4e1d411ed9548b91fb5aecd6d5a5866180ada0eb45b75dc49d7b385cd15e58",
+    "prompts.py": "7ab97985ba6afa87590c7b8317ffa1737544f640d93328d0e41f381664d3d882",
+    "config.py": "2a56e12be37fa28d12a9ad0b40a036f63d85de7f435868cea57ccd4967f02a4e",
+    "embeddings.py": "073970a2303497839509d76875a19bcf99445f8627dfdd5dd28c16a46671ac20",
+    "vectorstore.py": "0018b461c8cae864230b0d22153d95e177eafab6cc7c8146cc308057e6f40658",
+    "cost.py": "490ec50ab0d3b7c8eb9ddd9655455f7146066badf96fc5a82154911322233e1d"
+  },
+  "overall": {
+    "count": 13,
+    "keypoint_coverage": 0.15,
+    "all_keypoints": {
+      "successes": 1,
+      "trials": 10,
+      "rate": 0.1,
+      "low": 0.017876213095072896,
+      "high": 0.4041500267952385
+    },
+    "hit_at_k": {
+      "successes": 10,
+      "trials": 10,
+      "rate": 1.0,
+      "low": 0.7224672001371107,
+      "high": 0.9999999999999999
+    },
+    "mrr": 0.87,
+    "page_coverage": 0.95,
+    "citation_exact_quote": {
+      "successes": 25,
+      "trials": 25,
+      "rate": 1.0,
+      "low": 0.8668077490609515,
+      "high": 0.9999999999999999
+    },
+    "all_citations_supported": {
+      "successes": 8,
+      "trials": 8,
+      "rate": 1.0,
+      "low": 0.6755924351161198,
+      "high": 1.0
+    },
+    "answerability_accuracy": {
+      "successes": 9,
+      "trials": 13,
+      "rate": 0.6923076923076923,
+      "low": 0.42369343180549035,
+      "high": 0.8731929634428948
+    },
+    "unanswerable_refusal": {
+      "successes": 2,
+      "trials": 3,
+      "rate": 0.6666666666666666,
+      "low": 0.2076596008020477,
+      "high": 0.9385080552796037
+    },
+    "false_answer": {
+      "successes": 1,
+      "trials": 3,
+      "rate": 0.3333333333333333,
+      "low": 0.06149194472039621,
+      "high": 0.7923403991979522
+    },
+    "false_refusal": {
+      "successes": 3,
+      "trials": 10,
+      "rate": 0.3,
+      "low": 0.10779126740630099,
+      "high": 0.6032218525388546
+    },
+    "answerable_response": {
+      "successes": 7,
+      "trials": 10,
+      "rate": 0.7,
+      "low": 0.39677814746114537,
+      "high": 0.8922087325936989
+    },
+    "errors": 0,
+    "mean_wall_ms": 11252.175146151925,
+    "p50_wall_ms": 1547.1674000000348,
+    "p95_wall_ms": 125128.97389999125,
+    "mean_stage_ms": {
+      "bm25": 21.041076921392232,
+      "dense": 10.783107693826492,
+      "embedding": 70.38712307761531,
+      "fusion": 0.42192307591903955,
+      "generation": 11045.847446156236,
+      "retrieval": 102.63323076875307,
+      "total": 11250.49981538569,
+      "verification": 0.33967692490058166
+    },
+    "stage_percentiles_ms": {
+      "bm25": {
+        "p50": 17.00749999145046,
+        "p95": 57.451600005151704
+      },
+      "dense": {
+        "p50": 5.091800005175173,
+        "p95": 55.412200003047474
+      },
+      "embedding": {
+        "p50": 45.93100000056438,
+        "p95": 200.52009999926668
+      },
+      "fusion": {
+        "p50": 0.2894999925047159,
+        "p95": 1.6685000009601936
+      },
+      "generation": {
+        "p50": 1435.4286000016145,
+        "p95": 124305.62620000273
+      },
+      "retrieval": {
+        "p50": 74.58000000042375,
+        "p95": 248.12109999766108
+      },
+      "total": {
+        "p50": 1545.6837999954587,
+        "p95": 125124.54129999969
+      },
+      "verification": {
+        "p50": 0.29099998937454075,
+        "p95": 0.7259999983943999
+      }
+    }
+  },
+  "by_category": {
+    "misleading": {
+      "count": 3,
+      "keypoint_coverage": 0,
+      "all_keypoints": {
+        "successes": 0,
+        "trials": 3,
+        "rate": 0.0,
+        "low": 5.551115123125783e-17,
+        "high": 0.5614970317550454
+      },
+      "hit_at_k": {
+        "successes": 3,
+        "trials": 3,
+        "rate": 1.0,
+        "low": 0.4385029682449546,
+        "high": 1.0
+      },
+      "mrr": 0.5666666666666667,
+      "page_coverage": 1.0,
+      "citation_exact_quote": {
+        "successes": 4,
+        "trials": 4,
+        "rate": 1.0,
+        "low": 0.5101091635454027,
+        "high": 1.0
+      },
+      "all_citations_supported": {
+        "successes": 1,
+        "trials": 1,
+        "rate": 1.0,
+        "low": 0.20654931437723745,
+        "high": 1.0
+      },
+      "answerability_accuracy": {
+        "successes": 1,
+        "trials": 3,
+        "rate": 0.3333333333333333,
+        "low": 0.06149194472039621,
+        "high": 0.7923403991979522
+      },
+      "unanswerable_refusal": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "false_answer": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "false_refusal": {
+        "successes": 2,
+        "trials": 3,
+        "rate": 0.6666666666666666,
+        "low": 0.2076596008020477,
+        "high": 0.9385080552796037
+      },
+      "answerable_response": {
+        "successes": 1,
+        "trials": 3,
+        "rate": 0.3333333333333333,
+        "low": 0.06149194472039621,
+        "high": 0.7923403991979522
+      },
+      "errors": 0,
+      "mean_wall_ms": 2874.6128999967673,
+      "p50_wall_ms": 2554.0753999957815,
+      "p95_wall_ms": 4564.847999994527,
+      "mean_stage_ms": {
+        "bm25": 18.904433328619536,
+        "dense": 4.948966665930736,
+        "embedding": 38.877466664416716,
+        "fusion": 0.3236666671000421,
+        "generation": 2754.0993666722593,
+        "retrieval": 63.05453332606703,
+        "total": 2873.6096333353394,
+        "verification": 0.31166667273888987
+      },
+      "stage_percentiles_ms": {
+        "bm25": {
+          "p50": 21.365599997807294,
+          "p95": 26.412399995024316
+        },
+        "dense": {
+          "p50": 4.6578000037698075,
+          "p95": 6.605999995372258
+        },
+        "embedding": {
+          "p50": 45.93100000056438,
+          "p95": 46.14649999712128
+        },
+        "fusion": {
+          "p50": 0.2894999925047159,
+          "p95": 0.4619000101229176
+        },
+        "generation": {
+          "p50": 2429.2797000089195,
+          "p95": 4397.589800006244
+        },
+        "retrieval": {
+          "p50": 58.66899999091402,
+          "p95": 74.58000000042375
+        },
+        "total": {
+          "p50": 2553.083000006154,
+          "p95": 4563.882400005241
+        },
+        "verification": {
+          "p50": 0.13570001465268433,
+          "p95": 0.666300009470433
+        }
+      }
+    },
+    "multi-page": {
+      "count": 3,
+      "keypoint_coverage": 0.16666666666666666,
+      "all_keypoints": {
+        "successes": 0,
+        "trials": 3,
+        "rate": 0.0,
+        "low": 5.551115123125783e-17,
+        "high": 0.5614970317550454
+      },
+      "hit_at_k": {
+        "successes": 3,
+        "trials": 3,
+        "rate": 1.0,
+        "low": 0.4385029682449546,
+        "high": 1.0
+      },
+      "mrr": 1.0,
+      "page_coverage": 0.8333333333333334,
+      "citation_exact_quote": {
+        "successes": 8,
+        "trials": 8,
+        "rate": 1.0,
+        "low": 0.6755924351161198,
+        "high": 1.0
+      },
+      "all_citations_supported": {
+        "successes": 3,
+        "trials": 3,
+        "rate": 1.0,
+        "low": 0.4385029682449546,
+        "high": 1.0
+      },
+      "answerability_accuracy": {
+        "successes": 3,
+        "trials": 3,
+        "rate": 1.0,
+        "low": 0.4385029682449546,
+        "high": 1.0
+      },
+      "unanswerable_refusal": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "false_answer": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "false_refusal": {
+        "successes": 0,
+        "trials": 3,
+        "rate": 0.0,
+        "low": 5.551115123125783e-17,
+        "high": 0.5614970317550454
+      },
+      "answerable_response": {
+        "successes": 3,
+        "trials": 3,
+        "rate": 1.0,
+        "low": 0.4385029682449546,
+        "high": 1.0
+      },
+      "errors": 0,
+      "mean_wall_ms": 1249.2943999968702,
+      "p50_wall_ms": 1167.965099986759,
+      "p95_wall_ms": 1856.6903000028105,
+      "mean_stage_ms": {
+        "bm25": 28.287166666511137,
+        "dense": 28.241233337515343,
+        "embedding": 135.84466667089146,
+        "fusion": 0.47759999870322645,
+        "generation": 1043.215333338594,
+        "retrieval": 192.85066667362116,
+        "total": 1248.142966675611,
+        "verification": 0.37803333543706685
+      },
+      "stage_percentiles_ms": {
+        "bm25": {
+          "p50": 27.305700001306832,
+          "p95": 33.06240000529215
+        },
+        "dense": {
+          "p50": 15.249800009769388,
+          "p95": 55.412200003047474
+        },
+        "embedding": {
+          "p50": 114.46080000314396,
+          "p95": 200.52009999926668
+        },
+        "fusion": {
+          "p50": 0.4768999933730811,
+          "p95": 0.6607999966945499
+        },
+        "generation": {
+          "p50": 908.3018000092125,
+          "p95": 1702.650100007304
+        },
+        "retrieval": {
+          "p50": 194.6615000051679,
+          "p95": 248.12109999766108
+        },
+        "total": {
+          "p50": 1167.008900010842,
+          "p95": 1854.9007000110578
+        },
+        "verification": {
+          "p50": 0.4285000031813979,
+          "p95": 0.5104000010760501
+        }
+      }
+    },
+    "paraphrased": {
+      "count": 2,
+      "keypoint_coverage": 0,
+      "all_keypoints": {
+        "successes": 0,
+        "trials": 2,
+        "rate": 0.0,
+        "low": 0.0,
+        "high": 0.6576197724933469
+      },
+      "hit_at_k": {
+        "successes": 2,
+        "trials": 2,
+        "rate": 1.0,
+        "low": 0.34238022750665303,
+        "high": 1.0
+      },
+      "mrr": 1.0,
+      "page_coverage": 1.0,
+      "citation_exact_quote": {
+        "successes": 4,
+        "trials": 4,
+        "rate": 1.0,
+        "low": 0.5101091635454027,
+        "high": 1.0
+      },
+      "all_citations_supported": {
+        "successes": 1,
+        "trials": 1,
+        "rate": 1.0,
+        "low": 0.20654931437723745,
+        "high": 1.0
+      },
+      "answerability_accuracy": {
+        "successes": 1,
+        "trials": 2,
+        "rate": 0.5,
+        "low": 0.09453120573423074,
+        "high": 0.9054687942657693
+      },
+      "unanswerable_refusal": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "false_answer": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "false_refusal": {
+        "successes": 1,
+        "trials": 2,
+        "rate": 0.5,
+        "low": 0.09453120573423074,
+        "high": 0.9054687942657693
+      },
+      "answerable_response": {
+        "successes": 1,
+        "trials": 2,
+        "rate": 0.5,
+        "low": 0.09453120573423074,
+        "high": 0.9054687942657693
+      },
+      "errors": 0,
+      "mean_wall_ms": 1136.8533499990008,
+      "p50_wall_ms": 948.275000002468,
+      "p95_wall_ms": 1325.4316999955336,
+      "mean_stage_ms": {
+        "bm25": 13.49379999737721,
+        "dense": 4.179700001259334,
+        "embedding": 31.313300001784228,
+        "fusion": 0.261199995293282,
+        "generation": 1042.6470000020345,
+        "retrieval": 49.24799999571405,
+        "total": 1133.3469999954104,
+        "verification": 0.3251000016462058
+      },
+      "stage_percentiles_ms": {
+        "bm25": {
+          "p50": 10.089199990034103,
+          "p95": 16.898400004720315
+        },
+        "dense": {
+          "p50": 4.046300004119985,
+          "p95": 4.313099998398684
+        },
+        "embedding": {
+          "p50": 21.280300003127195,
+          "p95": 41.34630000044126
+        },
+        "fusion": {
+          "p50": 0.25379999715369195,
+          "p95": 0.268599993432872
+        },
+        "generation": {
+          "p50": 892.8937000018777,
+          "p95": 1192.4003000021912
+        },
+        "retrieval": {
+          "p50": 42.760399999679066,
+          "p95": 55.73559999174904
+        },
+        "total": {
+          "p50": 947.1411999984412,
+          "p95": 1319.5527999923797
+        },
+        "verification": {
+          "p50": 0.1171000039903447,
+          "p95": 0.5330999993020669
+        }
+      }
+    },
+    "straightforward": {
+      "count": 2,
+      "keypoint_coverage": 0.5,
+      "all_keypoints": {
+        "successes": 1,
+        "trials": 2,
+        "rate": 0.5,
+        "low": 0.09453120573423074,
+        "high": 0.9054687942657693
+      },
+      "hit_at_k": {
+        "successes": 2,
+        "trials": 2,
+        "rate": 1.0,
+        "low": 0.34238022750665303,
+        "high": 1.0
+      },
+      "mrr": 1.0,
+      "page_coverage": 1.0,
+      "citation_exact_quote": {
+        "successes": 5,
+        "trials": 5,
+        "rate": 1.0,
+        "low": 0.5655175352168251,
+        "high": 1.0
+      },
+      "all_citations_supported": {
+        "successes": 2,
+        "trials": 2,
+        "rate": 1.0,
+        "low": 0.34238022750665303,
+        "high": 1.0
+      },
+      "answerability_accuracy": {
+        "successes": 2,
+        "trials": 2,
+        "rate": 1.0,
+        "low": 0.34238022750665303,
+        "high": 1.0
+      },
+      "unanswerable_refusal": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "false_answer": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "false_refusal": {
+        "successes": 0,
+        "trials": 2,
+        "rate": 0.0,
+        "low": 0.0,
+        "high": 0.6576197724933469
+      },
+      "answerable_response": {
+        "successes": 2,
+        "trials": 2,
+        "rate": 1.0,
+        "low": 0.34238022750665303,
+        "high": 1.0
+      },
+      "errors": 0,
+      "mean_wall_ms": 63338.07064999564,
+      "p50_wall_ms": 1547.1674000000348,
+      "p95_wall_ms": 125128.97389999125,
+      "mean_stage_ms": {
+        "bm25": 33.81450000597397,
+        "dense": 5.953350002528168,
+        "embedding": 30.98850000242237,
+        "fusion": 0.9064999976544641,
+        "generation": 62858.282399996824,
+        "retrieval": 71.66285000857897,
+        "total": 63335.112549997575,
+        "verification": 0.4394999996293336
+      },
+      "stage_percentiles_ms": {
+        "bm25": {
+          "p50": 10.177400006796233,
+          "p95": 57.451600005151704
+        },
+        "dense": {
+          "p50": 4.3329000036465,
+          "p95": 7.573800001409836
+        },
+        "embedding": {
+          "p50": 26.48149999731686,
+          "p95": 35.49550000752788
+        },
+        "fusion": {
+          "p50": 0.14449999434873462,
+          "p95": 1.6685000009601936
+        },
+        "generation": {
+          "p50": 1410.9385999909136,
+          "p95": 124305.62620000273
+        },
+        "retrieval": {
+          "p50": 41.13630000210833,
+          "p95": 102.18940001504961
+        },
+        "total": {
+          "p50": 1545.6837999954587,
+          "p95": 125124.54129999969
+        },
+        "verification": {
+          "p50": 0.29099998937454075,
+          "p95": 0.5880000098841265
+        }
+      }
+    },
+    "unanswerable": {
+      "count": 3,
+      "keypoint_coverage": null,
+      "all_keypoints": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "hit_at_k": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "mrr": null,
+      "page_coverage": null,
+      "citation_exact_quote": {
+        "successes": 4,
+        "trials": 4,
+        "rate": 1.0,
+        "low": 0.5101091635454027,
+        "high": 1.0
+      },
+      "all_citations_supported": {
+        "successes": 1,
+        "trials": 1,
+        "rate": 1.0,
+        "low": 0.20654931437723745,
+        "high": 1.0
+      },
+      "answerability_accuracy": {
+        "successes": 2,
+        "trials": 3,
+        "rate": 0.6666666666666666,
+        "low": 0.2076596008020477,
+        "high": 0.9385080552796037
+      },
+      "unanswerable_refusal": {
+        "successes": 2,
+        "trials": 3,
+        "rate": 0.6666666666666666,
+        "low": 0.2076596008020477,
+        "high": 0.9385080552796037
+      },
+      "false_answer": {
+        "successes": 1,
+        "trials": 3,
+        "rate": 0.3333333333333333,
+        "low": 0.06149194472039621,
+        "high": 0.7923403991979522
+      },
+      "false_refusal": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "answerable_response": {
+        "successes": 0,
+        "trials": 0,
+        "rate": null,
+        "low": null,
+        "high": null
+      },
+      "errors": 0,
+      "mean_wall_ms": 1652.2356666682754,
+      "p50_wall_ms": 2050.776699994458,
+      "p95_wall_ms": 2134.5201000076486,
+      "mean_stage_ms": {
+        "bm25": 12.447533328668214,
+        "dense": 6.781233333943722,
+        "embedding": 88.75419999822043,
+        "fusion": 0.2486000012140721,
+        "generation": 1467.4046333335962,
+        "retrieval": 108.23156666204643,
+        "total": 1651.4402333317169,
+        "verification": 0.2724999988762041
+      },
+      "stage_percentiles_ms": {
+        "bm25": {
+          "p50": 11.958499992033467,
+          "p95": 17.00749999145046
+        },
+        "dense": {
+          "p50": 5.091800005175173,
+          "p95": 11.173999999300577
+        },
+        "embedding": {
+          "p50": 97.69379999488592,
+          "p95": 134.82520000252407
+        },
+        "fusion": {
+          "p50": 0.23190000501926988,
+          "p95": 0.3001000004587695
+        },
+        "generation": {
+          "p50": 1763.452299986966,
+          "p95": 1960.1969000068493
+        },
+        "retrieval": {
+          "p50": 121.04009998438414,
+          "p95": 157.15640000416897
+        },
+        "total": {
+          "p50": 2049.776900006691,
+          "p95": 2133.9390999928582
+        },
+        "verification": {
+          "p50": 0.04669999179895967,
+          "p95": 0.7259999983943999
+        }
+      }
+    }
+  },
+  "by_split": {
+    "holdout": {
+      "count": 13,
+      "keypoint_coverage": 0.15,
+      "all_keypoints": {
+        "successes": 1,
+        "trials": 10,
+        "rate": 0.1,
+        "low": 0.017876213095072896,
+        "high": 0.4041500267952385
+      },
+      "hit_at_k": {
+        "successes": 10,
+        "trials": 10,
+        "rate": 1.0,
+        "low": 0.7224672001371107,
+        "high": 0.9999999999999999
+      },
+      "mrr": 0.87,
+      "page_coverage": 0.95,
+      "citation_exact_quote": {
+        "successes": 25,
+        "trials": 25,
+        "rate": 1.0,
+        "low": 0.8668077490609515,
+        "high": 0.9999999999999999
+      },
+      "all_citations_supported": {
+        "successes": 8,
+        "trials": 8,
+        "rate": 1.0,
+        "low": 0.6755924351161198,
+        "high": 1.0
+      },
+      "answerability_accuracy": {
+        "successes": 9,
+        "trials": 13,
+        "rate": 0.6923076923076923,
+        "low": 0.42369343180549035,
+        "high": 0.8731929634428948
+      },
+      "unanswerable_refusal": {
+        "successes": 2,
+        "trials": 3,
+        "rate": 0.6666666666666666,
+        "low": 0.2076596008020477,
+        "high": 0.9385080552796037
+      },
+      "false_answer": {
+        "successes": 1,
+        "trials": 3,
+        "rate": 0.3333333333333333,
+        "low": 0.06149194472039621,
+        "high": 0.7923403991979522
+      },
+      "false_refusal": {
+        "successes": 3,
+        "trials": 10,
+        "rate": 0.3,
+        "low": 0.10779126740630099,
+        "high": 0.6032218525388546
+      },
+      "answerable_response": {
+        "successes": 7,
+        "trials": 10,
+        "rate": 0.7,
+        "low": 0.39677814746114537,
+        "high": 0.8922087325936989
+      },
+      "errors": 0,
+      "mean_wall_ms": 11252.175146151925,
+      "p50_wall_ms": 1547.1674000000348,
+      "p95_wall_ms": 125128.97389999125,
+      "mean_stage_ms": {
+        "bm25": 21.041076921392232,
+        "dense": 10.783107693826492,
+        "embedding": 70.38712307761531,
+        "fusion": 0.42192307591903955,
+        "generation": 11045.847446156236,
+        "retrieval": 102.63323076875307,
+        "total": 11250.49981538569,
+        "verification": 0.33967692490058166
+      },
+      "stage_percentiles_ms": {
+        "bm25": {
+          "p50": 17.00749999145046,
+          "p95": 57.451600005151704
+        },
+        "dense": {
+          "p50": 5.091800005175173,
+          "p95": 55.412200003047474
+        },
+        "embedding": {
+          "p50": 45.93100000056438,
+          "p95": 200.52009999926668
+        },
+        "fusion": {
+          "p50": 0.2894999925047159,
+          "p95": 1.6685000009601936
+        },
+        "generation": {
+          "p50": 1435.4286000016145,
+          "p95": 124305.62620000273
+        },
+        "retrieval": {
+          "p50": 74.58000000042375,
+          "p95": 248.12109999766108
+        },
+        "total": {
+          "p50": 1545.6837999954587,
+          "p95": 125124.54129999969
+        },
+        "verification": {
+          "p50": 0.29099998937454075,
+          "p95": 0.7259999983943999
+        }
+      }
+    }
+  },
+  "retrieval_ablations": {
+    "hybrid, diversity on, k=5": {
+      "hit_at_k": 1.0,
+      "mrr": 0.9,
+      "page_coverage": 0.95,
+      "mean_wall_ms": 29.708080002455972
+    },
+    "hybrid, diversity off, k=5": {
+      "hit_at_k": 1.0,
+      "mrr": 0.9,
+      "page_coverage": 0.9,
+      "mean_wall_ms": 23.97124999843072
+    },
+    "dense, diversity off, k=5": {
+      "hit_at_k": 0.8,
+      "mrr": 0.75,
+      "page_coverage": 0.8,
+      "mean_wall_ms": 36.88369000010425
+    },
+    "bm25, diversity off, k=5": {
+      "hit_at_k": 1.0,
+      "mrr": 0.9,
+      "page_coverage": 0.9,
+      "mean_wall_ms": 47.6603500006604
+    },
+    "hybrid, diversity on, k=3": {
+      "hit_at_k": 1.0,
+      "mrr": 0.9,
+      "page_coverage": 0.9,
+      "mean_wall_ms": 31.823309998435434
+    },
+    "hybrid, diversity on, k=8": {
+      "hit_at_k": 1.0,
+      "mrr": 0.9,
+      "page_coverage": 1.0,
+      "mean_wall_ms": 26.137560000643134
+    }
+  },
+  "questions": [
+    {
+      "id": "s3",
+      "question": "When does a finally clause execute in a try statement?",
+      "category": "straightforward",
+      "split": "holdout",
+      "expected_answerable": true,
+      "actual_answerable": true,
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/errors.html"
+      ],
+      "answerability_correct": true,
+      "wall_ms": 125128.97389999125,
+      "error": null,
+      "raw_answer": {
+        "answer": "If a finally clause is present, the finally clause will execute as the last task before the try statement completes. [1]\n\nIf the try statement reaches a break , continue or return statement, the finally clause will execute just prior to the break , continue or return statement’s execution. [2]\n\nWhen continue passes control out of a try statement with a finally clause, that finally clause is executed before really starting the next loop cycle. [3]",
+        "answerable": true,
+        "sources": [
+          {
+            "url": "https://docs.python.org/3/tutorial/errors.html",
+            "title": "8. Errors and Exceptions — Python 3.14.7 documentation",
+            "evidence": "If a finally clause is present, the finally clause will execute as the last task before the try statement completes.",
+            "chunk_id": "fdc4afe5063a1e165bed1f99c8f8c9edd6dd22294ab2b57075aa1f488d84fc4e"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/errors.html",
+            "title": "8. Errors and Exceptions — Python 3.14.7 documentation",
+            "evidence": "If the try statement reaches a break , continue or return statement, the finally clause will execute just prior to the break , continue or return statement’s execution.",
+            "chunk_id": "e43e43e105a0318896c1922b669a8a666baf979391465530207ebd0c2a25ffdb"
+          },
+          {
+            "url": "https://docs.python.org/3/reference/simple_stmts.html",
+            "title": "7. Simple statements — Python 3.14.7 documentation",
+            "evidence": "When continue passes control out of a try statement with a finally clause, that finally clause is executed before really starting the next loop cycle.",
+            "chunk_id": "f1838b44299611524218a497531cae491382adfcacc3f66a5c51535400a7d182"
+          }
+        ],
+        "usage": {
+          "embedding_tokens": 641,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 26.48149999731686,
+          "dense": 4.3329000036465,
+          "bm25": 10.177400006796233,
+          "fusion": 0.14449999434873462,
+          "retrieval": 41.13630000210833,
+          "generation": 124305.62620000273,
+          "verification": 0.5880000098841265,
+          "total": 125124.54129999969
+        },
+        "cached": false,
+        "request_id": "18f38d96215c4e6c90d0461ee4fd82e4",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/tutorial/errors.html",
+          "https://docs.python.org/3/reference/simple_stmts.html",
+          "https://docs.python.org/3/tutorial/controlflow.html",
+          "https://docs.python.org/3/tutorial/errors.html",
+          "https://docs.python.org/3/tutorial/errors.html"
+        ],
+        "retrieval_score": 0.6240626573562622,
+        "attempts": 1
+      },
+      "usage": {
+        "embedding_tokens": 641,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 26.48149999731686,
+        "dense": 4.3329000036465,
+        "bm25": 10.177400006796233,
+        "fusion": 0.14449999434873462,
+        "retrieval": 41.13630000210833,
+        "generation": 124305.62620000273,
+        "verification": 0.5880000098841265,
+        "total": 125124.54129999969
+      },
+      "retrieval_score": 0.6240626573562622,
+      "counterfactual_tokens": {
+        "input": 1114,
+        "output": 89,
+        "query_embedding": 11,
+        "context_chunks": 5
+      },
+      "keypoints": [
+        {
+          "label": "finally runs whether or not an exception occurs",
+          "matched": false
+        }
+      ],
+      "keypoint_coverage": 0,
+      "all_keypoints": false,
+      "hit_at_k": 1,
+      "reciprocal_rank": 1.0,
+      "page_coverage": 1.0,
+      "covered_pages": 1,
+      "expected_pages": 1,
+      "citations": [
+        {
+          "chunk_id": "fdc4afe5063a1e165bed1f99c8f8c9edd6dd22294ab2b57075aa1f488d84fc4e",
+          "url": "https://docs.python.org/3/tutorial/errors.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "e43e43e105a0318896c1922b669a8a666baf979391465530207ebd0c2a25ffdb",
+          "url": "https://docs.python.org/3/tutorial/errors.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "f1838b44299611524218a497531cae491382adfcacc3f66a5c51535400a7d182",
+          "url": "https://docs.python.org/3/reference/simple_stmts.html",
+          "valid_exact_quote": true
+        }
+      ],
+      "valid_citations": 3,
+      "citation_count": 3,
+      "citation_precision": 1,
+      "status": "PARTIAL",
+      "counterfactual_query_texts": [
+        "When does a finally clause execute in a try statement?"
+      ]
+    },
+    {
+      "id": "s5",
+      "question": "Where does Python search for a module file such as spam.py?",
+      "category": "straightforward",
+      "split": "holdout",
+      "expected_answerable": true,
+      "actual_answerable": true,
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/modules.html"
+      ],
+      "answerability_correct": true,
+      "wall_ms": 1547.1674000000348,
+      "error": null,
+      "raw_answer": {
+        "answer": "If not found, it then searches for a file named spam.py in a list of directories given by the variable sys.path . [1]\n\nWhen a module named spam is imported, the interpreter first searches for a built-in module with that name. [2]",
+        "answerable": true,
+        "sources": [
+          {
+            "url": "https://docs.python.org/3/tutorial/modules.html",
+            "title": "6. Modules — Python 3.14.7 documentation",
+            "evidence": "If not found, it then searches for a file named spam.py in a list of directories given by the variable sys.path .",
+            "chunk_id": "20ad181fa3f2781e309fda02175779c7b1059d503839aec2ec512f4601f7913f"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/modules.html",
+            "title": "6. Modules — Python 3.14.7 documentation",
+            "evidence": "When a module named spam is imported, the interpreter first searches for a built-in module with that name.",
+            "chunk_id": "20ad181fa3f2781e309fda02175779c7b1059d503839aec2ec512f4601f7913f"
+          }
+        ],
+        "usage": {
+          "embedding_tokens": 626,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 35.49550000752788,
+          "dense": 7.573800001409836,
+          "bm25": 57.451600005151704,
+          "fusion": 1.6685000009601936,
+          "retrieval": 102.18940001504961,
+          "generation": 1410.9385999909136,
+          "verification": 0.29099998937454075,
+          "total": 1545.6837999954587
+        },
+        "cached": false,
+        "request_id": "3bed28ace14c4fe3a13a45a31c8c7200",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/tutorial/modules.html",
+          "https://docs.python.org/3/tutorial/modules.html",
+          "https://docs.python.org/3/tutorial/modules.html",
+          "https://docs.python.org/3/builtins/functions.html",
+          "https://docs.python.org/3/builtins/stdtypes.html"
+        ],
+        "retrieval_score": 0.8532935380935669,
+        "attempts": 1
+      },
+      "usage": {
+        "embedding_tokens": 626,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 35.49550000752788,
+        "dense": 7.573800001409836,
+        "bm25": 57.451600005151704,
+        "fusion": 1.6685000009601936,
+        "retrieval": 102.18940001504961,
+        "generation": 1410.9385999909136,
+        "verification": 0.29099998937454075,
+        "total": 1545.6837999954587
+      },
+      "retrieval_score": 0.8532935380935669,
+      "counterfactual_tokens": {
+        "input": 1271,
+        "output": 52,
+        "query_embedding": 13,
+        "context_chunks": 5
+      },
+      "keypoints": [
+        {
+          "label": "module search checks directories in sys.path",
+          "matched": true
+        }
+      ],
+      "keypoint_coverage": 1,
+      "all_keypoints": true,
+      "hit_at_k": 1,
+      "reciprocal_rank": 1.0,
+      "page_coverage": 1.0,
+      "covered_pages": 1,
+      "expected_pages": 1,
+      "citations": [
+        {
+          "chunk_id": "20ad181fa3f2781e309fda02175779c7b1059d503839aec2ec512f4601f7913f",
+          "url": "https://docs.python.org/3/tutorial/modules.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "20ad181fa3f2781e309fda02175779c7b1059d503839aec2ec512f4601f7913f",
+          "url": "https://docs.python.org/3/tutorial/modules.html",
+          "valid_exact_quote": true
+        }
+      ],
+      "valid_citations": 2,
+      "citation_count": 2,
+      "citation_precision": 1,
+      "status": "PASS",
+      "counterfactual_query_texts": [
+        "Where does Python search for a module file such as spam.py?"
+      ]
+    },
+    {
+      "id": "p3",
+      "question": "Will cleanup in finally happen if protected code raises an exception?",
+      "category": "paraphrased",
+      "split": "holdout",
+      "expected_answerable": true,
+      "actual_answerable": true,
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/errors.html"
+      ],
+      "answerability_correct": true,
+      "wall_ms": 948.275000002468,
+      "error": null,
+      "raw_answer": {
+        "answer": "If the finally clause executes a break , continue or return statement, exceptions are not re-raised. [1]\n\nIf the exception is not handled by an except clause, the exception is re-raised after the finally clause has been executed. [2]\n\nUser code can raise built-in exceptions. [3]\n\nA similar mechanism works implicitly if a new exception is raised when an exception is already being handled. [4]",
+        "answerable": true,
+        "sources": [
+          {
+            "url": "https://docs.python.org/3/tutorial/errors.html",
+            "title": "8. Errors and Exceptions — Python 3.14.7 documentation",
+            "evidence": "If the finally clause executes a break , continue or return statement, exceptions are not re-raised.",
+            "chunk_id": "e43e43e105a0318896c1922b669a8a666baf979391465530207ebd0c2a25ffdb"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/errors.html",
+            "title": "8. Errors and Exceptions — Python 3.14.7 documentation",
+            "evidence": "If the exception is not handled by an except clause, the exception is re-raised after the finally clause has been executed.",
+            "chunk_id": "e43e43e105a0318896c1922b669a8a666baf979391465530207ebd0c2a25ffdb"
+          },
+          {
+            "url": "https://docs.python.org/3/builtins/exceptions.html",
+            "title": "Built-in Exceptions — Python 3.14.7 documentation",
+            "evidence": "User code can raise built-in exceptions.",
+            "chunk_id": "9a4cd8fd02844a3a824d77417857520386d1ac5226e66395ea258e7a67a92893"
+          },
+          {
+            "url": "https://docs.python.org/3/reference/simple_stmts.html",
+            "title": "7. Simple statements — Python 3.14.7 documentation",
+            "evidence": "A similar mechanism works implicitly if a new exception is raised when an exception is already being handled.",
+            "chunk_id": "e4ece4ac0ccdabd4d5935c634b135065b74a31fc736f3c75928c2c6bb75ed11d"
+          }
+        ],
+        "usage": {
+          "embedding_tokens": 399,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 21.280300003127195,
+          "dense": 4.313099998398684,
+          "bm25": 16.898400004720315,
+          "fusion": 0.268599993432872,
+          "retrieval": 42.760399999679066,
+          "generation": 892.8937000018777,
+          "verification": 0.5330999993020669,
+          "total": 947.1411999984412
+        },
+        "cached": false,
+        "request_id": "7219f8bdc20c438cb6f949a300721b18",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/tutorial/errors.html",
+          "https://docs.python.org/3/builtins/stdtypes.html",
+          "https://docs.python.org/3/reference/simple_stmts.html",
+          "https://docs.python.org/3/tutorial/errors.html",
+          "https://docs.python.org/3/builtins/exceptions.html"
+        ],
+        "retrieval_score": 0.44970500469207764,
+        "attempts": 1
+      },
+      "usage": {
+        "embedding_tokens": 399,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 21.280300003127195,
+        "dense": 4.313099998398684,
+        "bm25": 16.898400004720315,
+        "fusion": 0.268599993432872,
+        "retrieval": 42.760399999679066,
+        "generation": 892.8937000018777,
+        "verification": 0.5330999993020669,
+        "total": 947.1411999984412
+      },
+      "retrieval_score": 0.44970500469207764,
+      "counterfactual_tokens": {
+        "input": 1262,
+        "output": 84,
+        "query_embedding": 12,
+        "context_chunks": 5
+      },
+      "keypoints": [
+        {
+          "label": "finally runs whether or not an exception occurs",
+          "matched": false
+        }
+      ],
+      "keypoint_coverage": 0,
+      "all_keypoints": false,
+      "hit_at_k": 1,
+      "reciprocal_rank": 1.0,
+      "page_coverage": 1.0,
+      "covered_pages": 1,
+      "expected_pages": 1,
+      "citations": [
+        {
+          "chunk_id": "e43e43e105a0318896c1922b669a8a666baf979391465530207ebd0c2a25ffdb",
+          "url": "https://docs.python.org/3/tutorial/errors.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "e43e43e105a0318896c1922b669a8a666baf979391465530207ebd0c2a25ffdb",
+          "url": "https://docs.python.org/3/tutorial/errors.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "9a4cd8fd02844a3a824d77417857520386d1ac5226e66395ea258e7a67a92893",
+          "url": "https://docs.python.org/3/builtins/exceptions.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "e4ece4ac0ccdabd4d5935c634b135065b74a31fc736f3c75928c2c6bb75ed11d",
+          "url": "https://docs.python.org/3/reference/simple_stmts.html",
+          "valid_exact_quote": true
+        }
+      ],
+      "valid_citations": 4,
+      "citation_count": 4,
+      "citation_precision": 1,
+      "status": "PARTIAL",
+      "counterfactual_query_texts": [
+        "Will cleanup in finally happen if protected code raises an exception?"
+      ]
+    },
+    {
+      "id": "p5",
+      "question": "How is the list of directories consulted for importing a Python source file determined?",
+      "category": "paraphrased",
+      "split": "holdout",
+      "expected_answerable": true,
+      "actual_answerable": false,
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/modules.html"
+      ],
+      "answerability_correct": false,
+      "wall_ms": 1325.4316999955336,
+      "error": null,
+      "raw_answer": {
+        "answer": "I couldn't find enough information on the selected website to answer this question.",
+        "answerable": false,
+        "sources": [],
+        "usage": {
+          "embedding_tokens": 515,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 41.34630000044126,
+          "dense": 4.046300004119985,
+          "bm25": 10.089199990034103,
+          "fusion": 0.25379999715369195,
+          "retrieval": 55.73559999174904,
+          "generation": 1192.4003000021912,
+          "verification": 0.1171000039903447,
+          "total": 1319.5527999923797
+        },
+        "cached": false,
+        "request_id": "98436773c7254279abfb6745a853cc83",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/tutorial/modules.html",
+          "https://docs.python.org/3/tutorial/modules.html",
+          "https://docs.python.org/3/tutorial/modules.html",
+          "https://docs.python.org/3/tutorial/modules.html",
+          "https://docs.python.org/3/tutorial/stdlib.html"
+        ],
+        "retrieval_score": 0.46148407459259033,
+        "attempts": 2
+      },
+      "usage": {
+        "embedding_tokens": 515,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 41.34630000044126,
+        "dense": 4.046300004119985,
+        "bm25": 10.089199990034103,
+        "fusion": 0.25379999715369195,
+        "retrieval": 55.73559999174904,
+        "generation": 1192.4003000021912,
+        "verification": 0.1171000039903447,
+        "total": 1319.5527999923797
+      },
+      "retrieval_score": 0.46148407459259033,
+      "counterfactual_tokens": {
+        "input": 1193,
+        "output": 15,
+        "query_embedding": 15,
+        "context_chunks": 5
+      },
+      "keypoints": [
+        {
+          "label": "module search checks directories in sys.path",
+          "matched": false
+        }
+      ],
+      "keypoint_coverage": 0,
+      "all_keypoints": false,
+      "hit_at_k": 1,
+      "reciprocal_rank": 1.0,
+      "page_coverage": 1.0,
+      "covered_pages": 1,
+      "expected_pages": 1,
+      "citations": [],
+      "valid_citations": 0,
+      "citation_count": 0,
+      "citation_precision": null,
+      "status": "FAIL",
+      "counterfactual_query_texts": [
+        "How is the list of directories consulted for importing a Python source file determined?"
+      ]
+    },
+    {
+      "id": "m2",
+      "question": "Why can a mutable default function argument and a mutable class variable both accidentally share data?",
+      "category": "multi-page",
+      "split": "holdout",
+      "expected_answerable": true,
+      "actual_answerable": true,
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/controlflow.html",
+        "https://docs.python.org/3/tutorial/classes.html"
+      ],
+      "answerability_correct": true,
+      "wall_ms": 1856.6903000028105,
+      "error": null,
+      "raw_answer": {
+        "answer": "This makes a difference when the default is a mutable object such as a list, dictionary, or instances of most classes. [1]\n\nAs discussed in A Word About Names and Objects , shared data can have possibly surprising effects involving mutable objects such as lists and dictionaries. [2]",
+        "answerable": true,
+        "sources": [
+          {
+            "url": "https://docs.python.org/3/tutorial/controlflow.html",
+            "title": "4. More Control Flow Tools — Python 3.14.7 documentation",
+            "evidence": "This makes a difference when the default is a mutable object such as a list, dictionary, or instances of most classes.",
+            "chunk_id": "81122bb0992acf92324e9ccaa49515188da955cb2dea61ba575d004935fd06d8"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/classes.html",
+            "title": "9. Classes — Python 3.14.7 documentation",
+            "evidence": "As discussed in A Word About Names and Objects , shared data can have possibly surprising effects involving mutable objects such as lists and dictionaries.",
+            "chunk_id": "444300a51c0a0f3881ea2b0d608168e83902de1945210326a1251c6ea968277a"
+          }
+        ],
+        "usage": {
+          "embedding_tokens": 772,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 92.55310001026373,
+          "dense": 15.249800009769388,
+          "bm25": 27.305700001306832,
+          "fusion": 0.6607999966945499,
+          "retrieval": 135.7694000180345,
+          "generation": 1702.650100007304,
+          "verification": 0.4285000031813979,
+          "total": 1854.9007000110578
+        },
+        "cached": false,
+        "request_id": "1419432271bb41d5aa323703b5e4519d",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/tutorial/classes.html",
+          "https://docs.python.org/3/builtins/functions.html",
+          "https://docs.python.org/3/tutorial/controlflow.html",
+          "https://docs.python.org/3/tutorial/classes.html",
+          "https://docs.python.org/3/tutorial/classes.html"
+        ],
+        "retrieval_score": 0.5049358606338501,
+        "attempts": 1
+      },
+      "usage": {
+        "embedding_tokens": 772,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 92.55310001026373,
+        "dense": 15.249800009769388,
+        "bm25": 27.305700001306832,
+        "fusion": 0.6607999966945499,
+        "retrieval": 135.7694000180345,
+        "generation": 1702.650100007304,
+        "verification": 0.4285000031813979,
+        "total": 1854.9007000110578
+      },
+      "retrieval_score": 0.5049358606338501,
+      "counterfactual_tokens": {
+        "input": 1114,
+        "output": 56,
+        "query_embedding": 32,
+        "context_chunks": 5
+      },
+      "keypoints": [
+        {
+          "label": "a mutable default is evaluated only once",
+          "matched": false
+        },
+        {
+          "label": "a class variable list is shared across instances",
+          "matched": false
+        }
+      ],
+      "keypoint_coverage": 0,
+      "all_keypoints": false,
+      "hit_at_k": 1,
+      "reciprocal_rank": 1.0,
+      "page_coverage": 1.0,
+      "covered_pages": 2,
+      "expected_pages": 2,
+      "citations": [
+        {
+          "chunk_id": "81122bb0992acf92324e9ccaa49515188da955cb2dea61ba575d004935fd06d8",
+          "url": "https://docs.python.org/3/tutorial/controlflow.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "444300a51c0a0f3881ea2b0d608168e83902de1945210326a1251c6ea968277a",
+          "url": "https://docs.python.org/3/tutorial/classes.html",
+          "valid_exact_quote": true
+        }
+      ],
+      "valid_citations": 2,
+      "citation_count": 2,
+      "citation_precision": 1,
+      "status": "PARTIAL",
+      "counterfactual_query_texts": [
+        "Why can a mutable default function argument and a mutable class variable both accidentally share data?",
+        "Why can a mutable default function argument",
+        "a mutable class variable both accidentally share data"
+      ]
+    },
+    {
+      "id": "m3",
+      "question": "How do finally clauses and using with for files ensure cleanup when exceptions occur?",
+      "category": "multi-page",
+      "split": "holdout",
+      "expected_answerable": true,
+      "actual_answerable": true,
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/errors.html",
+        "https://docs.python.org/3/tutorial/inputoutput.html"
+      ],
+      "answerability_correct": true,
+      "wall_ms": 1167.965099986759,
+      "error": null,
+      "raw_answer": {
+        "answer": "As you can see, the finally clause is executed in any event. [1]\n\nUsing with is also much shorter than writing equivalent try - finally blocks: [2]\n\nIn real world applications, the finally clause is useful for releasing external resources (such as files or network connections), regardless of whether the use of the resource was successful. [3]\n\nThe advantage is that the file is properly closed after its suite finishes, even if an exception is raised at some point. [4]",
+        "answerable": true,
+        "sources": [
+          {
+            "url": "https://docs.python.org/3/tutorial/errors.html",
+            "title": "8. Errors and Exceptions — Python 3.14.7 documentation",
+            "evidence": "As you can see, the finally clause is executed in any event.",
+            "chunk_id": "6d9c75474b029a37f39f22b797f34478ff87bca3f80583b96071c356bae7effb"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/inputoutput.html",
+            "title": "7. Input and Output — Python 3.14.7 documentation",
+            "evidence": "Using with is also much shorter than writing equivalent try - finally blocks:",
+            "chunk_id": "12c8ea8b95aaec2ccfda05f03738ee379ed2e7573e171d0d27e8075d8f63c264"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/errors.html",
+            "title": "8. Errors and Exceptions — Python 3.14.7 documentation",
+            "evidence": "In real world applications, the finally clause is useful for releasing external resources (such as files or network connections), regardless of whether the use of the resource was successful.",
+            "chunk_id": "6d9c75474b029a37f39f22b797f34478ff87bca3f80583b96071c356bae7effb"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/inputoutput.html",
+            "title": "7. Input and Output — Python 3.14.7 documentation",
+            "evidence": "The advantage is that the file is properly closed after its suite finishes, even if an exception is raised at some point.",
+            "chunk_id": "12c8ea8b95aaec2ccfda05f03738ee379ed2e7573e171d0d27e8075d8f63c264"
+          }
+        ],
+        "usage": {
+          "embedding_tokens": 264,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 200.52009999926668,
+          "dense": 14.061699999729171,
+          "bm25": 33.06240000529215,
+          "fusion": 0.4768999933730811,
+          "retrieval": 248.12109999766108,
+          "generation": 908.3018000092125,
+          "verification": 0.5104000010760501,
+          "total": 1167.008900010842
+        },
+        "cached": false,
+        "request_id": "31df6b8b294f4191b7ba37c6c66fac2d",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/tutorial/errors.html",
+          "https://docs.python.org/3/tutorial/errors.html",
+          "https://docs.python.org/3/tutorial/errors.html",
+          "https://docs.python.org/3/tutorial/errors.html",
+          "https://docs.python.org/3/tutorial/inputoutput.html"
+        ],
+        "retrieval_score": 0.6275164484977722,
+        "attempts": 1
+      },
+      "usage": {
+        "embedding_tokens": 264,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 200.52009999926668,
+        "dense": 14.061699999729171,
+        "bm25": 33.06240000529215,
+        "fusion": 0.4768999933730811,
+        "retrieval": 248.12109999766108,
+        "generation": 908.3018000092125,
+        "verification": 0.5104000010760501,
+        "total": 1167.008900010842
+      },
+      "retrieval_score": 0.6275164484977722,
+      "counterfactual_tokens": {
+        "input": 1286,
+        "output": 97,
+        "query_embedding": 28,
+        "context_chunks": 5
+      },
+      "keypoints": [
+        {
+          "label": "finally runs whether or not an exception occurs",
+          "matched": false
+        },
+        {
+          "label": "with closes a file even if an exception is raised",
+          "matched": true
+        }
+      ],
+      "keypoint_coverage": 0.5,
+      "all_keypoints": false,
+      "hit_at_k": 1,
+      "reciprocal_rank": 1.0,
+      "page_coverage": 1.0,
+      "covered_pages": 2,
+      "expected_pages": 2,
+      "citations": [
+        {
+          "chunk_id": "6d9c75474b029a37f39f22b797f34478ff87bca3f80583b96071c356bae7effb",
+          "url": "https://docs.python.org/3/tutorial/errors.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "12c8ea8b95aaec2ccfda05f03738ee379ed2e7573e171d0d27e8075d8f63c264",
+          "url": "https://docs.python.org/3/tutorial/inputoutput.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "6d9c75474b029a37f39f22b797f34478ff87bca3f80583b96071c356bae7effb",
+          "url": "https://docs.python.org/3/tutorial/errors.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "12c8ea8b95aaec2ccfda05f03738ee379ed2e7573e171d0d27e8075d8f63c264",
+          "url": "https://docs.python.org/3/tutorial/inputoutput.html",
+          "valid_exact_quote": true
+        }
+      ],
+      "valid_citations": 4,
+      "citation_count": 4,
+      "citation_precision": 1,
+      "status": "PARTIAL",
+      "counterfactual_query_texts": [
+        "How do finally clauses and using with for files ensure cleanup when exceptions occur?",
+        "How do finally clauses",
+        "using with for files ensure cleanup when exceptions occur"
+      ]
+    },
+    {
+      "id": "m5",
+      "question": "Describe the module search path and how pip installs packages into a virtual environment.",
+      "category": "multi-page",
+      "split": "holdout",
+      "expected_answerable": true,
+      "actual_answerable": true,
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/modules.html",
+        "https://docs.python.org/3/tutorial/venv.html"
+      ],
+      "answerability_correct": true,
+      "wall_ms": 723.227800001041,
+      "error": null,
+      "raw_answer": {
+        "answer": "python -m pip list will display all of the packages installed in the virtual environment: [1]\n\ns/tutorial-env/lib/python3.4/site-packages Requires: python -m pip list will display all of the packages installed in the virtual environment: [2]",
+        "answerable": true,
+        "sources": [
+          {
+            "url": "https://docs.python.org/3/tutorial/venv.html",
+            "title": "12. Virtual Environments and Packages — Python 3.14.7 documentation",
+            "evidence": "python -m pip list will display all of the packages installed in the virtual environment:",
+            "chunk_id": "e9272754c970dc6d8b6057e86819a710a19d70114cea12ead6c99315b26f5b5f"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/venv.html",
+            "title": "12. Virtual Environments and Packages — Python 3.14.7 documentation",
+            "evidence": "s/tutorial-env/lib/python3.4/site-packages Requires: python -m pip list will display all of the packages installed in the virtual environment:",
+            "chunk_id": "6216aa62325faeac9de19f736e9ea17a2a2b6fc5263b2b177a8fa69ba224db47"
+          }
+        ],
+        "usage": {
+          "embedding_tokens": 241,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 114.46080000314396,
+          "dense": 55.412200003047474,
+          "bm25": 24.493399992934428,
+          "fusion": 0.29510000604204834,
+          "retrieval": 194.6615000051679,
+          "generation": 518.6940999992657,
+          "verification": 0.19520000205375254,
+          "total": 722.519300004933
+        },
+        "cached": false,
+        "request_id": "2d10dfa3051a4615a553b37a50ea1f48",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/tutorial/venv.html",
+          "https://docs.python.org/3/tutorial/venv.html",
+          "https://docs.python.org/3/tutorial/venv.html",
+          "https://docs.python.org/3/tutorial/venv.html",
+          "https://docs.python.org/3/tutorial/venv.html"
+        ],
+        "retrieval_score": 0.7489755153656006,
+        "attempts": 1
+      },
+      "usage": {
+        "embedding_tokens": 241,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 114.46080000314396,
+        "dense": 55.412200003047474,
+        "bm25": 24.493399992934428,
+        "fusion": 0.29510000604204834,
+        "retrieval": 194.6615000051679,
+        "generation": 518.6940999992657,
+        "verification": 0.19520000205375254,
+        "total": 722.519300004933
+      },
+      "retrieval_score": 0.7489755153656006,
+      "counterfactual_tokens": {
+        "input": 1080,
+        "output": 52,
+        "query_embedding": 28,
+        "context_chunks": 5
+      },
+      "keypoints": [
+        {
+          "label": "module search checks directories in sys.path",
+          "matched": false
+        },
+        {
+          "label": "pip installs packages, by default from PyPI",
+          "matched": false
+        }
+      ],
+      "keypoint_coverage": 0,
+      "all_keypoints": false,
+      "hit_at_k": 1,
+      "reciprocal_rank": 1.0,
+      "page_coverage": 0.5,
+      "covered_pages": 1,
+      "expected_pages": 2,
+      "citations": [
+        {
+          "chunk_id": "e9272754c970dc6d8b6057e86819a710a19d70114cea12ead6c99315b26f5b5f",
+          "url": "https://docs.python.org/3/tutorial/venv.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "6216aa62325faeac9de19f736e9ea17a2a2b6fc5263b2b177a8fa69ba224db47",
+          "url": "https://docs.python.org/3/tutorial/venv.html",
+          "valid_exact_quote": true
+        }
+      ],
+      "valid_citations": 2,
+      "citation_count": 2,
+      "citation_precision": 1,
+      "status": "PARTIAL",
+      "counterfactual_query_texts": [
+        "Describe the module search path and how pip installs packages into a virtual environment.",
+        "Describe the module search path",
+        "how pip installs packages into a virtual environment"
+      ]
+    },
+    {
+      "id": "f2",
+      "question": "Since Python strings are mutable, can I change one character with index assignment?",
+      "category": "misleading",
+      "split": "holdout",
+      "expected_answerable": true,
+      "actual_answerable": false,
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/introduction.html"
+      ],
+      "answerability_correct": false,
+      "wall_ms": 2554.0753999957815,
+      "error": null,
+      "raw_answer": {
+        "answer": "I couldn't find enough information on the selected website to answer this question.",
+        "answerable": false,
+        "sources": [],
+        "usage": {
+          "embedding_tokens": 1192,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 45.93100000056438,
+          "dense": 3.583099998650141,
+          "bm25": 8.935299993027002,
+          "fusion": 0.2195999986724928,
+          "retrieval": 58.66899999091402,
+          "generation": 2429.2797000089195,
+          "verification": 0.13299999409355223,
+          "total": 2553.083000006154
+        },
+        "cached": false,
+        "request_id": "25e6b2e5a3a5410eb7c4c99c13f53e42",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/reference/simple_stmts.html",
+          "https://docs.python.org/3/builtins/stdtypes.html",
+          "https://docs.python.org/3/tutorial/classes.html",
+          "https://docs.python.org/3/library/string.html",
+          "https://docs.python.org/3/tutorial/introduction.html"
+        ],
+        "retrieval_score": 0.44340139627456665,
+        "attempts": 2
+      },
+      "usage": {
+        "embedding_tokens": 1192,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 45.93100000056438,
+        "dense": 3.583099998650141,
+        "bm25": 8.935299993027002,
+        "fusion": 0.2195999986724928,
+        "retrieval": 58.66899999091402,
+        "generation": 2429.2797000089195,
+        "verification": 0.13299999409355223,
+        "total": 2553.083000006154
+      },
+      "retrieval_score": 0.44340139627456665,
+      "counterfactual_tokens": {
+        "input": 1331,
+        "output": 15,
+        "query_embedding": 15,
+        "context_chunks": 5
+      },
+      "keypoints": [
+        {
+          "label": "strings are immutable and cannot be changed",
+          "matched": false
+        }
+      ],
+      "keypoint_coverage": 0,
+      "all_keypoints": false,
+      "hit_at_k": 1,
+      "reciprocal_rank": 0.2,
+      "page_coverage": 1.0,
+      "covered_pages": 1,
+      "expected_pages": 1,
+      "citations": [],
+      "valid_citations": 0,
+      "citation_count": 0,
+      "citation_precision": null,
+      "status": "FAIL",
+      "counterfactual_query_texts": [
+        "Since Python strings are mutable, can I change one character with index assignment?"
+      ]
+    },
+    {
+      "id": "f4",
+      "question": "Does list.sort return a newly sorted list instead of modifying the list in place?",
+      "category": "misleading",
+      "split": "holdout",
+      "expected_answerable": true,
+      "actual_answerable": true,
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/datastructures.html"
+      ],
+      "answerability_correct": true,
+      "wall_ms": 1504.9152999999933,
+      "error": null,
+      "raw_answer": {
+        "answer": "To remind users that it operates by side effect, it does not return the sorted sequence (use sorted() to explicitly request a new sorted list instance). [1]\n\nIf set to True , then the list elements are sorted as if each comparison were reversed. [2]\n\nSort the items of the list in place (the arguments can be used for sort customization, see sorted() for their explanation). [3]\n\nThe built-in sorted() function is guaranteed to be stable. [4]",
+        "answerable": true,
+        "sources": [
+          {
+            "url": "https://docs.python.org/3/builtins/stdtypes.html",
+            "title": "Built-in Types — Python 3.14.7 documentation",
+            "evidence": "To remind users that it operates by side effect, it does not return the sorted sequence (use sorted() to explicitly request a new sorted list instance).",
+            "chunk_id": "d0158e846a5076b42980079d98c6f9853bed1452bdbdec2e76f4b38129264ce8"
+          },
+          {
+            "url": "https://docs.python.org/3/builtins/stdtypes.html",
+            "title": "Built-in Types — Python 3.14.7 documentation",
+            "evidence": "If set to True , then the list elements are sorted as if each comparison were reversed.",
+            "chunk_id": "d0158e846a5076b42980079d98c6f9853bed1452bdbdec2e76f4b38129264ce8"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/datastructures.html",
+            "title": "5. Data Structures — Python 3.14.7 documentation",
+            "evidence": "Sort the items of the list in place (the arguments can be used for sort customization, see sorted() for their explanation).",
+            "chunk_id": "59007f09291d7b8344504056c069e62701cbf9a652d8ba6985f6b67ce696f4dd"
+          },
+          {
+            "url": "https://docs.python.org/3/builtins/functions.html",
+            "title": "Built-in Functions — Python 3.14.7 documentation",
+            "evidence": "The built-in sorted() function is guaranteed to be stable.",
+            "chunk_id": "42da3357860692102e1b5f2e2fd4eba13a1198873eb783cb3b3c073b66eefbae"
+          }
+        ],
+        "usage": {
+          "embedding_tokens": 821,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 24.554899995564483,
+          "dense": 4.6578000037698075,
+          "bm25": 26.412399995024316,
+          "fusion": 0.2894999925047159,
+          "retrieval": 55.91459998686332,
+          "generation": 1435.4286000016145,
+          "verification": 0.666300009470433,
+          "total": 1503.8634999946225
+        },
+        "cached": false,
+        "request_id": "e35d794d6742477bb7f5cd83d242c173",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/builtins/stdtypes.html",
+          "https://docs.python.org/3/tutorial/datastructures.html",
+          "https://docs.python.org/3/builtins/threadsafety.html",
+          "https://docs.python.org/3/builtins/functions.html",
+          "https://docs.python.org/3/builtins/stdtypes.html"
+        ],
+        "retrieval_score": 0.6083663702011108,
+        "attempts": 1
+      },
+      "usage": {
+        "embedding_tokens": 821,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 24.554899995564483,
+        "dense": 4.6578000037698075,
+        "bm25": 26.412399995024316,
+        "fusion": 0.2894999925047159,
+        "retrieval": 55.91459998686332,
+        "generation": 1435.4286000016145,
+        "verification": 0.666300009470433,
+        "total": 1503.8634999946225
+      },
+      "retrieval_score": 0.6083663702011108,
+      "counterfactual_tokens": {
+        "input": 1190,
+        "output": 97,
+        "query_embedding": 16,
+        "context_chunks": 5
+      },
+      "keypoints": [
+        {
+          "label": "in-place mutable list methods return None",
+          "matched": false
+        }
+      ],
+      "keypoint_coverage": 0,
+      "all_keypoints": false,
+      "hit_at_k": 1,
+      "reciprocal_rank": 0.5,
+      "page_coverage": 1.0,
+      "covered_pages": 1,
+      "expected_pages": 1,
+      "citations": [
+        {
+          "chunk_id": "d0158e846a5076b42980079d98c6f9853bed1452bdbdec2e76f4b38129264ce8",
+          "url": "https://docs.python.org/3/builtins/stdtypes.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "d0158e846a5076b42980079d98c6f9853bed1452bdbdec2e76f4b38129264ce8",
+          "url": "https://docs.python.org/3/builtins/stdtypes.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "59007f09291d7b8344504056c069e62701cbf9a652d8ba6985f6b67ce696f4dd",
+          "url": "https://docs.python.org/3/tutorial/datastructures.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "42da3357860692102e1b5f2e2fd4eba13a1198873eb783cb3b3c073b66eefbae",
+          "url": "https://docs.python.org/3/builtins/functions.html",
+          "valid_exact_quote": true
+        }
+      ],
+      "valid_citations": 4,
+      "citation_count": 4,
+      "citation_precision": 1,
+      "status": "PARTIAL",
+      "counterfactual_query_texts": [
+        "Does list.sort return a newly sorted list instead of modifying the list in place?"
+      ]
+    },
+    {
+      "id": "f5",
+      "question": "Does the documentation guarantee decimal fractions such as 0.1 are represented exactly as binary floating point?",
+      "category": "misleading",
+      "split": "holdout",
+      "expected_answerable": true,
+      "actual_answerable": false,
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/floatingpoint.html"
+      ],
+      "answerability_correct": false,
+      "wall_ms": 4564.847999994527,
+      "error": null,
+      "raw_answer": {
+        "answer": "I couldn't find enough information on the selected website to answer this question.",
+        "answerable": false,
+        "sources": [],
+        "usage": {
+          "embedding_tokens": 1087,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 46.14649999712128,
+          "dense": 6.605999995372258,
+          "bm25": 21.365599997807294,
+          "fusion": 0.4619000101229176,
+          "retrieval": 74.58000000042375,
+          "generation": 4397.589800006244,
+          "verification": 0.13570001465268433,
+          "total": 4563.882400005241
+        },
+        "cached": false,
+        "request_id": "0ea199d71a7042a3a7afa0d5e856f048",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/tutorial/floatingpoint.html",
+          "https://docs.python.org/3/tutorial/stdlib2.html",
+          "https://docs.python.org/3/tutorial/floatingpoint.html",
+          "https://docs.python.org/3/tutorial/floatingpoint.html",
+          "https://docs.python.org/3/tutorial/floatingpoint.html"
+        ],
+        "retrieval_score": 0.69864422082901,
+        "attempts": 2
+      },
+      "usage": {
+        "embedding_tokens": 1087,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 46.14649999712128,
+        "dense": 6.605999995372258,
+        "bm25": 21.365599997807294,
+        "fusion": 0.4619000101229176,
+        "retrieval": 74.58000000042375,
+        "generation": 4397.589800006244,
+        "verification": 0.13570001465268433,
+        "total": 4563.882400005241
+      },
+      "retrieval_score": 0.69864422082901,
+      "counterfactual_tokens": {
+        "input": 1260,
+        "output": 15,
+        "query_embedding": 20,
+        "context_chunks": 5
+      },
+      "keypoints": [
+        {
+          "label": "most decimal fractions cannot be represented exactly as binary fractions",
+          "matched": false
+        }
+      ],
+      "keypoint_coverage": 0,
+      "all_keypoints": false,
+      "hit_at_k": 1,
+      "reciprocal_rank": 1.0,
+      "page_coverage": 1.0,
+      "covered_pages": 1,
+      "expected_pages": 1,
+      "citations": [],
+      "valid_citations": 0,
+      "citation_count": 0,
+      "citation_precision": null,
+      "status": "FAIL",
+      "counterfactual_query_texts": [
+        "Does the documentation guarantee decimal fractions such as 0.1 are represented exactly as binary floating point?"
+      ]
+    },
+    {
+      "id": "u2",
+      "question": "What exact features will Python 5.0 release in 2030?",
+      "category": "unanswerable",
+      "split": "holdout",
+      "expected_answerable": false,
+      "actual_answerable": false,
+      "expected_urls": [],
+      "answerability_correct": true,
+      "wall_ms": 2134.5201000076486,
+      "error": null,
+      "raw_answer": {
+        "answer": "I couldn't find enough information on the selected website to answer this question.",
+        "answerable": false,
+        "sources": [],
+        "usage": {
+          "embedding_tokens": 621,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 97.69379999488592,
+          "dense": 11.173999999300577,
+          "bm25": 11.958499992033467,
+          "fusion": 0.21379999816417694,
+          "retrieval": 121.04009998438414,
+          "generation": 1960.1969000068493,
+          "verification": 0.04669999179895967,
+          "total": 2133.9390999928582
+        },
+        "cached": false,
+        "request_id": "c1786960a31043ff85f5880c7aec27df",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/builtins/stdtypes.html",
+          "https://docs.python.org/3/glossary.html",
+          "https://docs.python.org/3/reference/simple_stmts.html",
+          "https://docs.python.org/3/tutorial/floatingpoint.html",
+          "https://docs.python.org/3/tutorial/stdlib.html"
+        ],
+        "retrieval_score": 0.3686164617538452,
+        "attempts": 2
+      },
+      "usage": {
+        "embedding_tokens": 621,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 97.69379999488592,
+        "dense": 11.173999999300577,
+        "bm25": 11.958499992033467,
+        "fusion": 0.21379999816417694,
+        "retrieval": 121.04009998438414,
+        "generation": 1960.1969000068493,
+        "verification": 0.04669999179895967,
+        "total": 2133.9390999928582
+      },
+      "retrieval_score": 0.3686164617538452,
+      "counterfactual_tokens": {
+        "input": 1309,
+        "output": 15,
+        "query_embedding": 15,
+        "context_chunks": 5
+      },
+      "keypoints": [],
+      "keypoint_coverage": null,
+      "all_keypoints": null,
+      "hit_at_k": null,
+      "reciprocal_rank": null,
+      "page_coverage": null,
+      "covered_pages": 0,
+      "expected_pages": 0,
+      "citations": [],
+      "valid_citations": 0,
+      "citation_count": 0,
+      "citation_precision": null,
+      "status": "PASS",
+      "counterfactual_query_texts": [
+        "What exact features will Python 5.0 release in 2030?"
+      ]
+    },
+    {
+      "id": "u4",
+      "question": "Which programming language do you personally enjoy most and why?",
+      "category": "unanswerable",
+      "split": "holdout",
+      "expected_answerable": false,
+      "actual_answerable": true,
+      "expected_urls": [],
+      "answerability_correct": false,
+      "wall_ms": 2050.776699994458,
+      "error": null,
+      "raw_answer": {
+        "answer": "Python is just the language for you. [1]\n\nPython is an easy to learn, powerful programming language. [2]\n\nto use, but it is a real programming language, offering much more structure and support for large programs than shell scripts or batch files can offer. [3]\n\nPython’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms. [4]",
+        "answerable": true,
+        "sources": [
+          {
+            "url": "https://docs.python.org/3/tutorial/appetite.html",
+            "title": "1. Whetting Your Appetite — Python 3.14.7 documentation",
+            "evidence": "Python is just the language for you.",
+            "chunk_id": "926f9aadba183469ddf95db8b6c67f37dd755152740602b44ab03bea6aa75a09"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/index.html",
+            "title": "The Python Tutorial — Python 3.14.7 documentation",
+            "evidence": "Python is an easy to learn, powerful programming language.",
+            "chunk_id": "ef6f30e423cd231bb60db1b28d96a7f9235d7664e0667fef81c32df741a5f94d"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/appetite.html",
+            "title": "1. Whetting Your Appetite — Python 3.14.7 documentation",
+            "evidence": "to use, but it is a real programming language, offering much more structure and support for large programs than shell scripts or batch files can offer.",
+            "chunk_id": "71b7fa405cc900019b08f63d1e5a7d0acb7e3f4a7baf7cb26dd74339226fc0f3"
+          },
+          {
+            "url": "https://docs.python.org/3/tutorial/index.html",
+            "title": "The Python Tutorial — Python 3.14.7 documentation",
+            "evidence": "Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.",
+            "chunk_id": "ef6f30e423cd231bb60db1b28d96a7f9235d7664e0667fef81c32df741a5f94d"
+          }
+        ],
+        "usage": {
+          "embedding_tokens": 1080,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 134.82520000252407,
+          "dense": 5.091800005175173,
+          "bm25": 17.00749999145046,
+          "fusion": 0.23190000501926988,
+          "retrieval": 157.15640000416897,
+          "generation": 1763.452299986966,
+          "verification": 0.7259999983943999,
+          "total": 2049.776900006691
+        },
+        "cached": false,
+        "request_id": "2ba1f376c7024ac2b6fc0807603632c9",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/tutorial/appetite.html",
+          "https://docs.python.org/3/tutorial/index.html",
+          "https://docs.python.org/3/tutorial/appetite.html",
+          "https://docs.python.org/3/tutorial/appetite.html",
+          "https://docs.python.org/3/tutorial/appetite.html"
+        ],
+        "retrieval_score": 0.477053701877594,
+        "attempts": 2
+      },
+      "usage": {
+        "embedding_tokens": 1080,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 134.82520000252407,
+        "dense": 5.091800005175173,
+        "bm25": 17.00749999145046,
+        "fusion": 0.23190000501926988,
+        "retrieval": 157.15640000416897,
+        "generation": 1763.452299986966,
+        "verification": 0.7259999983943999,
+        "total": 2049.776900006691
+      },
+      "retrieval_score": 0.477053701877594,
+      "counterfactual_tokens": {
+        "input": 1178,
+        "output": 92,
+        "query_embedding": 19,
+        "context_chunks": 5
+      },
+      "keypoints": [],
+      "keypoint_coverage": null,
+      "all_keypoints": null,
+      "hit_at_k": null,
+      "reciprocal_rank": null,
+      "page_coverage": null,
+      "covered_pages": 0,
+      "expected_pages": 0,
+      "citations": [
+        {
+          "chunk_id": "926f9aadba183469ddf95db8b6c67f37dd755152740602b44ab03bea6aa75a09",
+          "url": "https://docs.python.org/3/tutorial/appetite.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "ef6f30e423cd231bb60db1b28d96a7f9235d7664e0667fef81c32df741a5f94d",
+          "url": "https://docs.python.org/3/tutorial/index.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "71b7fa405cc900019b08f63d1e5a7d0acb7e3f4a7baf7cb26dd74339226fc0f3",
+          "url": "https://docs.python.org/3/tutorial/appetite.html",
+          "valid_exact_quote": true
+        },
+        {
+          "chunk_id": "ef6f30e423cd231bb60db1b28d96a7f9235d7664e0667fef81c32df741a5f94d",
+          "url": "https://docs.python.org/3/tutorial/index.html",
+          "valid_exact_quote": true
+        }
+      ],
+      "valid_citations": 4,
+      "citation_count": 4,
+      "citation_precision": 1,
+      "status": "FAIL",
+      "counterfactual_query_texts": [
+        "Which programming language do you personally enjoy most and why?",
+        "Which programming language do you personally enjoy most"
+      ]
+    },
+    {
+      "id": "u5",
+      "question": "Exactly how many people downloaded Python yesterday worldwide?",
+      "category": "unanswerable",
+      "split": "holdout",
+      "expected_answerable": false,
+      "actual_answerable": false,
+      "expected_urls": [],
+      "answerability_correct": true,
+      "wall_ms": 771.4102000027196,
+      "error": null,
+      "raw_answer": {
+        "answer": "I couldn't find enough information on the selected website to answer this question.",
+        "answerable": false,
+        "sources": [],
+        "usage": {
+          "embedding_tokens": 259,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "estimated_usd": 0.0,
+          "provider": "local",
+          "token_source": "estimated_tiktoken"
+        },
+        "timings_ms": {
+          "embedding": 33.743599997251295,
+          "dense": 4.077899997355416,
+          "bm25": 8.376600002520718,
+          "fusion": 0.3001000004587695,
+          "retrieval": 46.4981999975862,
+          "generation": 678.564700006973,
+          "verification": 0.044800006435252726,
+          "total": 770.6046999956015
+        },
+        "cached": false,
+        "request_id": "ceaf7811eb134ffba081bf14947a4d09",
+        "mode": "extractive",
+        "retrieved_urls": [
+          "https://docs.python.org/3/builtins/stdtypes.html",
+          "https://docs.python.org/3/tutorial/floatingpoint.html",
+          "https://docs.python.org/3/tutorial/stdlib.html",
+          "https://docs.python.org/3/tutorial/controlflow.html",
+          "https://docs.python.org/3/tutorial/inputoutput.html"
+        ],
+        "retrieval_score": 0.16715621948242188,
+        "attempts": 2
+      },
+      "usage": {
+        "embedding_tokens": 259,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "estimated_usd": 0.0,
+        "provider": "local",
+        "token_source": "estimated_tiktoken"
+      },
+      "timings_ms": {
+        "embedding": 33.743599997251295,
+        "dense": 4.077899997355416,
+        "bm25": 8.376600002520718,
+        "fusion": 0.3001000004587695,
+        "retrieval": 46.4981999975862,
+        "generation": 678.564700006973,
+        "verification": 0.044800006435252726,
+        "total": 770.6046999956015
+      },
+      "retrieval_score": 0.16715621948242188,
+      "counterfactual_tokens": {
+        "input": 1139,
+        "output": 15,
+        "query_embedding": 9,
+        "context_chunks": 5
+      },
+      "keypoints": [],
+      "keypoint_coverage": null,
+      "all_keypoints": null,
+      "hit_at_k": null,
+      "reciprocal_rank": null,
+      "page_coverage": null,
+      "covered_pages": 0,
+      "expected_pages": 0,
+      "citations": [],
+      "valid_citations": 0,
+      "citation_count": 0,
+      "citation_precision": null,
+      "status": "PASS",
+      "counterfactual_query_texts": [
+        "Exactly how many people downloaded Python yesterday worldwide?"
+      ]
+    }
+  ],
+  "agent_stats": {
+    "pages": 40,
+    "start_url": "https://docs.python.org/3/tutorial/index.html",
+    "allowed_prefix": "https://docs.python.org/3/",
+    "provider": "local",
+    "chunk_tokens": 200,
+    "chunk_overlap_tokens": 30,
+    "created_at": "2026-09-29T13:10:06.647270+00:00",
+    "embedding_id": "local:sentence-transformers/all-MiniLM-L6-v2",
+    "index_version": "f1272118f35f35bdfa2b925a50291c09655432ce53c5f443bcd934fd5cab11ce",
+    "chunks": 1597,
+    "collection_name": "website_7e37fb934c4d2063_144111539711",
+    "chunk_snapshot": "snapshots/14411153971146fc83b3f206e5ca2393.json",
+    "mode": "extractive",
+    "cache_items": 0
+  },
+  "ingestion": {
+    "pages": 40,
+    "start_url": "https://docs.python.org/3/tutorial/index.html",
+    "allowed_prefix": "https://docs.python.org/3/",
+    "provider": "local",
+    "chunk_tokens": 200,
+    "chunk_overlap_tokens": 30,
+    "created_at": "2026-09-29T13:10:06.647270+00:00",
+    "embedding_id": "local:sentence-transformers/all-MiniLM-L6-v2",
+    "index_version": "f1272118f35f35bdfa2b925a50291c09655432ce53c5f443bcd934fd5cab11ce",
+    "chunks": 1597,
+    "collection_name": "website_7e37fb934c4d2063_144111539711",
+    "chunk_snapshot": "snapshots/14411153971146fc83b3f206e5ca2393.json",
+    "crawl": {
+      "schema_version": 1,
+      "start_url": "https://docs.python.org/3/tutorial/index.html",
+      "allowed_prefix": "https://docs.python.org/3/",
+      "cache_key": "112829fdeeac5ab96d5c16fc22b9eb463cbe30c204049e3dee6f564a45e9f2ea",
+      "started_at": "2026-09-29T12:57:00.555402+00:00",
+      "page_count": 40,
+      "attempted_count": 40,
+      "fetched": [
+        {
+          "url": "https://docs.python.org/3/tutorial/index.html",
+          "requested_url": "https://docs.python.org/3/tutorial/index.html",
+          "depth": 0,
+          "raw_path": "raw/daa191588b5d80db370392ae91b17f58e27084d6dd071595b712a503c032fb4e.html",
+          "bytes": 37133,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:02.123919+00:00",
+          "content_hash": "4c3bee2e93a50f0ff00582fe2a2d9f01c21852aa67b8af7d80ae23cef7d8c90e"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/index.html",
+          "requested_url": "https://docs.python.org/3/builtins/index.html",
+          "depth": 1,
+          "raw_path": "raw/5c2a349de87df7c1e612cff83016d4f9f35ccc8b8879fd4d4344aae2694c47f0.html",
+          "bytes": 24454,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:02.648669+00:00",
+          "content_hash": "03912452417caa00f9014718f84057f544b23dcf690095133d562b59188c8e5e"
+        },
+        {
+          "url": "https://docs.python.org/3/library/index.html",
+          "requested_url": "https://docs.python.org/3/library/index.html",
+          "depth": 1,
+          "raw_path": "raw/b94f5db36911ff8062ec104cd012d5da4c24f501e0fd0de7ff09c39749c478e8.html",
+          "bytes": 73289,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:03.215140+00:00",
+          "content_hash": "3bc74b08dd02ed7ec842f9bc55e440ef8e3a38596fd202d63b11730d8ee4f594"
+        },
+        {
+          "url": "https://docs.python.org/3/reference/index.html",
+          "requested_url": "https://docs.python.org/3/reference/index.html",
+          "depth": 1,
+          "raw_path": "raw/3b9cc3722de8c6b7c7698ef7322f7ab1e023992ca5f1eed1c2902da75a6896f2.html",
+          "bytes": 28426,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:03.757769+00:00",
+          "content_hash": "bd0f2ee4394032bae1fe7db1578c9406c88ca014a58666b372e19ae975577338"
+        },
+        {
+          "url": "https://docs.python.org/3/extending/index.html",
+          "requested_url": "https://docs.python.org/3/extending/index.html",
+          "depth": 1,
+          "raw_path": "raw/b274218217e0488f1da2f10013e833f90038d2d7b92d4404f12c6e048334b0ab.html",
+          "bytes": 25618,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:04.297657+00:00",
+          "content_hash": "bdc3c7f7445da194d31eb48a37e99f5e879d38d6e514672233ea0f0f6f1c20a5"
+        },
+        {
+          "url": "https://docs.python.org/3/c-api/index.html",
+          "requested_url": "https://docs.python.org/3/c-api/index.html",
+          "depth": 1,
+          "raw_path": "raw/9e40c8cd06cce462546a81e336aa3ed412b22964a33c01c05f27f95b31bf7818.html",
+          "bytes": 31324,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:04.880448+00:00",
+          "content_hash": "e0dd9c7b87a377f593ae13e2be2d851ee308b6fa354162ada5cdcbfc0425ff0c"
+        },
+        {
+          "url": "https://docs.python.org/3/glossary.html",
+          "requested_url": "https://docs.python.org/3/glossary.html",
+          "depth": 1,
+          "raw_path": "raw/b7d43d26c4ffff230d03c78d43fa06383432e95cb42b348b366de27a8b8b3483.html",
+          "bytes": 213458,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:05.462918+00:00",
+          "content_hash": "79e4f663cffbce65fd7ba91bf8b70e2683771ed8e30b6172d0cec4084c010fe4"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/appetite.html",
+          "requested_url": "https://docs.python.org/3/tutorial/appetite.html",
+          "depth": 1,
+          "raw_path": "raw/04aefd47440423346da9d0dbdd064ddeaeb2464f1d80b50274e8ea9e16de1062.html",
+          "bytes": 19596,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:06.173726+00:00",
+          "content_hash": "63651e73d3e0ae4c8d92b890b81bfedf9af29edc916ca7c7755f2afdc7c086eb"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/interpreter.html",
+          "requested_url": "https://docs.python.org/3/tutorial/interpreter.html",
+          "depth": 1,
+          "raw_path": "raw/4dc70fe09ef04b01f6c41a8a3f1209672f08cf75a836dd456317884152a7bb1c.html",
+          "bytes": 29754,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:06.764607+00:00",
+          "content_hash": "64fd76e5ed909dab03dfe055bfd7741c3b6cb96b708054f0a5fdac55d5e1728d"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/introduction.html",
+          "requested_url": "https://docs.python.org/3/tutorial/introduction.html",
+          "depth": 1,
+          "raw_path": "raw/dcff5d405c8a47fc921a09f58f5dbee0a54fd6b8646542952756e86ac470ac98.html",
+          "bytes": 71957,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:07.313790+00:00",
+          "content_hash": "7b085c6c1212a5c1a3f01ae6911b015fb85b727a487a5250527fe922dce8d113"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/controlflow.html",
+          "requested_url": "https://docs.python.org/3/tutorial/controlflow.html",
+          "depth": 1,
+          "raw_path": "raw/803c99b2b1c34bd7dfb1a6de24786f050ccf737d0504266ceae6dbe01c099395.html",
+          "bytes": 140166,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:07.862428+00:00",
+          "content_hash": "f0bd0bc76e96fa4a47fe73419887bb51f33739e3e70a332357c4f3f905b842ca"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/datastructures.html",
+          "requested_url": "https://docs.python.org/3/tutorial/datastructures.html",
+          "depth": 1,
+          "raw_path": "raw/5447a47212de42a72cbba78a6e2f56a24bb320498d1e1d5af243427ef2fceb29.html",
+          "bytes": 101544,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:08.412673+00:00",
+          "content_hash": "7c79f7b85fc24363e4126e5be63c34633d44b947d2a9981fe6033f0b9e316c57"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/modules.html",
+          "requested_url": "https://docs.python.org/3/tutorial/modules.html",
+          "depth": 1,
+          "raw_path": "raw/1d6819b6e05c5ae60b5a1d10aca4cf49f20ce2476a5b5452924898374b6905ed.html",
+          "bytes": 71013,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:08.969014+00:00",
+          "content_hash": "f3ef3e81291112f4a73d466ba279f982e4c06927133d7761a07ceae23d5af590"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/inputoutput.html",
+          "requested_url": "https://docs.python.org/3/tutorial/inputoutput.html",
+          "depth": 1,
+          "raw_path": "raw/ece8c054f9a71bd676c52efa8c2dab279510bd1799de7b56989f08fd4b27be5e.html",
+          "bytes": 77440,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:09.515802+00:00",
+          "content_hash": "296e86a4291fa96937970bf1df5592681b58717ba9f479e0da5c007a7a134161"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/errors.html",
+          "requested_url": "https://docs.python.org/3/tutorial/errors.html",
+          "depth": 1,
+          "raw_path": "raw/8687f74540356d373e418bb09e508c373b1c16e4e7cd183d10a5e62e1f7ed12a.html",
+          "bytes": 85619,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:10.086099+00:00",
+          "content_hash": "1a8efa0729e5afdce6a018739a88c7829dfb446f20264a38d651096adb9dcb72"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/classes.html",
+          "requested_url": "https://docs.python.org/3/tutorial/classes.html",
+          "depth": 1,
+          "raw_path": "raw/46da2dec76cbf946400024a4aca922b2b5894d703c8b58b26b72d0f047bc25b8.html",
+          "bytes": 105328,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:10.631900+00:00",
+          "content_hash": "c2e4a7d967999cd341fe8ca8d89ae63a56c48914e39f6f1078224ade261eebdb"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/stdlib.html",
+          "requested_url": "https://docs.python.org/3/tutorial/stdlib.html",
+          "depth": 1,
+          "raw_path": "raw/5d7c7952cd4abfec8c7c98c45794722f3d0b51c71c01a092e3fcc9435ef4a1b1.html",
+          "bytes": 59883,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:11.185113+00:00",
+          "content_hash": "dd7477ca3f9cb5598f860f3e3e9c8e681ca5e7c93e3db22ab0114920dfe64c56"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/stdlib2.html",
+          "requested_url": "https://docs.python.org/3/tutorial/stdlib2.html",
+          "depth": 1,
+          "raw_path": "raw/69d139cbd49dce3a03d3af71f3e34491ba8677b25f193f3ca97e93c6a63e001c.html",
+          "bytes": 67885,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:11.783414+00:00",
+          "content_hash": "73ef63e41b62a30048d12368e36309bac70631cf69a4a546e32908aa2dec3e8e"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/venv.html",
+          "requested_url": "https://docs.python.org/3/tutorial/venv.html",
+          "depth": 1,
+          "raw_path": "raw/8439a074b8cb4e2322b25fbe56dba1fda842d64df3b3c99979e3db7ecb78562f.html",
+          "bytes": 31993,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:12.345801+00:00",
+          "content_hash": "c236a83bab7de125984c700dd0fc41c0585cc9b03ef68812ac4b4ce2b0ee2c04"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/whatnow.html",
+          "requested_url": "https://docs.python.org/3/tutorial/whatnow.html",
+          "depth": 1,
+          "raw_path": "raw/00aa7620dd0111739e2a0cc69e16086d7a96dc9408ce92673b48d5a7596cc257.html",
+          "bytes": 20132,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:12.892139+00:00",
+          "content_hash": "7a02ab4e515a028ca0d5b3e32ed23e91edcdf60fca3785923512beec6d1369d7"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/interactive.html",
+          "requested_url": "https://docs.python.org/3/tutorial/interactive.html",
+          "depth": 1,
+          "raw_path": "raw/8c51a93ae1101bdbac1516853115939a961f84ca29d1c0642c9e8684927d3276.html",
+          "bytes": 19811,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:13.427406+00:00",
+          "content_hash": "80ee9bdeb48a3421602b8199fb0031a12f1e1b55ffce3a9a21cc85b68658f883"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/floatingpoint.html",
+          "requested_url": "https://docs.python.org/3/tutorial/floatingpoint.html",
+          "depth": 1,
+          "raw_path": "raw/3eaf415c42528e9c88694b2cfba4614dfddac9268feb8d11b617e01956fb3e0d.html",
+          "bytes": 45479,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:13.960085+00:00",
+          "content_hash": "e6a28f8b9350b48068f7a62af6de3b15ee3be2847bf38fbdd3c68f029289d730"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/appendix.html",
+          "requested_url": "https://docs.python.org/3/tutorial/appendix.html",
+          "depth": 1,
+          "raw_path": "raw/7c2ee1483fa2844bc6e2e04d435bf3bcf16e2aa452059ae29158d734d2bb8cbe.html",
+          "bytes": 28929,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:14.530725+00:00",
+          "content_hash": "9bb101baed36d2d86986c61cea6647ae49da924181a442a4fdaf10d2d301a703"
+        },
+        {
+          "url": "https://docs.python.org/3/reference/simple_stmts.html",
+          "requested_url": "https://docs.python.org/3/reference/simple_stmts.html",
+          "depth": 2,
+          "raw_path": "raw/d8c284f236f6289bb61ebf4cb1f983606f888580ea0e0717cf96887511134239.html",
+          "bytes": 117001,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:15.327820+00:00",
+          "content_hash": "7b0e15feda584b65221ae85b5f280e7d7752fd1e6c2bc0a5a4ab73f3d78debad"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/stdtypes.html",
+          "requested_url": "https://docs.python.org/3/builtins/stdtypes.html",
+          "depth": 2,
+          "raw_path": "raw/6eb52b07b38dae4776f53360e6621742e0f23132ee56de7954576d93e47b0281.html",
+          "bytes": 773977,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:16.141997+00:00",
+          "content_hash": "03d1977b616dedfd3c552c02e11a8c773f57dedc6f60d68dfc5a87fc86b2997a"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/constants.html",
+          "requested_url": "https://docs.python.org/3/builtins/constants.html",
+          "depth": 2,
+          "raw_path": "raw/eadb239757585753d1e8a0da3a51d042831fa8027f65f0e7782edef3f87b17e9.html",
+          "bytes": 29980,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:20.797458+00:00",
+          "content_hash": "d31f2e005271bde70aab1d4f80c802b51c3971cda86ec4a97aaf6774c6aee8c5"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/functions.html",
+          "requested_url": "https://docs.python.org/3/builtins/functions.html",
+          "depth": 2,
+          "raw_path": "raw/3e1fa2f44636ce4e053fee1c5c0aa23b3da0985762c584dbf3946f0aaaa598f7.html",
+          "bytes": 318871,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:21.655079+00:00",
+          "content_hash": "6ad616522d4c71e9973fb3ea0159a799a61e01d33f3e22675902c2a03674771b"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/exceptions.html",
+          "requested_url": "https://docs.python.org/3/builtins/exceptions.html",
+          "depth": 2,
+          "raw_path": "raw/09504914571ac08c32a3d3567c46953f7b2c111906f5be62606ad08b8a96a0d3.html",
+          "bytes": 144074,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:23.588126+00:00",
+          "content_hash": "256ca2a4a7124e4a1f2c04595524dd4621f1ce7f42e73475206bc724a8aab782"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/threadsafety.html",
+          "requested_url": "https://docs.python.org/3/builtins/threadsafety.html",
+          "depth": 2,
+          "raw_path": "raw/ac360f184c8711c880eb1388648ad26583536b58f3d96ba0b5a71316b4185ddc.html",
+          "bytes": 72463,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:25.255122+00:00",
+          "content_hash": "48cf5edbdfb6f162b8319855d0bb1275b7cd87f536a2679a143239b39318629b"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/time-complexity.html",
+          "requested_url": "https://docs.python.org/3/builtins/time-complexity.html",
+          "depth": 2,
+          "raw_path": "raw/01a5098139c26465268cd8874434abd037abb17c3db590bde45b58607bf499cf.html",
+          "bytes": 59938,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:25.994981+00:00",
+          "content_hash": "0d8a55ad4a65dfbd23422a70f6f4be4dae7c123fba45e897365deb126e82d892"
+        },
+        {
+          "url": "https://docs.python.org/3/library/intro.html",
+          "requested_url": "https://docs.python.org/3/library/intro.html",
+          "depth": 2,
+          "raw_path": "raw/b3563c1e3be0ab86a9117624d874d116b542b7c451f1c4247e7dd024aa9bc879.html",
+          "bytes": 28042,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:26.785824+00:00",
+          "content_hash": "1acc33dc8700ade3051c8f346f1e53fa8ca4ad9defdb1e6e0551b33d5d2e110d"
+        },
+        {
+          "url": "https://docs.python.org/3/library/text.html",
+          "requested_url": "https://docs.python.org/3/library/text.html",
+          "depth": 2,
+          "raw_path": "raw/f5649ff392f50ec3a6dca3e13bc62ba4f9b9125e7f2fd2afe6e93c3d2ad15540.html",
+          "bytes": 23088,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:27.518436+00:00",
+          "content_hash": "653e0f249317b67f7f5800d2da09110026f7a13b2684978a2c98fff42a6c829a"
+        },
+        {
+          "url": "https://docs.python.org/3/library/string.html",
+          "requested_url": "https://docs.python.org/3/library/string.html",
+          "depth": 2,
+          "raw_path": "raw/9e9b5b390665942825e48f64bb0535e0d701a598d551f4ecf5544d2c96f3cb5f.html",
+          "bytes": 129737,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:28.309854+00:00",
+          "content_hash": "96b4dde9ef0c2b68da8c1129cf924eab04331ca3be6aec82ecf2bfeebb7ade1e"
+        },
+        {
+          "url": "https://docs.python.org/3/library/string.templatelib.html",
+          "requested_url": "https://docs.python.org/3/library/string.templatelib.html",
+          "depth": 2,
+          "raw_path": "raw/465b2467722a2629ba59147e6c7eae2c71497f6d9714f0b937bb1ed0be83a5c3.html",
+          "bytes": 62859,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:29.188220+00:00",
+          "content_hash": "5cffd72b9e3c293c32c3140d0ba9dba3f0fae1cf5be053dc2d55e988fa152ec2"
+        },
+        {
+          "url": "https://docs.python.org/3/library/re.html",
+          "requested_url": "https://docs.python.org/3/library/re.html",
+          "depth": 2,
+          "raw_path": "raw/02d619bbec9f28cbe9e25245804d34c76151161728003e0df3559e24382960c2.html",
+          "bytes": 244148,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:30.002305+00:00",
+          "content_hash": "45ca3dd662290e90ade4e344142a8fd06a818e901f329085131cd6f0cd7f3f58"
+        },
+        {
+          "url": "https://docs.python.org/3/library/difflib.html",
+          "requested_url": "https://docs.python.org/3/library/difflib.html",
+          "depth": 2,
+          "raw_path": "raw/b041ceae9810f7c33e1d1f15530b1ea8bf3633aebf5022664247a43dad4d420d.html",
+          "bytes": 132217,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:31.890319+00:00",
+          "content_hash": "78b77ed3858c83fff2e206ebd7f92f5353d201a044a5a1b627c8cace2e0cb861"
+        },
+        {
+          "url": "https://docs.python.org/3/library/textwrap.html",
+          "requested_url": "https://docs.python.org/3/library/textwrap.html",
+          "depth": 2,
+          "raw_path": "raw/dfb18dd8570a9a2c46c1d73c12a89494e31c4829ffe8366b5a6497d4a86c4eae.html",
+          "bytes": 53226,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:33.001264+00:00",
+          "content_hash": "d2e56bd04a9cf2e83ac01e69f04343454247d9f3fd356993591c0e87ada7def5"
+        },
+        {
+          "url": "https://docs.python.org/3/library/unicodedata.html",
+          "requested_url": "https://docs.python.org/3/library/unicodedata.html",
+          "depth": 2,
+          "raw_path": "raw/18423a0845864cc24729ef219f5f9d638d3808796dda299a22795594f72bd498.html",
+          "bytes": 37788,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:33.751927+00:00",
+          "content_hash": "dbffcca6140d2029f2dafb94c1dc775d9fd07f79da8daf422d676e294c587605"
+        },
+        {
+          "url": "https://docs.python.org/3/library/stringprep.html",
+          "requested_url": "https://docs.python.org/3/library/stringprep.html",
+          "depth": 2,
+          "raw_path": "raw/6e956d617542c6f45de11a27b463844eccc8aa5397e5cf4d7e75c1c46c0ff8cc.html",
+          "bytes": 29899,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:34.508226+00:00",
+          "content_hash": "ea70352e095cf6d647c23c47bf953fba215eafe900bb8bbb1fbcb6b4c5538b64"
+        },
+        {
+          "url": "https://docs.python.org/3/library/readline.html",
+          "requested_url": "https://docs.python.org/3/library/readline.html",
+          "depth": 2,
+          "raw_path": "raw/0c2cb825f7efb1b88e942ef9bc9966c7a368abdaf781f5a1235af64a89834593.html",
+          "bytes": 60577,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:35.304131+00:00",
+          "content_hash": "56edd7dcc9748dbf19f033df2ab86fe497414bdc8a18fd9fd586f098ec6ecdf5"
+        }
+      ],
+      "errors": [],
+      "skipped": [],
+      "cached": true,
+      "dry_run": false,
+      "crawl_strategy": "sequential_bfs",
+      "robots": {
+        "url": "https://docs.python.org/robots.txt",
+        "status": 200,
+        "checked_at": "2026-09-29T12:57:01.535992+00:00"
+      },
+      "effective_delay_s": 0.5,
+      "finished_at": "2026-09-29T12:57:35.479748+00:00",
+      "elapsed_s": 34.924,
+      "queued_remaining": 330
+    },
+    "usage": {
+      "embedding_tokens": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_usd": 0.0,
+      "provider": "local",
+      "token_source": "estimated_tiktoken"
+    },
+    "embedding_cache_hits": 1597,
+    "diff": {
+      "added": 0,
+      "updated": 0,
+      "removed": 0,
+      "unchanged": 1597
+    },
+    "elapsed_seconds": 51.703985200001625
+  },
+  "first_ingestion": {
+    "pages": 40,
+    "start_url": "https://docs.python.org/3/tutorial/index.html",
+    "allowed_prefix": "https://docs.python.org/3/",
+    "provider": "local",
+    "chunk_tokens": 200,
+    "chunk_overlap_tokens": 30,
+    "created_at": "2026-09-29T13:06:14.678654+00:00",
+    "embedding_id": "local:sentence-transformers/all-MiniLM-L6-v2",
+    "index_version": "f1272118f35f35bdfa2b925a50291c09655432ce53c5f443bcd934fd5cab11ce",
+    "chunks": 1597,
+    "crawl": {
+      "schema_version": 1,
+      "start_url": "https://docs.python.org/3/tutorial/index.html",
+      "allowed_prefix": "https://docs.python.org/3/",
+      "cache_key": "112829fdeeac5ab96d5c16fc22b9eb463cbe30c204049e3dee6f564a45e9f2ea",
+      "started_at": "2026-09-29T12:57:00.555402+00:00",
+      "page_count": 40,
+      "attempted_count": 40,
+      "fetched": [
+        {
+          "url": "https://docs.python.org/3/tutorial/index.html",
+          "requested_url": "https://docs.python.org/3/tutorial/index.html",
+          "depth": 0,
+          "raw_path": "raw/daa191588b5d80db370392ae91b17f58e27084d6dd071595b712a503c032fb4e.html",
+          "bytes": 37133,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:02.123919+00:00",
+          "content_hash": "4c3bee2e93a50f0ff00582fe2a2d9f01c21852aa67b8af7d80ae23cef7d8c90e"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/index.html",
+          "requested_url": "https://docs.python.org/3/builtins/index.html",
+          "depth": 1,
+          "raw_path": "raw/5c2a349de87df7c1e612cff83016d4f9f35ccc8b8879fd4d4344aae2694c47f0.html",
+          "bytes": 24454,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:02.648669+00:00",
+          "content_hash": "03912452417caa00f9014718f84057f544b23dcf690095133d562b59188c8e5e"
+        },
+        {
+          "url": "https://docs.python.org/3/library/index.html",
+          "requested_url": "https://docs.python.org/3/library/index.html",
+          "depth": 1,
+          "raw_path": "raw/b94f5db36911ff8062ec104cd012d5da4c24f501e0fd0de7ff09c39749c478e8.html",
+          "bytes": 73289,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:03.215140+00:00",
+          "content_hash": "3bc74b08dd02ed7ec842f9bc55e440ef8e3a38596fd202d63b11730d8ee4f594"
+        },
+        {
+          "url": "https://docs.python.org/3/reference/index.html",
+          "requested_url": "https://docs.python.org/3/reference/index.html",
+          "depth": 1,
+          "raw_path": "raw/3b9cc3722de8c6b7c7698ef7322f7ab1e023992ca5f1eed1c2902da75a6896f2.html",
+          "bytes": 28426,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:03.757769+00:00",
+          "content_hash": "bd0f2ee4394032bae1fe7db1578c9406c88ca014a58666b372e19ae975577338"
+        },
+        {
+          "url": "https://docs.python.org/3/extending/index.html",
+          "requested_url": "https://docs.python.org/3/extending/index.html",
+          "depth": 1,
+          "raw_path": "raw/b274218217e0488f1da2f10013e833f90038d2d7b92d4404f12c6e048334b0ab.html",
+          "bytes": 25618,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:04.297657+00:00",
+          "content_hash": "bdc3c7f7445da194d31eb48a37e99f5e879d38d6e514672233ea0f0f6f1c20a5"
+        },
+        {
+          "url": "https://docs.python.org/3/c-api/index.html",
+          "requested_url": "https://docs.python.org/3/c-api/index.html",
+          "depth": 1,
+          "raw_path": "raw/9e40c8cd06cce462546a81e336aa3ed412b22964a33c01c05f27f95b31bf7818.html",
+          "bytes": 31324,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:04.880448+00:00",
+          "content_hash": "e0dd9c7b87a377f593ae13e2be2d851ee308b6fa354162ada5cdcbfc0425ff0c"
+        },
+        {
+          "url": "https://docs.python.org/3/glossary.html",
+          "requested_url": "https://docs.python.org/3/glossary.html",
+          "depth": 1,
+          "raw_path": "raw/b7d43d26c4ffff230d03c78d43fa06383432e95cb42b348b366de27a8b8b3483.html",
+          "bytes": 213458,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:05.462918+00:00",
+          "content_hash": "79e4f663cffbce65fd7ba91bf8b70e2683771ed8e30b6172d0cec4084c010fe4"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/appetite.html",
+          "requested_url": "https://docs.python.org/3/tutorial/appetite.html",
+          "depth": 1,
+          "raw_path": "raw/04aefd47440423346da9d0dbdd064ddeaeb2464f1d80b50274e8ea9e16de1062.html",
+          "bytes": 19596,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:06.173726+00:00",
+          "content_hash": "63651e73d3e0ae4c8d92b890b81bfedf9af29edc916ca7c7755f2afdc7c086eb"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/interpreter.html",
+          "requested_url": "https://docs.python.org/3/tutorial/interpreter.html",
+          "depth": 1,
+          "raw_path": "raw/4dc70fe09ef04b01f6c41a8a3f1209672f08cf75a836dd456317884152a7bb1c.html",
+          "bytes": 29754,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:06.764607+00:00",
+          "content_hash": "64fd76e5ed909dab03dfe055bfd7741c3b6cb96b708054f0a5fdac55d5e1728d"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/introduction.html",
+          "requested_url": "https://docs.python.org/3/tutorial/introduction.html",
+          "depth": 1,
+          "raw_path": "raw/dcff5d405c8a47fc921a09f58f5dbee0a54fd6b8646542952756e86ac470ac98.html",
+          "bytes": 71957,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:07.313790+00:00",
+          "content_hash": "7b085c6c1212a5c1a3f01ae6911b015fb85b727a487a5250527fe922dce8d113"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/controlflow.html",
+          "requested_url": "https://docs.python.org/3/tutorial/controlflow.html",
+          "depth": 1,
+          "raw_path": "raw/803c99b2b1c34bd7dfb1a6de24786f050ccf737d0504266ceae6dbe01c099395.html",
+          "bytes": 140166,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:07.862428+00:00",
+          "content_hash": "f0bd0bc76e96fa4a47fe73419887bb51f33739e3e70a332357c4f3f905b842ca"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/datastructures.html",
+          "requested_url": "https://docs.python.org/3/tutorial/datastructures.html",
+          "depth": 1,
+          "raw_path": "raw/5447a47212de42a72cbba78a6e2f56a24bb320498d1e1d5af243427ef2fceb29.html",
+          "bytes": 101544,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:08.412673+00:00",
+          "content_hash": "7c79f7b85fc24363e4126e5be63c34633d44b947d2a9981fe6033f0b9e316c57"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/modules.html",
+          "requested_url": "https://docs.python.org/3/tutorial/modules.html",
+          "depth": 1,
+          "raw_path": "raw/1d6819b6e05c5ae60b5a1d10aca4cf49f20ce2476a5b5452924898374b6905ed.html",
+          "bytes": 71013,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:08.969014+00:00",
+          "content_hash": "f3ef3e81291112f4a73d466ba279f982e4c06927133d7761a07ceae23d5af590"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/inputoutput.html",
+          "requested_url": "https://docs.python.org/3/tutorial/inputoutput.html",
+          "depth": 1,
+          "raw_path": "raw/ece8c054f9a71bd676c52efa8c2dab279510bd1799de7b56989f08fd4b27be5e.html",
+          "bytes": 77440,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:09.515802+00:00",
+          "content_hash": "296e86a4291fa96937970bf1df5592681b58717ba9f479e0da5c007a7a134161"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/errors.html",
+          "requested_url": "https://docs.python.org/3/tutorial/errors.html",
+          "depth": 1,
+          "raw_path": "raw/8687f74540356d373e418bb09e508c373b1c16e4e7cd183d10a5e62e1f7ed12a.html",
+          "bytes": 85619,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:10.086099+00:00",
+          "content_hash": "1a8efa0729e5afdce6a018739a88c7829dfb446f20264a38d651096adb9dcb72"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/classes.html",
+          "requested_url": "https://docs.python.org/3/tutorial/classes.html",
+          "depth": 1,
+          "raw_path": "raw/46da2dec76cbf946400024a4aca922b2b5894d703c8b58b26b72d0f047bc25b8.html",
+          "bytes": 105328,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:10.631900+00:00",
+          "content_hash": "c2e4a7d967999cd341fe8ca8d89ae63a56c48914e39f6f1078224ade261eebdb"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/stdlib.html",
+          "requested_url": "https://docs.python.org/3/tutorial/stdlib.html",
+          "depth": 1,
+          "raw_path": "raw/5d7c7952cd4abfec8c7c98c45794722f3d0b51c71c01a092e3fcc9435ef4a1b1.html",
+          "bytes": 59883,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:11.185113+00:00",
+          "content_hash": "dd7477ca3f9cb5598f860f3e3e9c8e681ca5e7c93e3db22ab0114920dfe64c56"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/stdlib2.html",
+          "requested_url": "https://docs.python.org/3/tutorial/stdlib2.html",
+          "depth": 1,
+          "raw_path": "raw/69d139cbd49dce3a03d3af71f3e34491ba8677b25f193f3ca97e93c6a63e001c.html",
+          "bytes": 67885,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:11.783414+00:00",
+          "content_hash": "73ef63e41b62a30048d12368e36309bac70631cf69a4a546e32908aa2dec3e8e"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/venv.html",
+          "requested_url": "https://docs.python.org/3/tutorial/venv.html",
+          "depth": 1,
+          "raw_path": "raw/8439a074b8cb4e2322b25fbe56dba1fda842d64df3b3c99979e3db7ecb78562f.html",
+          "bytes": 31993,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:12.345801+00:00",
+          "content_hash": "c236a83bab7de125984c700dd0fc41c0585cc9b03ef68812ac4b4ce2b0ee2c04"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/whatnow.html",
+          "requested_url": "https://docs.python.org/3/tutorial/whatnow.html",
+          "depth": 1,
+          "raw_path": "raw/00aa7620dd0111739e2a0cc69e16086d7a96dc9408ce92673b48d5a7596cc257.html",
+          "bytes": 20132,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:12.892139+00:00",
+          "content_hash": "7a02ab4e515a028ca0d5b3e32ed23e91edcdf60fca3785923512beec6d1369d7"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/interactive.html",
+          "requested_url": "https://docs.python.org/3/tutorial/interactive.html",
+          "depth": 1,
+          "raw_path": "raw/8c51a93ae1101bdbac1516853115939a961f84ca29d1c0642c9e8684927d3276.html",
+          "bytes": 19811,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:13.427406+00:00",
+          "content_hash": "80ee9bdeb48a3421602b8199fb0031a12f1e1b55ffce3a9a21cc85b68658f883"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/floatingpoint.html",
+          "requested_url": "https://docs.python.org/3/tutorial/floatingpoint.html",
+          "depth": 1,
+          "raw_path": "raw/3eaf415c42528e9c88694b2cfba4614dfddac9268feb8d11b617e01956fb3e0d.html",
+          "bytes": 45479,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:13.960085+00:00",
+          "content_hash": "e6a28f8b9350b48068f7a62af6de3b15ee3be2847bf38fbdd3c68f029289d730"
+        },
+        {
+          "url": "https://docs.python.org/3/tutorial/appendix.html",
+          "requested_url": "https://docs.python.org/3/tutorial/appendix.html",
+          "depth": 1,
+          "raw_path": "raw/7c2ee1483fa2844bc6e2e04d435bf3bcf16e2aa452059ae29158d734d2bb8cbe.html",
+          "bytes": 28929,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:14.530725+00:00",
+          "content_hash": "9bb101baed36d2d86986c61cea6647ae49da924181a442a4fdaf10d2d301a703"
+        },
+        {
+          "url": "https://docs.python.org/3/reference/simple_stmts.html",
+          "requested_url": "https://docs.python.org/3/reference/simple_stmts.html",
+          "depth": 2,
+          "raw_path": "raw/d8c284f236f6289bb61ebf4cb1f983606f888580ea0e0717cf96887511134239.html",
+          "bytes": 117001,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:15.327820+00:00",
+          "content_hash": "7b0e15feda584b65221ae85b5f280e7d7752fd1e6c2bc0a5a4ab73f3d78debad"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/stdtypes.html",
+          "requested_url": "https://docs.python.org/3/builtins/stdtypes.html",
+          "depth": 2,
+          "raw_path": "raw/6eb52b07b38dae4776f53360e6621742e0f23132ee56de7954576d93e47b0281.html",
+          "bytes": 773977,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:16.141997+00:00",
+          "content_hash": "03d1977b616dedfd3c552c02e11a8c773f57dedc6f60d68dfc5a87fc86b2997a"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/constants.html",
+          "requested_url": "https://docs.python.org/3/builtins/constants.html",
+          "depth": 2,
+          "raw_path": "raw/eadb239757585753d1e8a0da3a51d042831fa8027f65f0e7782edef3f87b17e9.html",
+          "bytes": 29980,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:20.797458+00:00",
+          "content_hash": "d31f2e005271bde70aab1d4f80c802b51c3971cda86ec4a97aaf6774c6aee8c5"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/functions.html",
+          "requested_url": "https://docs.python.org/3/builtins/functions.html",
+          "depth": 2,
+          "raw_path": "raw/3e1fa2f44636ce4e053fee1c5c0aa23b3da0985762c584dbf3946f0aaaa598f7.html",
+          "bytes": 318871,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:21.655079+00:00",
+          "content_hash": "6ad616522d4c71e9973fb3ea0159a799a61e01d33f3e22675902c2a03674771b"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/exceptions.html",
+          "requested_url": "https://docs.python.org/3/builtins/exceptions.html",
+          "depth": 2,
+          "raw_path": "raw/09504914571ac08c32a3d3567c46953f7b2c111906f5be62606ad08b8a96a0d3.html",
+          "bytes": 144074,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:23.588126+00:00",
+          "content_hash": "256ca2a4a7124e4a1f2c04595524dd4621f1ce7f42e73475206bc724a8aab782"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/threadsafety.html",
+          "requested_url": "https://docs.python.org/3/builtins/threadsafety.html",
+          "depth": 2,
+          "raw_path": "raw/ac360f184c8711c880eb1388648ad26583536b58f3d96ba0b5a71316b4185ddc.html",
+          "bytes": 72463,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:25.255122+00:00",
+          "content_hash": "48cf5edbdfb6f162b8319855d0bb1275b7cd87f536a2679a143239b39318629b"
+        },
+        {
+          "url": "https://docs.python.org/3/builtins/time-complexity.html",
+          "requested_url": "https://docs.python.org/3/builtins/time-complexity.html",
+          "depth": 2,
+          "raw_path": "raw/01a5098139c26465268cd8874434abd037abb17c3db590bde45b58607bf499cf.html",
+          "bytes": 59938,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:25.994981+00:00",
+          "content_hash": "0d8a55ad4a65dfbd23422a70f6f4be4dae7c123fba45e897365deb126e82d892"
+        },
+        {
+          "url": "https://docs.python.org/3/library/intro.html",
+          "requested_url": "https://docs.python.org/3/library/intro.html",
+          "depth": 2,
+          "raw_path": "raw/b3563c1e3be0ab86a9117624d874d116b542b7c451f1c4247e7dd024aa9bc879.html",
+          "bytes": 28042,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:26.785824+00:00",
+          "content_hash": "1acc33dc8700ade3051c8f346f1e53fa8ca4ad9defdb1e6e0551b33d5d2e110d"
+        },
+        {
+          "url": "https://docs.python.org/3/library/text.html",
+          "requested_url": "https://docs.python.org/3/library/text.html",
+          "depth": 2,
+          "raw_path": "raw/f5649ff392f50ec3a6dca3e13bc62ba4f9b9125e7f2fd2afe6e93c3d2ad15540.html",
+          "bytes": 23088,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:27.518436+00:00",
+          "content_hash": "653e0f249317b67f7f5800d2da09110026f7a13b2684978a2c98fff42a6c829a"
+        },
+        {
+          "url": "https://docs.python.org/3/library/string.html",
+          "requested_url": "https://docs.python.org/3/library/string.html",
+          "depth": 2,
+          "raw_path": "raw/9e9b5b390665942825e48f64bb0535e0d701a598d551f4ecf5544d2c96f3cb5f.html",
+          "bytes": 129737,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:28.309854+00:00",
+          "content_hash": "96b4dde9ef0c2b68da8c1129cf924eab04331ca3be6aec82ecf2bfeebb7ade1e"
+        },
+        {
+          "url": "https://docs.python.org/3/library/string.templatelib.html",
+          "requested_url": "https://docs.python.org/3/library/string.templatelib.html",
+          "depth": 2,
+          "raw_path": "raw/465b2467722a2629ba59147e6c7eae2c71497f6d9714f0b937bb1ed0be83a5c3.html",
+          "bytes": 62859,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:29.188220+00:00",
+          "content_hash": "5cffd72b9e3c293c32c3140d0ba9dba3f0fae1cf5be053dc2d55e988fa152ec2"
+        },
+        {
+          "url": "https://docs.python.org/3/library/re.html",
+          "requested_url": "https://docs.python.org/3/library/re.html",
+          "depth": 2,
+          "raw_path": "raw/02d619bbec9f28cbe9e25245804d34c76151161728003e0df3559e24382960c2.html",
+          "bytes": 244148,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:30.002305+00:00",
+          "content_hash": "45ca3dd662290e90ade4e344142a8fd06a818e901f329085131cd6f0cd7f3f58"
+        },
+        {
+          "url": "https://docs.python.org/3/library/difflib.html",
+          "requested_url": "https://docs.python.org/3/library/difflib.html",
+          "depth": 2,
+          "raw_path": "raw/b041ceae9810f7c33e1d1f15530b1ea8bf3633aebf5022664247a43dad4d420d.html",
+          "bytes": 132217,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:31.890319+00:00",
+          "content_hash": "78b77ed3858c83fff2e206ebd7f92f5353d201a044a5a1b627c8cace2e0cb861"
+        },
+        {
+          "url": "https://docs.python.org/3/library/textwrap.html",
+          "requested_url": "https://docs.python.org/3/library/textwrap.html",
+          "depth": 2,
+          "raw_path": "raw/dfb18dd8570a9a2c46c1d73c12a89494e31c4829ffe8366b5a6497d4a86c4eae.html",
+          "bytes": 53226,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:33.001264+00:00",
+          "content_hash": "d2e56bd04a9cf2e83ac01e69f04343454247d9f3fd356993591c0e87ada7def5"
+        },
+        {
+          "url": "https://docs.python.org/3/library/unicodedata.html",
+          "requested_url": "https://docs.python.org/3/library/unicodedata.html",
+          "depth": 2,
+          "raw_path": "raw/18423a0845864cc24729ef219f5f9d638d3808796dda299a22795594f72bd498.html",
+          "bytes": 37788,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:33.751927+00:00",
+          "content_hash": "dbffcca6140d2029f2dafb94c1dc775d9fd07f79da8daf422d676e294c587605"
+        },
+        {
+          "url": "https://docs.python.org/3/library/stringprep.html",
+          "requested_url": "https://docs.python.org/3/library/stringprep.html",
+          "depth": 2,
+          "raw_path": "raw/6e956d617542c6f45de11a27b463844eccc8aa5397e5cf4d7e75c1c46c0ff8cc.html",
+          "bytes": 29899,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:34.508226+00:00",
+          "content_hash": "ea70352e095cf6d647c23c47bf953fba215eafe900bb8bbb1fbcb6b4c5538b64"
+        },
+        {
+          "url": "https://docs.python.org/3/library/readline.html",
+          "requested_url": "https://docs.python.org/3/library/readline.html",
+          "depth": 2,
+          "raw_path": "raw/0c2cb825f7efb1b88e942ef9bc9966c7a368abdaf781f5a1235af64a89834593.html",
+          "bytes": 60577,
+          "status": 200,
+          "crawled_at": "2026-09-29T12:57:35.304131+00:00",
+          "content_hash": "56edd7dcc9748dbf19f033df2ab86fe497414bdc8a18fd9fd586f098ec6ecdf5"
+        }
+      ],
+      "errors": [],
+      "skipped": [],
+      "cached": true,
+      "dry_run": false,
+      "crawl_strategy": "sequential_bfs",
+      "robots": {
+        "url": "https://docs.python.org/robots.txt",
+        "status": 200,
+        "checked_at": "2026-09-29T12:57:01.535992+00:00"
+      },
+      "effective_delay_s": 0.5,
+      "finished_at": "2026-09-29T12:57:35.479748+00:00",
+      "elapsed_s": 34.924,
+      "queued_remaining": 330
+    },
+    "usage": {
+      "embedding_tokens": 276927,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_usd": 0.0,
+      "provider": "local",
+      "token_source": "estimated_tiktoken"
+    },
+    "embedding_cache_hits": 0,
+    "diff": {
+      "added": 1597,
+      "updated": 0,
+      "removed": 0,
+      "unchanged": 0
+    },
+    "elapsed_seconds": 291.97791909999796
+  },
+  "threshold_diagnostics": [
+    {
+      "threshold": 0.25,
+      "answerable_gate_refusal_rate": null,
+      "unanswerable_gate_refusal_rate": null
+    },
+    {
+      "threshold": 0.3,
+      "answerable_gate_refusal_rate": null,
+      "unanswerable_gate_refusal_rate": null
+    },
+    {
+      "threshold": 0.35,
+      "answerable_gate_refusal_rate": null,
+      "unanswerable_gate_refusal_rate": null
+    },
+    {
+      "threshold": 0.4,
+      "answerable_gate_refusal_rate": null,
+      "unanswerable_gate_refusal_rate": null
+    },
+    {
+      "threshold": 0.45,
+      "answerable_gate_refusal_rate": null,
+      "unanswerable_gate_refusal_rate": null
+    },
+    {
+      "threshold": 0.5,
+      "answerable_gate_refusal_rate": null,
+      "unanswerable_gate_refusal_rate": null
+    },
+    {
+      "threshold": 0.55,
+      "answerable_gate_refusal_rate": null,
+      "unanswerable_gate_refusal_rate": null
+    },
+    {
+      "threshold": 0.6,
+      "answerable_gate_refusal_rate": null,
+      "unanswerable_gate_refusal_rate": null
+    }
+  ],
+  "counterfactual_embedding_note": "Text token estimates include the original question plus deterministic conjunction facets. Computed from frozen code without paid API calls; retry embeddings excluded.",
+  "timing_caveat": "Local warmup was served by the embedding cache and did not force encoder loading. Lazy model loading can occur within query generation; measured timings are preserved."
+}

@@ -1,0 +1,14 @@
+{
+  "8004": {
+    "/healthz": 200,
+    "/readyz": 200
+  },
+  "8005": {
+    "/healthz": 200,
+    "/readyz": 503
+  },
+  "uid": "10001",
+  "provider": "openai",
+  "image": "webrag-assessment:final",
+  "status": "passed"
+}

@@ -1,0 +1,453 @@
+{
+  "pages": 40,
+  "start_url": "https://docs.python.org/3/tutorial/index.html",
+  "allowed_prefix": "https://docs.python.org/3/",
+  "provider": "local",
+  "chunk_tokens": 200,
+  "chunk_overlap_tokens": 30,
+  "created_at": "2026-09-29T13:06:14.678654+00:00",
+  "embedding_id": "local:sentence-transformers/all-MiniLM-L6-v2",
+  "index_version": "f1272118f35f35bdfa2b925a50291c09655432ce53c5f443bcd934fd5cab11ce",
+  "chunks": 1597,
+  "crawl": {
+    "schema_version": 1,
+    "start_url": "https://docs.python.org/3/tutorial/index.html",
+    "allowed_prefix": "https://docs.python.org/3/",
+    "cache_key": "112829fdeeac5ab96d5c16fc22b9eb463cbe30c204049e3dee6f564a45e9f2ea",
+    "started_at": "2026-09-29T12:57:00.555402+00:00",
+    "page_count": 40,
+    "attempted_count": 40,
+    "fetched": [
+      {
+        "url": "https://docs.python.org/3/tutorial/index.html",
+        "requested_url": "https://docs.python.org/3/tutorial/index.html",
+        "depth": 0,
+        "raw_path": "raw/daa191588b5d80db370392ae91b17f58e27084d6dd071595b712a503c032fb4e.html",
+        "bytes": 37133,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:02.123919+00:00",
+        "content_hash": "4c3bee2e93a50f0ff00582fe2a2d9f01c21852aa67b8af7d80ae23cef7d8c90e"
+      },
+      {
+        "url": "https://docs.python.org/3/builtins/index.html",
+        "requested_url": "https://docs.python.org/3/builtins/index.html",
+        "depth": 1,
+        "raw_path": "raw/5c2a349de87df7c1e612cff83016d4f9f35ccc8b8879fd4d4344aae2694c47f0.html",
+        "bytes": 24454,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:02.648669+00:00",
+        "content_hash": "03912452417caa00f9014718f84057f544b23dcf690095133d562b59188c8e5e"
+      },
+      {
+        "url": "https://docs.python.org/3/library/index.html",
+        "requested_url": "https://docs.python.org/3/library/index.html",
+        "depth": 1,
+        "raw_path": "raw/b94f5db36911ff8062ec104cd012d5da4c24f501e0fd0de7ff09c39749c478e8.html",
+        "bytes": 73289,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:03.215140+00:00",
+        "content_hash": "3bc74b08dd02ed7ec842f9bc55e440ef8e3a38596fd202d63b11730d8ee4f594"
+      },
+      {
+        "url": "https://docs.python.org/3/reference/index.html",
+        "requested_url": "https://docs.python.org/3/reference/index.html",
+        "depth": 1,
+        "raw_path": "raw/3b9cc3722de8c6b7c7698ef7322f7ab1e023992ca5f1eed1c2902da75a6896f2.html",
+        "bytes": 28426,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:03.757769+00:00",
+        "content_hash": "bd0f2ee4394032bae1fe7db1578c9406c88ca014a58666b372e19ae975577338"
+      },
+      {
+        "url": "https://docs.python.org/3/extending/index.html",
+        "requested_url": "https://docs.python.org/3/extending/index.html",
+        "depth": 1,
+        "raw_path": "raw/b274218217e0488f1da2f10013e833f90038d2d7b92d4404f12c6e048334b0ab.html",
+        "bytes": 25618,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:04.297657+00:00",
+        "content_hash": "bdc3c7f7445da194d31eb48a37e99f5e879d38d6e514672233ea0f0f6f1c20a5"
+      },
+      {
+        "url": "https://docs.python.org/3/c-api/index.html",
+        "requested_url": "https://docs.python.org/3/c-api/index.html",
+        "depth": 1,
+        "raw_path": "raw/9e40c8cd06cce462546a81e336aa3ed412b22964a33c01c05f27f95b31bf7818.html",
+        "bytes": 31324,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:04.880448+00:00",
+        "content_hash": "e0dd9c7b87a377f593ae13e2be2d851ee308b6fa354162ada5cdcbfc0425ff0c"
+      },
+      {
+        "url": "https://docs.python.org/3/glossary.html",
+        "requested_url": "https://docs.python.org/3/glossary.html",
+        "depth": 1,
+        "raw_path": "raw/b7d43d26c4ffff230d03c78d43fa06383432e95cb42b348b366de27a8b8b3483.html",
+        "bytes": 213458,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:05.462918+00:00",
+        "content_hash": "79e4f663cffbce65fd7ba91bf8b70e2683771ed8e30b6172d0cec4084c010fe4"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/appetite.html",
+        "requested_url": "https://docs.python.org/3/tutorial/appetite.html",
+        "depth": 1,
+        "raw_path": "raw/04aefd47440423346da9d0dbdd064ddeaeb2464f1d80b50274e8ea9e16de1062.html",
+        "bytes": 19596,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:06.173726+00:00",
+        "content_hash": "63651e73d3e0ae4c8d92b890b81bfedf9af29edc916ca7c7755f2afdc7c086eb"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/interpreter.html",
+        "requested_url": "https://docs.python.org/3/tutorial/interpreter.html",
+        "depth": 1,
+        "raw_path": "raw/4dc70fe09ef04b01f6c41a8a3f1209672f08cf75a836dd456317884152a7bb1c.html",
+        "bytes": 29754,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:06.764607+00:00",
+        "content_hash": "64fd76e5ed909dab03dfe055bfd7741c3b6cb96b708054f0a5fdac55d5e1728d"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/introduction.html",
+        "requested_url": "https://docs.python.org/3/tutorial/introduction.html",
+        "depth": 1,
+        "raw_path": "raw/dcff5d405c8a47fc921a09f58f5dbee0a54fd6b8646542952756e86ac470ac98.html",
+        "bytes": 71957,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:07.313790+00:00",
+        "content_hash": "7b085c6c1212a5c1a3f01ae6911b015fb85b727a487a5250527fe922dce8d113"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/controlflow.html",
+        "requested_url": "https://docs.python.org/3/tutorial/controlflow.html",
+        "depth": 1,
+        "raw_path": "raw/803c99b2b1c34bd7dfb1a6de24786f050ccf737d0504266ceae6dbe01c099395.html",
+        "bytes": 140166,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:07.862428+00:00",
+        "content_hash": "f0bd0bc76e96fa4a47fe73419887bb51f33739e3e70a332357c4f3f905b842ca"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/datastructures.html",
+        "requested_url": "https://docs.python.org/3/tutorial/datastructures.html",
+        "depth": 1,
+        "raw_path": "raw/5447a47212de42a72cbba78a6e2f56a24bb320498d1e1d5af243427ef2fceb29.html",
+        "bytes": 101544,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:08.412673+00:00",
+        "content_hash": "7c79f7b85fc24363e4126e5be63c34633d44b947d2a9981fe6033f0b9e316c57"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/modules.html",
+        "requested_url": "https://docs.python.org/3/tutorial/modules.html",
+        "depth": 1,
+        "raw_path": "raw/1d6819b6e05c5ae60b5a1d10aca4cf49f20ce2476a5b5452924898374b6905ed.html",
+        "bytes": 71013,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:08.969014+00:00",
+        "content_hash": "f3ef3e81291112f4a73d466ba279f982e4c06927133d7761a07ceae23d5af590"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/inputoutput.html",
+        "requested_url": "https://docs.python.org/3/tutorial/inputoutput.html",
+        "depth": 1,
+        "raw_path": "raw/ece8c054f9a71bd676c52efa8c2dab279510bd1799de7b56989f08fd4b27be5e.html",
+        "bytes": 77440,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:09.515802+00:00",
+        "content_hash": "296e86a4291fa96937970bf1df5592681b58717ba9f479e0da5c007a7a134161"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/errors.html",
+        "requested_url": "https://docs.python.org/3/tutorial/errors.html",
+        "depth": 1,
+        "raw_path": "raw/8687f74540356d373e418bb09e508c373b1c16e4e7cd183d10a5e62e1f7ed12a.html",
+        "bytes": 85619,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:10.086099+00:00",
+        "content_hash": "1a8efa0729e5afdce6a018739a88c7829dfb446f20264a38d651096adb9dcb72"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/classes.html",
+        "requested_url": "https://docs.python.org/3/tutorial/classes.html",
+        "depth": 1,
+        "raw_path": "raw/46da2dec76cbf946400024a4aca922b2b5894d703c8b58b26b72d0f047bc25b8.html",
+        "bytes": 105328,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:10.631900+00:00",
+        "content_hash": "c2e4a7d967999cd341fe8ca8d89ae63a56c48914e39f6f1078224ade261eebdb"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/stdlib.html",
+        "requested_url": "https://docs.python.org/3/tutorial/stdlib.html",
+        "depth": 1,
+        "raw_path": "raw/5d7c7952cd4abfec8c7c98c45794722f3d0b51c71c01a092e3fcc9435ef4a1b1.html",
+        "bytes": 59883,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:11.185113+00:00",
+        "content_hash": "dd7477ca3f9cb5598f860f3e3e9c8e681ca5e7c93e3db22ab0114920dfe64c56"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/stdlib2.html",
+        "requested_url": "https://docs.python.org/3/tutorial/stdlib2.html",
+        "depth": 1,
+        "raw_path": "raw/69d139cbd49dce3a03d3af71f3e34491ba8677b25f193f3ca97e93c6a63e001c.html",
+        "bytes": 67885,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:11.783414+00:00",
+        "content_hash": "73ef63e41b62a30048d12368e36309bac70631cf69a4a546e32908aa2dec3e8e"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/venv.html",
+        "requested_url": "https://docs.python.org/3/tutorial/venv.html",
+        "depth": 1,
+        "raw_path": "raw/8439a074b8cb4e2322b25fbe56dba1fda842d64df3b3c99979e3db7ecb78562f.html",
+        "bytes": 31993,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:12.345801+00:00",
+        "content_hash": "c236a83bab7de125984c700dd0fc41c0585cc9b03ef68812ac4b4ce2b0ee2c04"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/whatnow.html",
+        "requested_url": "https://docs.python.org/3/tutorial/whatnow.html",
+        "depth": 1,
+        "raw_path": "raw/00aa7620dd0111739e2a0cc69e16086d7a96dc9408ce92673b48d5a7596cc257.html",
+        "bytes": 20132,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:12.892139+00:00",
+        "content_hash": "7a02ab4e515a028ca0d5b3e32ed23e91edcdf60fca3785923512beec6d1369d7"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/interactive.html",
+        "requested_url": "https://docs.python.org/3/tutorial/interactive.html",
+        "depth": 1,
+        "raw_path": "raw/8c51a93ae1101bdbac1516853115939a961f84ca29d1c0642c9e8684927d3276.html",
+        "bytes": 19811,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:13.427406+00:00",
+        "content_hash": "80ee9bdeb48a3421602b8199fb0031a12f1e1b55ffce3a9a21cc85b68658f883"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/floatingpoint.html",
+        "requested_url": "https://docs.python.org/3/tutorial/floatingpoint.html",
+        "depth": 1,
+        "raw_path": "raw/3eaf415c42528e9c88694b2cfba4614dfddac9268feb8d11b617e01956fb3e0d.html",
+        "bytes": 45479,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:13.960085+00:00",
+        "content_hash": "e6a28f8b9350b48068f7a62af6de3b15ee3be2847bf38fbdd3c68f029289d730"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/appendix.html",
+        "requested_url": "https://docs.python.org/3/tutorial/appendix.html",
+        "depth": 1,
+        "raw_path": "raw/7c2ee1483fa2844bc6e2e04d435bf3bcf16e2aa452059ae29158d734d2bb8cbe.html",
+        "bytes": 28929,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:14.530725+00:00",
+        "content_hash": "9bb101baed36d2d86986c61cea6647ae49da924181a442a4fdaf10d2d301a703"
+      },
+      {
+        "url": "https://docs.python.org/3/reference/simple_stmts.html",
+        "requested_url": "https://docs.python.org/3/reference/simple_stmts.html",
+        "depth": 2,
+        "raw_path": "raw/d8c284f236f6289bb61ebf4cb1f983606f888580ea0e0717cf96887511134239.html",
+        "bytes": 117001,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:15.327820+00:00",
+        "content_hash": "7b0e15feda584b65221ae85b5f280e7d7752fd1e6c2bc0a5a4ab73f3d78debad"
+      },
+      {
+        "url": "https://docs.python.org/3/builtins/stdtypes.html",
+        "requested_url": "https://docs.python.org/3/builtins/stdtypes.html",
+        "depth": 2,
+        "raw_path": "raw/6eb52b07b38dae4776f53360e6621742e0f23132ee56de7954576d93e47b0281.html",
+        "bytes": 773977,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:16.141997+00:00",
+        "content_hash": "03d1977b616dedfd3c552c02e11a8c773f57dedc6f60d68dfc5a87fc86b2997a"
+      },
+      {
+        "url": "https://docs.python.org/3/builtins/constants.html",
+        "requested_url": "https://docs.python.org/3/builtins/constants.html",
+        "depth": 2,
+        "raw_path": "raw/eadb239757585753d1e8a0da3a51d042831fa8027f65f0e7782edef3f87b17e9.html",
+        "bytes": 29980,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:20.797458+00:00",
+        "content_hash": "d31f2e005271bde70aab1d4f80c802b51c3971cda86ec4a97aaf6774c6aee8c5"
+      },
+      {
+        "url": "https://docs.python.org/3/builtins/functions.html",
+        "requested_url": "https://docs.python.org/3/builtins/functions.html",
+        "depth": 2,
+        "raw_path": "raw/3e1fa2f44636ce4e053fee1c5c0aa23b3da0985762c584dbf3946f0aaaa598f7.html",
+        "bytes": 318871,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:21.655079+00:00",
+        "content_hash": "6ad616522d4c71e9973fb3ea0159a799a61e01d33f3e22675902c2a03674771b"
+      },
+      {
+        "url": "https://docs.python.org/3/builtins/exceptions.html",
+        "requested_url": "https://docs.python.org/3/builtins/exceptions.html",
+        "depth": 2,
+        "raw_path": "raw/09504914571ac08c32a3d3567c46953f7b2c111906f5be62606ad08b8a96a0d3.html",
+        "bytes": 144074,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:23.588126+00:00",
+        "content_hash": "256ca2a4a7124e4a1f2c04595524dd4621f1ce7f42e73475206bc724a8aab782"
+      },
+      {
+        "url": "https://docs.python.org/3/builtins/threadsafety.html",
+        "requested_url": "https://docs.python.org/3/builtins/threadsafety.html",
+        "depth": 2,
+        "raw_path": "raw/ac360f184c8711c880eb1388648ad26583536b58f3d96ba0b5a71316b4185ddc.html",
+        "bytes": 72463,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:25.255122+00:00",
+        "content_hash": "48cf5edbdfb6f162b8319855d0bb1275b7cd87f536a2679a143239b39318629b"
+      },
+      {
+        "url": "https://docs.python.org/3/builtins/time-complexity.html",
+        "requested_url": "https://docs.python.org/3/builtins/time-complexity.html",
+        "depth": 2,
+        "raw_path": "raw/01a5098139c26465268cd8874434abd037abb17c3db590bde45b58607bf499cf.html",
+        "bytes": 59938,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:25.994981+00:00",
+        "content_hash": "0d8a55ad4a65dfbd23422a70f6f4be4dae7c123fba45e897365deb126e82d892"
+      },
+      {
+        "url": "https://docs.python.org/3/library/intro.html",
+        "requested_url": "https://docs.python.org/3/library/intro.html",
+        "depth": 2,
+        "raw_path": "raw/b3563c1e3be0ab86a9117624d874d116b542b7c451f1c4247e7dd024aa9bc879.html",
+        "bytes": 28042,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:26.785824+00:00",
+        "content_hash": "1acc33dc8700ade3051c8f346f1e53fa8ca4ad9defdb1e6e0551b33d5d2e110d"
+      },
+      {
+        "url": "https://docs.python.org/3/library/text.html",
+        "requested_url": "https://docs.python.org/3/library/text.html",
+        "depth": 2,
+        "raw_path": "raw/f5649ff392f50ec3a6dca3e13bc62ba4f9b9125e7f2fd2afe6e93c3d2ad15540.html",
+        "bytes": 23088,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:27.518436+00:00",
+        "content_hash": "653e0f249317b67f7f5800d2da09110026f7a13b2684978a2c98fff42a6c829a"
+      },
+      {
+        "url": "https://docs.python.org/3/library/string.html",
+        "requested_url": "https://docs.python.org/3/library/string.html",
+        "depth": 2,
+        "raw_path": "raw/9e9b5b390665942825e48f64bb0535e0d701a598d551f4ecf5544d2c96f3cb5f.html",
+        "bytes": 129737,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:28.309854+00:00",
+        "content_hash": "96b4dde9ef0c2b68da8c1129cf924eab04331ca3be6aec82ecf2bfeebb7ade1e"
+      },
+      {
+        "url": "https://docs.python.org/3/library/string.templatelib.html",
+        "requested_url": "https://docs.python.org/3/library/string.templatelib.html",
+        "depth": 2,
+        "raw_path": "raw/465b2467722a2629ba59147e6c7eae2c71497f6d9714f0b937bb1ed0be83a5c3.html",
+        "bytes": 62859,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:29.188220+00:00",
+        "content_hash": "5cffd72b9e3c293c32c3140d0ba9dba3f0fae1cf5be053dc2d55e988fa152ec2"
+      },
+      {
+        "url": "https://docs.python.org/3/library/re.html",
+        "requested_url": "https://docs.python.org/3/library/re.html",
+        "depth": 2,
+        "raw_path": "raw/02d619bbec9f28cbe9e25245804d34c76151161728003e0df3559e24382960c2.html",
+        "bytes": 244148,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:30.002305+00:00",
+        "content_hash": "45ca3dd662290e90ade4e344142a8fd06a818e901f329085131cd6f0cd7f3f58"
+      },
+      {
+        "url": "https://docs.python.org/3/library/difflib.html",
+        "requested_url": "https://docs.python.org/3/library/difflib.html",
+        "depth": 2,
+        "raw_path": "raw/b041ceae9810f7c33e1d1f15530b1ea8bf3633aebf5022664247a43dad4d420d.html",
+        "bytes": 132217,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:31.890319+00:00",
+        "content_hash": "78b77ed3858c83fff2e206ebd7f92f5353d201a044a5a1b627c8cace2e0cb861"
+      },
+      {
+        "url": "https://docs.python.org/3/library/textwrap.html",
+        "requested_url": "https://docs.python.org/3/library/textwrap.html",
+        "depth": 2,
+        "raw_path": "raw/dfb18dd8570a9a2c46c1d73c12a89494e31c4829ffe8366b5a6497d4a86c4eae.html",
+        "bytes": 53226,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:33.001264+00:00",
+        "content_hash": "d2e56bd04a9cf2e83ac01e69f04343454247d9f3fd356993591c0e87ada7def5"
+      },
+      {
+        "url": "https://docs.python.org/3/library/unicodedata.html",
+        "requested_url": "https://docs.python.org/3/library/unicodedata.html",
+        "depth": 2,
+        "raw_path": "raw/18423a0845864cc24729ef219f5f9d638d3808796dda299a22795594f72bd498.html",
+        "bytes": 37788,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:33.751927+00:00",
+        "content_hash": "dbffcca6140d2029f2dafb94c1dc775d9fd07f79da8daf422d676e294c587605"
+      },
+      {
+        "url": "https://docs.python.org/3/library/stringprep.html",
+        "requested_url": "https://docs.python.org/3/library/stringprep.html",
+        "depth": 2,
+        "raw_path": "raw/6e956d617542c6f45de11a27b463844eccc8aa5397e5cf4d7e75c1c46c0ff8cc.html",
+        "bytes": 29899,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:34.508226+00:00",
+        "content_hash": "ea70352e095cf6d647c23c47bf953fba215eafe900bb8bbb1fbcb6b4c5538b64"
+      },
+      {
+        "url": "https://docs.python.org/3/library/readline.html",
+        "requested_url": "https://docs.python.org/3/library/readline.html",
+        "depth": 2,
+        "raw_path": "raw/0c2cb825f7efb1b88e942ef9bc9966c7a368abdaf781f5a1235af64a89834593.html",
+        "bytes": 60577,
+        "status": 200,
+        "crawled_at": "2026-09-29T12:57:35.304131+00:00",
+        "content_hash": "56edd7dcc9748dbf19f033df2ab86fe497414bdc8a18fd9fd586f098ec6ecdf5"
+      }
+    ],
+    "errors": [],
+    "skipped": [],
+    "cached": true,
+    "dry_run": false,
+    "crawl_strategy": "sequential_bfs",
+    "robots": {
+      "url": "https://docs.python.org/robots.txt",
+      "status": 200,
+      "checked_at": "2026-09-29T12:57:01.535992+00:00"
+    },
+    "effective_delay_s": 0.5,
+    "finished_at": "2026-09-29T12:57:35.479748+00:00",
+    "elapsed_s": 34.924,
+    "queued_remaining": 330
+  },
+  "usage": {
+    "embedding_tokens": 276927,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "estimated_usd": 0.0,
+    "provider": "local",
+    "token_source": "estimated_tiktoken"
+  },
+  "embedding_cache_hits": 0,
+  "diff": {
+    "added": 1597,
+    "updated": 0,
+    "removed": 0,
+    "unchanged": 0
+  },
+  "elapsed_seconds": 291.97791909999796
+}

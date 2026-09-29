@@ -1,0 +1,80 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.53kB 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim
+#2 DONE 1.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 234B 0.0s done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 156.31kB 0.0s done
+#4 DONE 0.1s
+
+#5 [builder 1/9] FROM docker.io/library/python:3.11-slim@sha256:e41613d42d4891e4930f79523f93f81bbc7632584ec65e36ab055f41a800b41e
+#5 resolve docker.io/library/python:3.11-slim@sha256:e41613d42d4891e4930f79523f93f81bbc7632584ec65e36ab055f41a800b41e 0.1s done
+#5 DONE 0.1s
+
+#6 [builder 2/9] WORKDIR /build
+#6 CACHED
+
+#7 [builder 3/9] COPY requirements.txt ./
+#7 CACHED
+
+#8 [builder 4/9] RUN python -m pip install uv==0.11.28
+#8 CACHED
+
+#9 [builder 5/9] RUN --mount=type=cache,target=/root/.cache/uv uv pip install --prefix=/install --python /usr/local/bin/python     --extra-index-url https://download.pytorch.org/whl/cpu --index-strategy unsafe-best-match -r requirements.txt
+#9 CACHED
+
+#10 [builder 6/9] COPY pyproject.toml ./
+#10 CACHED
+
+#11 [builder 7/9] COPY src/ ./src/
+#11 DONE 1.0s
+
+#12 [builder 8/9] COPY evaluation/ ./evaluation/
+#12 DONE 0.2s
+
+#13 [builder 9/9] RUN --mount=type=cache,target=/root/.cache/uv uv pip install --prefix=/install --python /usr/local/bin/python --no-deps .
+#13 1.092 Using CPython 3.11.16 interpreter at: /usr/local/bin/python
+#13 2.756 Resolved 1 package in 1.58s
+#13 2.759    Building webrag-agent @ file:///build
+#13 3.086       Built webrag-agent @ file:///build
+#13 3.104 Prepared 1 package in 347ms
+#13 3.105 warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+#13 3.105          If the cache and target directories are on different filesystems, hardlinking may not be supported.
+#13 3.105          If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+#13 3.125 Installed 1 package in 20ms
+#13 3.125  + webrag-agent==1.0.0 (from file:///build)
+#13 DONE 3.3s
+
+#14 [runtime 2/5] RUN groupadd --gid 10001 app && useradd --uid 10001 --gid app --create-home app     && mkdir /data /app && chown app:app /data /app
+#14 CACHED
+
+#15 [runtime 3/5] COPY --from=builder /install /usr/local
+#15 DONE 28.8s
+
+#16 [runtime 4/5] WORKDIR /app
+#16 DONE 0.8s
+
+#17 [runtime 5/5] COPY --chown=app:app evaluation/ ./evaluation/
+#17 DONE 0.3s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 66.9s done
+#18 exporting manifest sha256:4c469bc187399dd2d1a3b3643109fb55a6d42badc5bfe23b1bbf68e923873cbe 0.1s done
+#18 exporting config sha256:32eba396ca2e6a4a8b8f7110b8b5b5c79f6014306c12384fb15e72a669e67d43 0.1s done
+#18 exporting attestation manifest sha256:b2bfae0b71e503c73cda86a06ac814cbe86eb1d2de88535f7670d2efdcf30a94
+#18 exporting attestation manifest sha256:b2bfae0b71e503c73cda86a06ac814cbe86eb1d2de88535f7670d2efdcf30a94 0.2s done
+#18 exporting manifest list sha256:db15f889271c31ae5b5c08abbcd930e2b4c0d5b9d59f9c01fe15911d5d1ae956
+#18 exporting manifest list sha256:db15f889271c31ae5b5c08abbcd930e2b4c0d5b9d59f9c01fe15911d5d1ae956 0.1s done
+#18 naming to docker.io/library/webrag-assessment:final 0.0s done
+#18 unpacking to docker.io/library/webrag-assessment:final
+#18 unpacking to docker.io/library/webrag-assessment:final 19.6s done
+#18 DONE 87.2s

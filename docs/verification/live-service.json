@@ -1,0 +1,8 @@
+{
+  "base_url": "http://127.0.0.1:8000",
+  "provider": "openai",
+  "chunks": 1597,
+  "readiness": 200,
+  "browser_form": 200,
+  "api_docs": 200
+}

@@ -1,0 +1,23 @@
+services:
+  rag:
+    build: .
+    ports:
+      - "${PORT:-8000}:${PORT:-8000}"
+    environment:
+      PROVIDER: ${PROVIDER:-local}
+      DATA_DIR: /data
+      PORT: ${PORT:-8000}
+      HF_HOME: /data/model-cache
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - rag-data:/data
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+volumes:
+  rag-data:
+    name: webrag-${PROVIDER:-local}

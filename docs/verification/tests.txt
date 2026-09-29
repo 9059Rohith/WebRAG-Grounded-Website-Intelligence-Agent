@@ -1,0 +1,49 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.0, pytest-9.1.1, pluggy-1.6.0
+rootdir: C:\Users\BhaviChasvi\Downloads\advice
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1, hypothesis-6.168.3, langsmith-0.14.1, platformdirs-4.12.1, asyncio-1.4.0, cov-7.1.0, respx-0.23.1, Faker-40.28.1, nbmake-1.5.5, timeout-2.4.0, typeguard-4.4.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 181 items
+
+tests\test_api_cache.py ......................                           [ 12%]
+tests\test_cli.py .........................                              [ 25%]
+tests\test_crawl_process.py .........................................    [ 48%]
+tests\test_embedding_cache_race.py ...                                   [ 50%]
+tests\test_evaluation.py ...............                                 [ 58%]
+tests\test_graph_index.py ...............                                [ 66%]
+tests\test_grounding_core.py .........                                   [ 71%]
+tests\test_paid_grounding.py ........................................    [ 93%]
+tests\test_providers_ingest.py ........                                  [ 98%]
+tests\test_store_atomic.py ...                                           [100%]
+
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.12.0-final-0 _______________
+
+Name                             Stmts   Miss  Cover   Missing
+--------------------------------------------------------------
+src\rag_agent\__init__.py            0      0   100%
+src\rag_agent\api.py               158      3    98%   156-158
+src\rag_agent\cache.py              54      0   100%
+src\rag_agent\chunker.py            67     17    75%   21-26, 42, 55, 57, 60, 68-71, 74-78
+src\rag_agent\cleaner.py            62      4    94%   60, 64, 84, 87
+src\rag_agent\cli.py               143      1    99%   286
+src\rag_agent\config.py             78      3    96%   23, 110, 116
+src\rag_agent\cost.py               13      0   100%
+src\rag_agent\crawler.py           212     33    84%   60-62, 67, 70, 120, 130-131, 137, 140, 145-146, 153, 156-161, 203-204, 255, 268, 273-276, 303, 307, 315, 329, 355, 362-364, 382
+src\rag_agent\embeddings.py         82      5    94%   51-58, 125
+src\rag_agent\errors.py              3      0   100%
+src\rag_agent\graph.py             252     23    91%   67-77, 99, 116, 120, 132, 143, 150-158, 170, 267-269, 315, 415-416
+src\rag_agent\grounding.py          74      2    97%   28, 49
+src\rag_agent\ingest.py             31      0   100%
+src\rag_agent\logging_setup.py       6      0   100%
+src\rag_agent\prompts.py            17      0   100%
+src\rag_agent\retriever.py          93      4    96%   44, 57, 110, 162
+src\rag_agent\schemas.py            64      0   100%
+src\rag_agent\ssrf.py               87      0   100%
+src\rag_agent\vectorstore.py        77      2    97%   66, 148
+--------------------------------------------------------------
+TOTAL                             1573     97    94%
+Required test coverage of 85% reached. Total coverage: 93.83%
+============================ 181 passed in 44.64s =============================

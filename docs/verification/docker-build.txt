@@ -1,0 +1,270 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.53kB 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim
+#2 ...
+
+#3 [auth] library/python:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim
+#2 DONE 1.7s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 206B 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 683.58kB 0.1s done
+#5 DONE 0.2s
+
+#6 [builder 1/9] FROM docker.io/library/python:3.11-slim@sha256:e41613d42d4891e4930f79523f93f81bbc7632584ec65e36ab055f41a800b41e
+#6 resolve docker.io/library/python:3.11-slim@sha256:e41613d42d4891e4930f79523f93f81bbc7632584ec65e36ab055f41a800b41e 0.1s done
+#6 DONE 0.1s
+
+#7 [builder 2/9] WORKDIR /build
+#7 CACHED
+
+#8 [builder 3/9] COPY requirements.txt ./
+#8 DONE 0.1s
+
+#9 [builder 4/9] RUN python -m pip install uv==0.11.28
+#9 4.194 Collecting uv==0.11.28
+#9 4.402   Downloading uv-0.11.28-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+#9 4.485 Downloading uv-0.11.28-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (27.1 MB)
+#9 31.17    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 27.1/27.1 MB 1.0 MB/s eta 0:00:00
+#9 31.28 Installing collected packages: uv
+#9 31.74 Successfully installed uv-0.11.28
+#9 31.74 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#9 DONE 32.8s
+
+#10 [builder 5/9] RUN --mount=type=cache,target=/root/.cache/uv uv pip install --prefix=/install --python /usr/local/bin/python     --extra-index-url https://download.pytorch.org/whl/cpu --index-strategy unsafe-best-match -r requirements.txt
+#10 0.791 Using CPython 3.11.16 interpreter at: /usr/local/bin/python
+#10 17.78 Resolved 128 packages in 16.95s
+#10 17.84 Downloading torch (187.1MiB)
+#10 18.91 Downloading uvloop (3.6MiB)
+#10 18.91 Downloading pydantic-core (2.0MiB)
+#10 18.92 Downloading openai (2.0MiB)
+#10 18.92 Downloading hf-xet (4.3MiB)
+#10 18.92 Downloading transformers (11.7MiB)
+#10 18.92 Downloading tiktoken (1.2MiB)
+#10 18.92 Downloading sympy (6.0MiB)
+#10 18.92 Downloading tokenizers (3.2MiB)
+#10 18.93 Downloading zstandard (5.3MiB)
+#10 18.93 Downloading kubernetes (4.4MiB)
+#10 18.93 Downloading chromadb (22.2MiB)
+#10 18.93 Downloading scikit-learn (8.9MiB)
+#10 18.93 Downloading pygments (1.2MiB)
+#10 18.93 Downloading lxml (5.0MiB)
+#10 18.93 Downloading networkx (2.0MiB)
+#10 18.98 Downloading aiohttp (1.7MiB)
+#10 18.98 Downloading onnxruntime (22.5MiB)
+#10 18.98 Downloading grpcio (6.9MiB)
+#10 18.98 Downloading numpy (16.0MiB)
+#10 18.98 Downloading scipy (33.7MiB)
+#10 92.01  Downloaded tiktoken
+#10 93.06  Downloaded pygments
+#10 119.9  Downloaded aiohttp
+#10 129.6  Downloaded pydantic-core
+#10 130.5  Downloaded openai
+#10 130.6  Downloaded networkx
+#10 171.2  Downloaded tokenizers
+#10 178.9  Downloaded uvloop
+#10 206.7  Downloaded hf-xet
+#10 212.8  Downloaded kubernetes
+#10 222.3  Downloaded lxml
+#10 228.8  Downloaded zstandard
+#10 247.8  Downloaded sympy
+#10 254.6  Downloaded grpcio
+#10 281.7  Downloaded scikit-learn
+#10 302.4  Downloaded torch
+#10 307.5  Downloaded transformers
+#10 324.3  Downloaded numpy
+#10 342.1  Downloaded onnxruntime
+#10 342.2  Downloaded chromadb
+#10 352.9  Downloaded scipy
+#10 352.9 Prepared 128 packages in 5m 34s
+#10 352.9 warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+#10 352.9          If the cache and target directories are on different filesystems, hardlinking may not be supported.
+#10 352.9          If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+#10 367.9 Installed 128 packages in 15.03s
+#10 367.9  + aiohappyeyeballs==2.7.1
+#10 367.9  + aiohttp==3.14.3
+#10 367.9  + aiosignal==1.4.0
+#10 367.9  + annotated-doc==0.0.5
+#10 367.9  + annotated-types==0.8.0
+#10 367.9  + anyio==4.15.1
+#10 367.9  + attrs==26.1.0
+#10 367.9  + bcrypt==5.0.0
+#10 367.9  + beautifulsoup4==4.15.0
+#10 367.9  + build==1.6.1
+#10 367.9  + certifi==2026.7.22
+#10 367.9  + charset-normalizer==3.5.1
+#10 367.9  + chromadb==1.5.9
+#10 367.9  + click==8.5.0
+#10 367.9  + cloudpickle==3.1.2
+#10 367.9  + distro==1.9.0
+#10 367.9  + durationpy==0.11
+#10 367.9  + fastapi==0.141.1
+#10 367.9  + filelock==4.0.6
+#10 367.9  + flatbuffers==25.12.19
+#10 367.9  + frozenlist==1.8.0
+#10 367.9  + fsspec==2026.9.0
+#10 367.9  + googleapis-common-protos==1.75.4
+#10 367.9  + grpcio==1.84.0
+#10 367.9  + h11==0.16.0
+#10 367.9  + hf-xet==1.6.0
+#10 367.9  + httpcore==1.0.9
+#10 367.9  + httpcore2==2.13.1
+#10 367.9  + httptools==0.8.0
+#10 367.9  + httpx==0.28.1
+#10 367.9  + httpx2==2.13.1
+#10 367.9  + huggingface-hub==1.33.0
+#10 367.9  + idna==3.20
+#10 367.9  + importlib-resources==7.1.0
+#10 367.9  + jinja2==3.1.6
+#10 367.9  + jiter==0.17.0
+#10 367.9  + joblib==1.6.0
+#10 367.9  + jsonpatch==1.33
+#10 367.9  + jsonpointer==3.1.1
+#10 367.9  + jsonschema==4.26.0
+#10 367.9  + jsonschema-specifications==2025.9.1
+#10 367.9  + kubernetes==36.0.3
+#10 367.9  + langchain-core==1.6.5
+#10 367.9  + langchain-openai==1.6.6
+#10 367.9  + langchain-protocol==0.0.19
+#10 367.9  + langchain-text-splitters==1.1.2
+#10 367.9  + langgraph==1.2.12
+#10 367.9  + langgraph-checkpoint==4.2.0
+#10 367.9  + langgraph-prebuilt==1.1.0
+#10 367.9  + langgraph-sdk==0.4.5
+#10 367.9  + langsmith==0.14.1
+#10 367.9  + lxml==6.1.3
+#10 367.9  + markdown-it-py==4.2.0
+#10 367.9  + markupsafe==3.0.3
+#10 367.9  + mdurl==0.1.2
+#10 367.9  + mmh3==5.3.0
+#10 367.9  + mpmath==1.3.0
+#10 367.9  + multidict==6.9.1
+#10 367.9  + narwhals==2.26.0
+#10 367.9  + networkx==3.6.1
+#10 367.9  + numpy==2.2.6
+#10 367.9  + oauthlib==4.0.0
+#10 367.9  + onnxruntime==1.30.0
+#10 367.9  + openai==3.20.0
+#10 367.9  + opentelemetry-api==1.45.0
+#10 367.9  + opentelemetry-exporter-otlp-common==0.66b0
+#10 367.9  + opentelemetry-exporter-otlp-proto-common==1.45.0
+#10 367.9  + opentelemetry-exporter-otlp-proto-grpc==1.45.0
+#10 367.9  + opentelemetry-proto==1.45.0
+#10 367.9  + opentelemetry-sdk==1.45.0
+#10 367.9  + opentelemetry-semantic-conventions==0.66b0
+#10 367.9  + orjson==3.12.0
+#10 367.9  + ormsgpack==1.12.2
+#10 367.9  + overrides==7.7.0
+#10 367.9  + packaging==26.3
+#10 367.9  + propcache==0.5.4
+#10 367.9  + protobuf==7.36.2
+#10 367.9  + pybase64==1.5.0
+#10 367.9  + pydantic==2.13.5
+#10 367.9  + pydantic-core==2.46.5
+#10 367.9  + pydantic-settings==2.15.0
+#10 367.9  + pygments==2.21.0
+#10 367.9  + pypika==0.51.1
+#10 367.9  + pyproject-hooks==1.3.3
+#10 367.9  + python-dateutil==2.9.0.post0
+#10 367.9  + python-dotenv==1.2.3
+#10 367.9  + pyyaml==6.0.3
+#10 367.9  + rank-bm25==0.2.2
+#10 367.9  + referencing==0.37.0
+#10 367.9  + regex==2026.9.29
+#10 367.9  + requests==2.34.2
+#10 367.9  + requests-oauthlib==2.0.0
+#10 367.9  + requests-toolbelt==1.0.0
+#10 367.9  + rich==15.0.0
+#10 367.9  + rpds-py==2026.6.3
+#10 367.9  + safetensors==0.8.0
+#10 367.9  + scikit-learn==1.9.1
+#10 367.9  + scipy==1.17.1
+#10 367.9  + sentence-transformers==6.1.0
+#10 367.9  + setuptools==84.0.0
+#10 367.9  + shellingham==1.5.4
+#10 367.9  + six==1.17.0
+#10 367.9  + sniffio==1.3.1
+#10 367.9  + soupsieve==2.10
+#10 367.9  + starlette==1.7.0
+#10 367.9  + structlog==26.1.0
+#10 367.9  + sympy==1.14.0
+#10 367.9  + tenacity==9.1.4
+#10 367.9  + threadpoolctl==3.7.0
+#10 367.9  + tiktoken==0.14.0
+#10 367.9  + tokenizers==0.23.2
+#10 367.9  + torch==2.14.0+cpu
+#10 367.9  + tqdm==4.70.1
+#10 367.9  + transformers==5.17.0
+#10 367.9  + truststore==0.10.4
+#10 367.9  + typer==0.27.2
+#10 367.9  + typing-extensions==4.16.0
+#10 367.9  + typing-inspection==0.4.4
+#10 367.9  + urllib3==2.8.0
+#10 367.9  + uuid-utils==0.17.1
+#10 367.9  + uvicorn==0.54.0
+#10 367.9  + uvloop==0.22.1
+#10 367.9  + watchfiles==1.3.0
+#10 367.9  + websocket-client==1.9.2
+#10 367.9  + websockets==16.1.1
+#10 367.9  + xxhash==4.0.1
+#10 367.9  + yarl==1.25.1
+#10 367.9  + zstandard==0.25.0
+#10 DONE 384.5s
+
+#11 [builder 6/9] COPY pyproject.toml ./
+#11 DONE 0.5s
+
+#12 [builder 7/9] COPY src/ ./src/
+#12 DONE 0.3s
+
+#13 [builder 8/9] COPY evaluation/ ./evaluation/
+#13 DONE 0.2s
+
+#14 [builder 9/9] RUN --mount=type=cache,target=/root/.cache/uv uv pip install --prefix=/install --python /usr/local/bin/python --no-deps .
+#14 1.005 Using CPython 3.11.16 interpreter at: /usr/local/bin/python
+#14 2.814 Resolved 1 package in 1.80s
+#14 2.815    Building webrag-agent @ file:///build
+#14 3.253       Built webrag-agent @ file:///build
+#14 3.264 Prepared 1 package in 448ms
+#14 3.267 warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+#14 3.267          If the cache and target directories are on different filesystems, hardlinking may not be supported.
+#14 3.267          If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+#14 3.282 Installed 1 package in 18ms
+#14 3.282  + webrag-agent==1.0.0 (from file:///build)
+#14 DONE 3.9s
+
+#15 [runtime 2/5] RUN groupadd --gid 10001 app && useradd --uid 10001 --gid app --create-home app     && mkdir /data /app && chown app:app /data /app
+#15 CACHED
+
+#16 [runtime 3/5] COPY --from=builder /install /usr/local
+#16 DONE 46.7s
+
+#17 [runtime 4/5] WORKDIR /app
+#17 DONE 0.6s
+
+#18 [runtime 5/5] COPY --chown=app:app evaluation/ ./evaluation/
+#18 DONE 0.2s
+
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 100.9s done
+#19 exporting manifest sha256:cb0b0c94e44e283580ee43942ea8360dc97e11d9afff994a98c7131f812c6ec2 0.0s done
+#19 exporting config sha256:f6d661495b871b9be60a31032a703bdeac49545683ca965268bfedc4f4693c88 0.0s done
+#19 exporting attestation manifest sha256:5b927c2e69a8a861a084471e3a724736bf87af8ae86539c55d8b98eb99061f88
+#19 exporting attestation manifest sha256:5b927c2e69a8a861a084471e3a724736bf87af8ae86539c55d8b98eb99061f88 0.1s done
+#19 exporting manifest list sha256:6d14f3cc50354512f09da4d156e0928796002e96d8222479abf3a9662a6a9fb9 0.1s done
+#19 naming to docker.io/library/webrag-assessment:latest
+#19 naming to docker.io/library/webrag-assessment:latest done
+#19 unpacking to docker.io/library/webrag-assessment:latest
+#19 unpacking to docker.io/library/webrag-assessment:latest 27.2s done
+#19 DONE 128.5s

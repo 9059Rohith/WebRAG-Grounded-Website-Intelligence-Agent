@@ -1,0 +1,130 @@
+{
+  "candidates_in_checked_order": [
+    {
+      "name": "Hugging Face Transformers",
+      "url": "https://huggingface.co/docs/transformers/index",
+      "allowed_prefix": "https://huggingface.co/docs/transformers/",
+      "checked_at": "2026-09-29T12:47:18.589275+00:00",
+      "robots": {
+        "status": 200,
+        "final_url": "https://huggingface.co/robots.txt",
+        "bytes": 68,
+        "content_type": "text/plain",
+        "start_allowed": true
+      },
+      "index": {
+        "status": 200,
+        "final_url": "https://huggingface.co/docs/transformers/index",
+        "bytes": 231486,
+        "content_type": "text/html; charset=utf-8",
+        "main_text_characters": 5041,
+        "scoped_links": 11
+      },
+      "elapsed_s": 2.478
+    },
+    {
+      "name": "LangChain",
+      "url": "https://docs.langchain.com/oss/python/langchain/overview",
+      "allowed_prefix": "https://docs.langchain.com/oss/python/",
+      "checked_at": "2026-09-29T12:47:21.067839+00:00",
+      "robots": {
+        "status": 200,
+        "final_url": "https://docs.langchain.com/robots.txt",
+        "bytes": 174,
+        "content_type": "text/plain",
+        "start_allowed": true
+      },
+      "index": {
+        "status": 200,
+        "final_url": "https://docs.langchain.com/oss/python/langchain/overview",
+        "bytes": 1005696,
+        "content_type": "text/html; charset=utf-8",
+        "main_text_characters": 8404,
+        "scoped_links": 33
+      },
+      "elapsed_s": 4.228
+    },
+    {
+      "name": "Python",
+      "url": "https://docs.python.org/3/tutorial/index.html",
+      "allowed_prefix": "https://docs.python.org/3/",
+      "checked_at": "2026-09-29T12:47:25.295094+00:00",
+      "robots": {
+        "status": 200,
+        "final_url": "https://docs.python.org/robots.txt",
+        "bytes": 500,
+        "content_type": "text/plain",
+        "start_allowed": true
+      },
+      "index": {
+        "status": 200,
+        "final_url": "https://docs.python.org/3/tutorial/index.html",
+        "bytes": 37133,
+        "content_type": "text/html",
+        "main_text_characters": 6122,
+        "scoped_links": 30
+      },
+      "elapsed_s": 1.138
+    }
+  ],
+  "selected": "Python",
+  "selection_reason": "Official versioned English documentation with server-rendered main content, explicit robots permission, abundant scoped pages, reproducible URLs and broad technical questions. Live candidate data retained even if an alternate source is also crawlable.",
+  "final_crawl": {
+    "manifest_path": "data/crawl_manifest.json",
+    "pages_path": "data/pages.json",
+    "started_at": "2026-09-29T12:57:00.555402+00:00",
+    "finished_at": "2026-09-29T12:57:35.479748+00:00",
+    "page_count": 40,
+    "attempted_count": 40,
+    "crawl_errors": [],
+    "effective_delay_s": 0.5,
+    "crawl_elapsed_s": 34.924,
+    "raw_bytes": 3728116,
+    "chunks": 1597,
+    "chunk_token_limit": 200,
+    "max_chunk_tokens": 199,
+    "unicode_replacement_chunks": 0,
+    "corpus_urls": [
+      "https://docs.python.org/3/tutorial/index.html",
+      "https://docs.python.org/3/builtins/index.html",
+      "https://docs.python.org/3/library/index.html",
+      "https://docs.python.org/3/reference/index.html",
+      "https://docs.python.org/3/extending/index.html",
+      "https://docs.python.org/3/c-api/index.html",
+      "https://docs.python.org/3/glossary.html",
+      "https://docs.python.org/3/tutorial/appetite.html",
+      "https://docs.python.org/3/tutorial/interpreter.html",
+      "https://docs.python.org/3/tutorial/introduction.html",
+      "https://docs.python.org/3/tutorial/controlflow.html",
+      "https://docs.python.org/3/tutorial/datastructures.html",
+      "https://docs.python.org/3/tutorial/modules.html",
+      "https://docs.python.org/3/tutorial/inputoutput.html",
+      "https://docs.python.org/3/tutorial/errors.html",
+      "https://docs.python.org/3/tutorial/classes.html",
+      "https://docs.python.org/3/tutorial/stdlib.html",
+      "https://docs.python.org/3/tutorial/stdlib2.html",
+      "https://docs.python.org/3/tutorial/venv.html",
+      "https://docs.python.org/3/tutorial/whatnow.html",
+      "https://docs.python.org/3/tutorial/interactive.html",
+      "https://docs.python.org/3/tutorial/floatingpoint.html",
+      "https://docs.python.org/3/tutorial/appendix.html",
+      "https://docs.python.org/3/reference/simple_stmts.html",
+      "https://docs.python.org/3/builtins/stdtypes.html",
+      "https://docs.python.org/3/builtins/constants.html",
+      "https://docs.python.org/3/builtins/functions.html",
+      "https://docs.python.org/3/builtins/exceptions.html",
+      "https://docs.python.org/3/builtins/threadsafety.html",
+      "https://docs.python.org/3/builtins/time-complexity.html",
+      "https://docs.python.org/3/library/intro.html",
+      "https://docs.python.org/3/library/text.html",
+      "https://docs.python.org/3/library/string.html",
+      "https://docs.python.org/3/library/string.templatelib.html",
+      "https://docs.python.org/3/library/re.html",
+      "https://docs.python.org/3/library/difflib.html",
+      "https://docs.python.org/3/library/textwrap.html",
+      "https://docs.python.org/3/library/unicodedata.html",
+      "https://docs.python.org/3/library/stringprep.html",
+      "https://docs.python.org/3/library/readline.html"
+    ]
+  }
+}

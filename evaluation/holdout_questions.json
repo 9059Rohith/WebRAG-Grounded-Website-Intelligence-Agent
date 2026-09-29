@@ -1,0 +1,385 @@
+{
+  "name": "Python documentation frozen source-check benchmark",
+  "version": 2,
+  "created_after_corpus_inspection": "2026-09-29",
+  "scoring": "case-insensitive deterministic regex component coverage; no LLM judge",
+  "questions": [
+    {
+      "id": "s3",
+      "category": "straightforward",
+      "split": "holdout",
+      "question": "When does a finally clause execute in a try statement?",
+      "answerable": true,
+      "expected_answerable": true,
+      "keypoints": [
+        {
+          "label": "finally runs whether or not an exception occurs",
+          "patterns": [
+            "finally",
+            "whether or not.{0,40}exception|all circumstances"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/errors.html",
+          "heading": "8.7. Defining Clean-up Actions"
+        }
+      ],
+      "gold_answer_points": [
+        "finally runs whether or not an exception occurs"
+      ],
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/errors.html"
+      ],
+      "gold_source_urls": [
+        "https://docs.python.org/3/tutorial/errors.html"
+      ],
+      "paired_with": null,
+      "notes": ""
+    },
+    {
+      "id": "s5",
+      "category": "straightforward",
+      "split": "holdout",
+      "question": "Where does Python search for a module file such as spam.py?",
+      "answerable": true,
+      "expected_answerable": true,
+      "keypoints": [
+        {
+          "label": "module search checks directories in sys.path",
+          "patterns": [
+            "sys.path",
+            "directories|PYTHONPATH"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/modules.html",
+          "heading": "6.1.2. The Module Search Path"
+        }
+      ],
+      "gold_answer_points": [
+        "module search checks directories in sys.path"
+      ],
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/modules.html"
+      ],
+      "gold_source_urls": [
+        "https://docs.python.org/3/tutorial/modules.html"
+      ],
+      "paired_with": null,
+      "notes": ""
+    },
+    {
+      "id": "p3",
+      "category": "paraphrased",
+      "split": "holdout",
+      "question": "Will cleanup in finally happen if protected code raises an exception?",
+      "answerable": true,
+      "expected_answerable": true,
+      "keypoints": [
+        {
+          "label": "finally runs whether or not an exception occurs",
+          "patterns": [
+            "finally",
+            "whether or not.{0,40}exception|all circumstances"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/errors.html",
+          "heading": "8.7. Defining Clean-up Actions"
+        }
+      ],
+      "gold_answer_points": [
+        "finally runs whether or not an exception occurs"
+      ],
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/errors.html"
+      ],
+      "gold_source_urls": [
+        "https://docs.python.org/3/tutorial/errors.html"
+      ],
+      "paired_with": "s3",
+      "notes": ""
+    },
+    {
+      "id": "p5",
+      "category": "paraphrased",
+      "split": "holdout",
+      "question": "How is the list of directories consulted for importing a Python source file determined?",
+      "answerable": true,
+      "expected_answerable": true,
+      "keypoints": [
+        {
+          "label": "module search checks directories in sys.path",
+          "patterns": [
+            "sys.path",
+            "directories|PYTHONPATH"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/modules.html",
+          "heading": "6.1.2. The Module Search Path"
+        }
+      ],
+      "gold_answer_points": [
+        "module search checks directories in sys.path"
+      ],
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/modules.html"
+      ],
+      "gold_source_urls": [
+        "https://docs.python.org/3/tutorial/modules.html"
+      ],
+      "paired_with": "s5",
+      "notes": ""
+    },
+    {
+      "id": "m2",
+      "category": "multi-page",
+      "split": "holdout",
+      "question": "Why can a mutable default function argument and a mutable class variable both accidentally share data?",
+      "answerable": true,
+      "expected_answerable": true,
+      "keypoints": [
+        {
+          "label": "a mutable default is evaluated only once",
+          "patterns": [
+            "default value is evaluated only once"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/controlflow.html",
+          "heading": "4.9.1. Default Argument Values"
+        },
+        {
+          "label": "a class variable list is shared across instances",
+          "patterns": [
+            "class variable",
+            "shared by all|single list would be shared"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/classes.html",
+          "heading": "9.3.5. Class and Instance Variables"
+        }
+      ],
+      "gold_answer_points": [
+        "a mutable default is evaluated only once",
+        "a class variable list is shared across instances"
+      ],
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/controlflow.html",
+        "https://docs.python.org/3/tutorial/classes.html"
+      ],
+      "gold_source_urls": [
+        "https://docs.python.org/3/tutorial/controlflow.html",
+        "https://docs.python.org/3/tutorial/classes.html"
+      ],
+      "paired_with": null,
+      "notes": ""
+    },
+    {
+      "id": "m3",
+      "category": "multi-page",
+      "split": "holdout",
+      "question": "How do finally clauses and using with for files ensure cleanup when exceptions occur?",
+      "answerable": true,
+      "expected_answerable": true,
+      "keypoints": [
+        {
+          "label": "finally runs whether or not an exception occurs",
+          "patterns": [
+            "finally",
+            "whether or not.{0,40}exception|all circumstances"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/errors.html",
+          "heading": "8.7. Defining Clean-up Actions"
+        },
+        {
+          "label": "with closes a file even if an exception is raised",
+          "patterns": [
+            "with",
+            "properly closed",
+            "exception"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/inputoutput.html",
+          "heading": "7.2. Reading and Writing Files"
+        }
+      ],
+      "gold_answer_points": [
+        "finally runs whether or not an exception occurs",
+        "with closes a file even if an exception is raised"
+      ],
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/errors.html",
+        "https://docs.python.org/3/tutorial/inputoutput.html"
+      ],
+      "gold_source_urls": [
+        "https://docs.python.org/3/tutorial/errors.html",
+        "https://docs.python.org/3/tutorial/inputoutput.html"
+      ],
+      "paired_with": null,
+      "notes": ""
+    },
+    {
+      "id": "m5",
+      "category": "multi-page",
+      "split": "holdout",
+      "question": "Describe the module search path and how pip installs packages into a virtual environment.",
+      "answerable": true,
+      "expected_answerable": true,
+      "keypoints": [
+        {
+          "label": "module search checks directories in sys.path",
+          "patterns": [
+            "sys.path",
+            "directories|PYTHONPATH"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/modules.html",
+          "heading": "6.1.2. The Module Search Path"
+        },
+        {
+          "label": "pip installs packages, by default from PyPI",
+          "patterns": [
+            "pip",
+            "Python Package Index"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/venv.html",
+          "heading": "12.3. Managing Packages with pip"
+        }
+      ],
+      "gold_answer_points": [
+        "module search checks directories in sys.path",
+        "pip installs packages, by default from PyPI"
+      ],
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/modules.html",
+        "https://docs.python.org/3/tutorial/venv.html"
+      ],
+      "gold_source_urls": [
+        "https://docs.python.org/3/tutorial/modules.html",
+        "https://docs.python.org/3/tutorial/venv.html"
+      ],
+      "paired_with": null,
+      "notes": ""
+    },
+    {
+      "id": "f2",
+      "category": "misleading",
+      "split": "holdout",
+      "question": "Since Python strings are mutable, can I change one character with index assignment?",
+      "answerable": true,
+      "expected_answerable": true,
+      "keypoints": [
+        {
+          "label": "strings are immutable and cannot be changed",
+          "patterns": [
+            "strings cannot be changed|strings.{0,20}immutable"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/introduction.html",
+          "heading": "3.1.2. Text"
+        }
+      ],
+      "gold_answer_points": [
+        "strings are immutable and cannot be changed"
+      ],
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/introduction.html"
+      ],
+      "gold_source_urls": [
+        "https://docs.python.org/3/tutorial/introduction.html"
+      ],
+      "paired_with": null,
+      "notes": ""
+    },
+    {
+      "id": "f4",
+      "category": "misleading",
+      "split": "holdout",
+      "question": "Does list.sort return a newly sorted list instead of modifying the list in place?",
+      "answerable": true,
+      "expected_answerable": true,
+      "keypoints": [
+        {
+          "label": "in-place mutable list methods return None",
+          "patterns": [
+            "sort",
+            "return the default None"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/datastructures.html",
+          "heading": "5.1. More on Lists"
+        }
+      ],
+      "gold_answer_points": [
+        "in-place mutable list methods return None"
+      ],
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/datastructures.html"
+      ],
+      "gold_source_urls": [
+        "https://docs.python.org/3/tutorial/datastructures.html"
+      ],
+      "paired_with": null,
+      "notes": ""
+    },
+    {
+      "id": "f5",
+      "category": "misleading",
+      "split": "holdout",
+      "question": "Does the documentation guarantee decimal fractions such as 0.1 are represented exactly as binary floating point?",
+      "answerable": true,
+      "expected_answerable": true,
+      "keypoints": [
+        {
+          "label": "most decimal fractions cannot be represented exactly as binary fractions",
+          "patterns": [
+            "decimal fractions cannot be represented exactly as binary fractions"
+          ],
+          "source_url": "https://docs.python.org/3/tutorial/floatingpoint.html",
+          "heading": "15. Floating-Point Arithmetic: Issues and Limitations"
+        }
+      ],
+      "gold_answer_points": [
+        "most decimal fractions cannot be represented exactly as binary fractions"
+      ],
+      "expected_urls": [
+        "https://docs.python.org/3/tutorial/floatingpoint.html"
+      ],
+      "gold_source_urls": [
+        "https://docs.python.org/3/tutorial/floatingpoint.html"
+      ],
+      "paired_with": null,
+      "notes": ""
+    },
+    {
+      "id": "u2",
+      "category": "unanswerable",
+      "split": "holdout",
+      "question": "What exact features will Python 5.0 release in 2030?",
+      "answerable": false,
+      "expected_answerable": false,
+      "keypoints": [],
+      "gold_answer_points": [],
+      "expected_urls": [],
+      "gold_source_urls": [],
+      "paired_with": null,
+      "notes": "Unannounced future specifics absent from this corpus."
+    },
+    {
+      "id": "u4",
+      "category": "unanswerable",
+      "split": "holdout",
+      "question": "Which programming language do you personally enjoy most and why?",
+      "answerable": false,
+      "expected_answerable": false,
+      "keypoints": [],
+      "gold_answer_points": [],
+      "expected_urls": [],
+      "gold_source_urls": [],
+      "paired_with": null,
+      "notes": "Personal opinion is not a website fact."
+    },
+    {
+      "id": "u5",
+      "category": "unanswerable",
+      "split": "holdout",
+      "question": "Exactly how many people downloaded Python yesterday worldwide?",
+      "answerable": false,
+      "expected_answerable": false,
+      "keypoints": [],
+      "gold_answer_points": [],
+      "expected_urls": [],
+      "gold_source_urls": [],
+      "paired_with": null,
+      "notes": "Specific current telemetry absent from the corpus."
+    }
+  ],
+  "scoring_revision": "Development-only synonym corrections: element/item; explicit denial of tuple item assignment. Gold facts/URLs and holdout expressions unchanged."
+}

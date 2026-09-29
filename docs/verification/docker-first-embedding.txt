@@ -1,0 +1,6 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights:  78%|███████▊  | 80/103 [00:00<00:00, 794.67it/s]
+Loading weights: 100%|██████████| 103/103 [00:00<00:00, 842.74it/s]
+{"dimensions": 384, "seconds": 144.0424944460001, "usage": {"embedding_tokens": 12, "input_tokens": 0, "output_tokens": 0, "estimated_usd": 0.0, "provider": "local", "token_source": "estimated_tiktoken"}}

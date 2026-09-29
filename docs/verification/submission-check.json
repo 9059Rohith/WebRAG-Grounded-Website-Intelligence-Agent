@@ -1,0 +1,8 @@
+{
+  "questions": 38,
+  "provider": "openai",
+  "exact_citations": 59,
+  "errors": 0,
+  "gold_valid": true,
+  "required_files_present": true
+}

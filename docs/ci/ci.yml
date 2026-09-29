@@ -1,0 +1,61 @@
+name: Python quality and offline tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install locked dependencies and package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements-dev.txt
+          python -m pip install --no-deps -e .
+      - name: Lint
+        run: |
+          python -m ruff check .
+          python -m ruff format --check .
+      - name: Type checks
+        run: python -m mypy src/rag_agent evaluation
+      - name: Static security scan
+        run: python -m bandit -q -r src/rag_agent
+      - name: Locked dependency audit
+        # Embedded Chroma exposes no vulnerable server routes; rationale in SECURITY.md.
+        run: python scripts/audit_dependencies.py
+      - name: Offline tests and coverage report
+        run: python -m pytest --cov=rag_agent --cov-report=term-missing --cov-report=xml --cov-fail-under=85
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-python-${{ matrix.python-version }}
+          path: coverage.xml
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate deployment configuration
+        run: docker compose config --quiet
+      - name: Build non-root runtime image
+        run: docker build -t website-grounded-agent:ci .
+      - name: Verify liveness and honest readiness without an index
+        run: |
+          docker run -d --name rag-ci -p 8000:8000 website-grounded-agent:ci
+          for attempt in $(seq 1 30); do
+            curl --fail http://127.0.0.1:8000/healthz && break || sleep 2
+          done
+          curl --fail http://127.0.0.1:8000/healthz
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8000/readyz)" = 503
+      - name: Container logs
+        if: failure()
+        run: docker logs rag-ci

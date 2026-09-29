@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="780" viewBox="0 0 1180 780" role="img" aria-labelledby="title desc">
+<title id="title">Website-grounded retrieval agent architecture</title><desc id="desc">Scoped ingestion produces a persistent Chroma and BM25 index. The main OpenAI query path retrieves eight evidence chunks with facet reservation, selects source quote IDs, restores exact server-owned quotations, and verifies provenance and a separate semantic verdict. Local fallback returns excerpts. One retry or refusal bounds both paths.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#567083"/></marker></defs>
+<rect width="1180" height="780" fill="#f5f8fb"/><style>text{font-family:Arial,sans-serif;fill:#17334c;font-size:17px}.title{font-size:27px;font-weight:bold}.label{font-size:15px;fill:#486276}.box{fill:white;stroke:#86a4ba;stroke-width:1.5}.flow{fill:none;stroke:#567083;stroke-width:2;marker-end:url(#arrow)}.band{fill:#e6eff7}.accent{fill:#e8f5ec;stroke:#6b9f7c;stroke-width:1.5}</style>
+<text x="40" y="48" class="title">Website-grounded retrieval agent</text><text x="40" y="76" class="label">OpenAI measured main path · Exact quote references · Separate semantic check · Real local fallback</text>
+<rect x="25" y="100" width="1130" height="216" rx="16" class="band"/><text x="45" y="130" font-weight="bold">INGESTION — scoped public website</text>
+<rect x="45" y="155" width="175" height="74" rx="10" class="box"/><text x="62" y="184">URL / DNS guard</text><text x="62" y="207" class="label">Validate each redirect</text>
+<rect x="255" y="155" width="175" height="74" rx="10" class="box"/><text x="270" y="184">Polite crawler</text><text x="270" y="207" class="label">robots + raw manifest</text>
+<rect x="465" y="155" width="175" height="74" rx="10" class="box"/><text x="480" y="184">Clean + deduplicate</text><text x="480" y="207" class="label">Headings, code, tables</text>
+<rect x="675" y="155" width="175" height="74" rx="10" class="box"/><text x="690" y="184">Token chunks</text><text x="690" y="207" class="label">Stable ID + source URL</text>
+<rect x="885" y="155" width="240" height="74" rx="10" class="accent"/><text x="900" y="184">Embeddings → Chroma</text><text x="900" y="207" class="label">Chunks → BM25 JSON</text>
+<path d="M220 192 H255 M430 192 H465 M640 192 H675 M850 192 H885" class="flow"/><text x="47" y="278" class="label">Provider identity guards index compatibility. A reingest is required when the embedding model changes.</text>
+<rect x="25" y="340" width="1130" height="374" rx="16" class="band"/><text x="45" y="371" font-weight="bold">QUERY — explicit LangGraph state transitions</text>
+<rect x="45" y="397" width="175" height="80" rx="10" class="box"/><text x="60" y="427">Validate + cache</text><text x="60" y="450" class="label">CLI / API, auth, limits</text>
+<rect x="255" y="397" width="175" height="80" rx="10" class="box"/><text x="270" y="427">Hybrid + facets</text><text x="270" y="450" class="label">RRF; reserve evidence</text>
+<rect x="465" y="397" width="175" height="80" rx="10" class="box"/><text x="480" y="427">Top 8; gate 0.25</text><text x="480" y="450" class="label">No evidence → refuse</text>
+<rect x="675" y="397" width="175" height="80" rx="10" class="box"/><text x="690" y="427">Quote-ID claims</text><text x="690" y="450" class="label">Restore exact quotes</text>
+<rect x="885" y="397" width="240" height="80" rx="10" class="accent"/><text x="900" y="427">Exact + semantic checks</text><text x="900" y="450" class="label">Separate supported verdict</text>
+<path d="M220 437 H255 M430 437 H465 M640 437 H675 M850 437 H885 M1005 229 V328 H342 V397" class="flow"/>
+<rect x="465" y="548" width="175" height="75" rx="10" class="box"/><text x="480" y="577">Refuse</text><text x="480" y="600" class="label">Insufficient evidence</text>
+<rect x="675" y="548" width="175" height="75" rx="10" class="box"/><text x="690" y="577">One query retry</text><text x="690" y="600" class="label">Then answer or refuse</text>
+<rect x="885" y="548" width="240" height="75" rx="10" class="accent"/><text x="900" y="577">Finalize response</text><text x="900" y="600" class="label">Sources, usage, timings</text>
+<path d="M552 477 V548 M1005 477 V548 M953 477 V510 H762 V548 M675 586 H342 V477 M640 586 H650 V650 H1005 V623" class="flow"/><text x="1018" y="514" class="label">valid</text><text x="806" y="532" class="label">invalid, once</text>
+<text x="47" y="684" class="label">Cache hits return stored answers with zero new usage. Evaluation bypasses cache. Sources never become tool instructions.</text><text x="40" y="751" class="label">OpenAI: restored source quotes + separate semantic verdict. Local fallback: real embeddings + excerpts.</text>
+</svg>

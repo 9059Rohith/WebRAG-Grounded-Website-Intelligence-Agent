@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: website-grounded-agent
+    runtime: docker
+    plan: starter
+    healthCheckPath: /healthz
+    envVars:
+      - key: PROVIDER
+        value: local
+      - key: DATA_DIR
+        value: /data
+      - key: HF_HOME
+        value: /data/model-cache
+      - key: API_TOKEN
+        generateValue: true
+    disk:
+      name: rag-data
+      mountPath: /data
+      sizeGB: 10

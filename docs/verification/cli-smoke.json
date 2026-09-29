@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "question": "How can I create a Python list?",
+      "expected_answerable": true,
+      "answerable": true,
+      "sources": 4,
+      "passed": true
+    },
+    {
+      "question": "How do I define a function?",
+      "expected_answerable": true,
+      "answerable": true,
+      "sources": 4,
+      "passed": true
+    },
+    {
+      "question": "How do I handle exceptions?",
+      "expected_answerable": true,
+      "answerable": true,
+      "sources": 2,
+      "passed": true
+    },
+    {
+      "question": "What are Python dictionaries?",
+      "expected_answerable": true,
+      "answerable": true,
+      "sources": 3,
+      "passed": true
+    },
+    {
+      "question": "What is the current weather in Tokyo?",
+      "expected_answerable": false,
+      "answerable": false,
+      "sources": 0,
+      "passed": true
+    }
+  ]
+}

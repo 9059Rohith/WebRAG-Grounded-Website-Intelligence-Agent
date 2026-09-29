@@ -1,0 +1,82 @@
+{
+  "empty_container": {
+    "/healthz": {
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    "/readyz": {
+      "status": 503,
+      "body": {
+        "error": {
+          "code": "not_ready",
+          "message": "Ingest a website before querying."
+        }
+      }
+    }
+  },
+  "novel_query": {
+    "answer": "dictionary An associative array, where arbitrary keys are mapped to values. [1]\n\nAnother useful data type built into Python is the dictionary (see Mapping Types \u2014 dict ). [2]\n\nIt is best to think of a dictionary as a set of key: value pairs, with the requirement that the keys are unique (within one dictionary). [3]\n\nIf keyword arguments are specified, the dictionary is then updated with those key/value pairs: d.update(red=1, blue=2) . [4]",
+    "answerable": true,
+    "sources": [
+      {
+        "url": "https://docs.python.org/3/glossary.html",
+        "title": "Glossary \u2014 Python 3.14.7 documentation",
+        "evidence": "dictionary An associative array, where arbitrary keys are mapped to values.",
+        "chunk_id": "2922e8c8d9c32207a391efef10bbac8af4141f846cefc3566d295c23057c5117"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/datastructures.html",
+        "title": "5. Data Structures \u2014 Python 3.14.7 documentation",
+        "evidence": "Another useful data type built into Python is the dictionary (see Mapping Types \u2014 dict ).",
+        "chunk_id": "90d5eea98a113c7f786971c8f1ac727582da58af5c98fdd9de425e0db5bb8503"
+      },
+      {
+        "url": "https://docs.python.org/3/tutorial/datastructures.html",
+        "title": "5. Data Structures \u2014 Python 3.14.7 documentation",
+        "evidence": "It is best to think of a dictionary as a set of key: value pairs, with the requirement that the keys are unique (within one dictionary).",
+        "chunk_id": "90d5eea98a113c7f786971c8f1ac727582da58af5c98fdd9de425e0db5bb8503"
+      },
+      {
+        "url": "https://docs.python.org/3/builtins/stdtypes.html",
+        "title": "Built-in Types \u2014 Python 3.14.7 documentation",
+        "evidence": "If keyword arguments are specified, the dictionary is then updated with those key/value pairs: d.update(red=1, blue=2) .",
+        "chunk_id": "9a65c10b11843997e7828b87ccc75740826d62e8f0b74d48fc2899e5c27a116e"
+      }
+    ],
+    "usage": {
+      "embedding_tokens": 727,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated_usd": 0.0,
+      "provider": "local",
+      "token_source": "estimated_tiktoken"
+    },
+    "timings_ms": {
+      "embedding": 40381.326423000246,
+      "dense": 36.60091100027785,
+      "bm25": 17.458787000123266,
+      "fusion": 0.3967650000049616,
+      "retrieval": 40435.78288600065,
+      "generation": 1503.757351999866,
+      "verification": 0.3071719997933542,
+      "total": 41967.16264399992
+    },
+    "cached": false,
+    "request_id": "07dc3020f37d4320af85e0594243ae14",
+    "mode": "extractive",
+    "retrieved_urls": [
+      "https://docs.python.org/3/builtins/stdtypes.html",
+      "https://docs.python.org/3/tutorial/datastructures.html",
+      "https://docs.python.org/3/builtins/stdtypes.html",
+      "https://docs.python.org/3/glossary.html",
+      "https://docs.python.org/3/library/unicodedata.html"
+    ],
+    "retrieval_score": 0.5745112895965576,
+    "attempts": 1
+  },
+  "wall_seconds": 42.67200000000594,
+  "uid": 10001,
+  "passed": true
+}

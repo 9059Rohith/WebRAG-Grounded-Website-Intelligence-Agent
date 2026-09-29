@@ -1,0 +1,3 @@
+# Scoring revision
+
+Original baseline regex coverage was 25%. After inspecting development outputs only, synonyms were accepted for item/element and a tuple item-assignment denial. Gold facts/URLs and holdout patterns are unchanged. The same original raw answers, timings and retrieval are retained and rescored with benchmark version 2 for fair comparison. Rescored baseline overall coverage is 35%; dev 60%; holdout 10%. Original results remain baseline_original.json; rescored baseline is baseline.json. This is a scoring correction, not an agent improvement. No new API calls or answers were created by rescoring.
