@@ -4,23 +4,27 @@
 
 **Ask a public website. Get an answer you can trace to its exact passages—or an honest refusal.** WebRAG is a complete, deployed website-grounded RAG agent built around a 40-page snapshot of the official Python documentation.
 
-[**Try the live application**](https://webrag-assessment.vercel.app/) · [**Watch the browser walkthrough**](docs/video/WebRAG-Live-Browser-Walkthrough.mp4) · [**See the full project poster**](docs/media/webrag-project-poster.png) · [**Inspect the architecture**](docs/architecture.md) · [**Review measured costs**](COST_ANALYSIS.md)
+[**Live application**](https://webrag-assessment.vercel.app/) · [**Recorded demo (Google Drive)**](https://drive.google.com/file/d/1KYgEdw04ZEYN9u-ptXm3PXSmMiI-nF47/view?usp=sharing) · [**Submission ZIP**](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/raw/refs/heads/main/submission/WebRAG-Assessment-Submission.zip) · [**Project poster**](docs/media/webrag-project-poster.png) · [**Architecture**](docs/architecture.md) · [**Cost analysis**](COST_ANALYSIS.md)
 
-The [browser walkthrough](docs/video/WebRAG-Live-Browser-Walkthrough.mp4) begins with the working product, then tours this README, the poster, screenshots, architecture, and evaluation. The candidate's webcam is damaged, so narration is disclosed synthetic speech; all product interactions shown are real browser actions. A separate [14-minute technical walkthrough](docs/video/WebRAG-Assessment-Showcase.mp4) is available with English subtitles and a [transcript](docs/video/WebRAG-Assessment-Showcase-Transcript.md).
+The recorded demo first shows the deployed application answering and refusing real questions, then tours the published README, architecture, evaluation, and costs. The candidate's webcam is damaged; the screen presentation discloses its synthetic narration.
 
-## Watch the live browser demonstration
+## Recorded demonstration
 
-[![Watch WebRAG's live product walkthrough](docs/media/webrag-readme-cover.png)](docs/video/WebRAG-Live-Browser-Walkthrough.mp4)
+[![Watch the recorded WebRAG demonstration on Google Drive](docs/media/webrag-readme-cover.png)](https://drive.google.com/file/d/1KYgEdw04ZEYN9u-ptXm3PXSmMiI-nF47/view?usp=sharing)
 
-The [captioned browser walkthrough](docs/video/WebRAG-Live-Browser-Walkthrough.mp4) spends its **first ~7–8 minutes inside the deployed application**, then opens the **published GitHub README** for the architecture, poster, evaluation, cost analysis, and setup. Download the [English subtitles](docs/video/WebRAG-Live-Browser-Walkthrough.srt) or read the [full transcript](docs/video/WebRAG-Live-Browser-Walkthrough-Transcript.md). The cursor actions and responses come from the public deployment; narration is synthetic and disclosed because the candidate's webcam is damaged.
+[Watch the assessment demo on Google Drive](https://drive.google.com/file/d/1KYgEdw04ZEYN9u-ptXm3PXSmMiI-nF47/view?usp=sharing). It shows the live question-to-answer flow, source URLs and quotations, an unsupported-question refusal, the application on mobile, and the repository's architecture and measured results.
 
-| Approximate time | What is shown |
+## Assessment submission map
+
+| Required component | Where to find it |
 |---|---|
-| 00:00–01:29 | Product, source library, navigation, and How it works |
-| 01:29–03:48 | Live list question, citation, original Python page, answer trail, usage, copy with sources |
-| 03:48–06:01 | Comparison, false-premise correction, and honest weather refusal |
-| 06:01–07:54 | Recent questions, new conversation, motion control, mobile answer and evidence |
-| 07:54–end | GitHub cover, poster, screenshots, architecture, evaluation, costs, setup, and limitations |
+| 1. Source code | [`src/rag_agent/`](src/rag_agent), [`web/`](web), [`tests/`](tests), [locked requirements](requirements.txt), and safe [`.env.example`](.env.example) |
+| 2. README | This document: setup, technical decisions, evaluation, security, and limitations |
+| 3. Architecture diagrams | [System overview](docs/architecture-showcase.png), [detailed flow](docs/architecture.svg), and [annotated architecture](docs/architecture.md) |
+| 4. Cost analysis | [Observed ingestion and query usage, example question, and 100/1,000/10,000-query scenarios](COST_ANALYSIS.md) |
+| 5. Recorded walkthrough | [Google Drive demo](https://drive.google.com/file/d/1KYgEdw04ZEYN9u-ptXm3PXSmMiI-nF47/view?usp=sharing) |
+
+The project source is released under the [MIT License](LICENSE). Crawled Python documentation and third-party packages retain their own terms.
 
 ## Why this exists
 
@@ -55,6 +59,12 @@ The core journey is **ask → retrieve → verify → answer with sources, or re
 
 The owner-operated crawl cleans and chunks website content, then builds Chroma vectors and a BM25 companion index. The deployed React workspace calls the same-origin FastAPI service; LangGraph retrieves, gates, synthesizes, verifies, and returns an answer with stored URLs or a refusal. The prepared index ships with the Vercel deployment; reingestion is an explicit owner step. [Detailed architecture and graph](docs/architecture.md).
 
+### Grounding and refusal path
+
+![Detailed ingestion, retrieval, source restoration, verification, and refusal flow](docs/architecture.svg)
+
+The lower branch shows the critical trust boundary: the model selects quote IDs, while the server restores the exact saved passages and original URLs. Invalid citations or unsupported claims trigger one bounded retry, then a clear refusal. [See the executable LangGraph transitions and deployment diagram](docs/architecture.md).
+
 ## Stack and repository map
 
 | Layer | Actual technology | Where to inspect |
@@ -81,7 +91,7 @@ The two formerly false-refused questions now answer correctly in three uncached 
 
 [GitHub Actions is active](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/blob/main/.github/workflows/ci.yml), but [its first run](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/actions/runs/36724468763) could not start any job because GitHub reports that the owner's account is locked due to a billing issue. The owner must resolve that account issue and rerun the workflow before hosted CI can be claimed as passing. Local checks passing does not establish a hosted CI result. See [CI status](docs/ci/README.md).
 
-[Supplementary project walkthrough](docs/video/WebRAG-Walkthrough.mp4): the original paid-run replay is verified at **12 minutes 14 seconds**, with H264/AAC media and decoding checks. Narration is explicitly synthetic; this is not the candidate's voice or webcam recording. See [video notes](docs/video/README.md). A personal Vidyard recording is an optional preferred assessment pro tip. [Personal recording script](docs/VIDEO_SCRIPT.md) and [unsent email draft](docs/EMAIL_REPLY.md) are included.
+[Recorded assessment demo](https://drive.google.com/file/d/1KYgEdw04ZEYN9u-ptXm3PXSmMiI-nF47/view?usp=sharing).
 
 Recommended measured path: OpenAI embeddings and synthesis. In a fresh checkout, copy `.env.example` to `.env` and privately set `PROVIDER=openai`, `DATA_DIR=data_openai` and `OPENAI_API_KEY` before the commands below. Retain `FINAL_TOP_K=8`, `MIN_RELEVANCE=0.25`, `LLM_MAX_OUTPUT_TOKENS=900` and `VERIFY_WITH_LLM=true`. Use the existing `.env` if one is already configured; keep credentials out of commands and source control.
 
@@ -184,7 +194,7 @@ Each answer reports embedding/input/output tokens, provider, token-source label 
 
 ## 17 Cost Analysis
 
-The formal 38 queries have a **$0.052342** API cost estimate from returned usage; initial OpenAI ingestion is **$0.005539** separately, and auxiliary retrieval ablations incurred **$0** new usage. These are standard-rate estimates, not an invoice or the cost of all earlier development/smoke calls. [Cost analysis](COST_ANALYSIS.md) extrapolates the observed question mix to 100/1,000/10,000 queries; the no-cache 10,000-query scenario is **$13.7741**, before hosting and account-billing differences. The archived local run's $0 API spend and hypothetical paid comparison remain separate. CPU, memory, bandwidth, electricity and hosting are unpriced. Official rates checked 2026-09-29: GPT-4o mini $0.15/$0.60 and text-embedding-3-small $0.02 per million tokens.
+The latest inspected 38-question follow-up has a **$0.059223** query API cost estimate from returned usage; the saved paid ingestion observation is **$0.005539** separately. These are standard-rate estimates, not an invoice or the cost of earlier development calls. [Current cost analysis](COST_ANALYSIS.md) extrapolates the observed, no-cache question mix to **$0.1559 / $1.5585 / $15.5851** for 100 / 1,000 / 10,000 queries. Hosting and account-level billing are excluded. The [original formal run](evaluation/results/COST_ANALYSIS.md) and local fallback remain separate records. Rates were checked 2026-09-29 and can change.
 
 ## 18 Setup
 
@@ -303,7 +313,7 @@ Final local checks: **181 tests passed in 44.64 seconds**, **93.83% application 
 
 Real paid CLI and host API smoke passed five questions each; API cache hits reported zero new tokens, and invalid input returned 422 with a request ID. The final Docker image built and paid five-query HTTP smoke passed with zero-token cache/422 checks, non-root UID 10001 and empty-index health 200/readiness 503. [Verification records](docs/verification/) preserve actual evidence. Formal paid evaluation has 38 attempts, zero query errors, and the independent-holdout failures reported above.
 
-The earlier local corpus/results and 133-test verification are historical and retained separately. The final paid-provider synthetic walkthrough is verified; see [video verification notes](docs/video/README.md). Personal Vidyard remains optional/unrecorded and email unsent. The public Vercel deployment passed its follow-up smoke checks; hosted GitHub Actions execution is blocked by the owner's account billing lock. Independent human/LLM semantic evaluation and provider billing reconciliation remain unmeasured.
+The earlier local corpus/results and 133-test verification are historical and retained separately. The [recorded demo](https://drive.google.com/file/d/1KYgEdw04ZEYN9u-ptXm3PXSmMiI-nF47/view?usp=sharing) shows the deployed revision; the submission email remains unsent. The public Vercel deployment passed its follow-up smoke checks; hosted GitHub Actions execution is blocked by the owner's account billing lock. Independent human/LLM semantic evaluation and provider billing reconciliation remain unmeasured.
 <!-- STATUS_END -->
 
 Measured answers include unmatched gold components and conservative refusals; several regex misses are valid paraphrases or formula descriptions. Independent regex coverage and latency targets are unmet. Quote provenance and a model verdict do not prove semantic correctness. Regex scoring can miss valid paraphrases and reward incidental matches; correlated authored questions and small denominators limit generalization. No independent human/LLM faithfulness score, hallucination rate or inter-rater agreement was measured. Local excerpts can be incomplete and segment averaging can dilute meaning. This bounded snapshot is not automatically refreshed. Quotas/cache/concurrency are process-local; timed-out work can finish in a background worker. Sitemap/conditional fetching, true vector MMR, semantic near-deduplication, cross-encoder reranking, SSE and LangSmith are absent.
