@@ -35,6 +35,6 @@ The UI and API share an origin. Compiled scripts, styles and fonts are local ass
 .venv\Scripts\python.exe scripts/verify_live.py --url https://webrag-assessment.vercel.app --out artifacts/vercel-http-smoke.json --allow-cold-cache
 ```
 
-The cold-cache flag acknowledges that two serverless requests can reach different instances. Any observed cache hit must still report zero new usage and cost. Verification records include real answers/refusals, exact citations, usage, invalid input, readiness and browser interactions. GitHub Actions activation is a separate authentication blocker; see [CI instructions](ci/README.md).
+The cold-cache flag acknowledges that two serverless requests can reach different instances. Any observed cache hit must still report zero new usage and cost. Verification records include real answers/refusals, exact citations, usage, invalid input, readiness and browser interactions. GitHub Actions is active, but its jobs are blocked by the owner's GitHub billing lock; see [CI status](ci/README.md).
 
 The machine-readable API schema is `/openapi.json`. The optional CDN-based Swagger/ReDoc pages are constrained by the strict CSP; use the local React workspace or the JSON schema for the hosted application.

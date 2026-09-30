@@ -6,7 +6,7 @@ The current source passes **204 offline tests, 94.39% application coverage**, Ru
 
 Both known false refusals passed three uncached repetitions, and the 38-question regression recorded 37/38 correct answerability decisions, 61/61 exact quotes, 10/10 unknown refusals, and one remaining false refusal among 28 answerable questions. The reused former independent subset now scores 8/8 all-keypoint answers and 0/8 false refusals. These are inspected regression data, not fresh independent validation. Original baseline results and video remain historical evidence.
 
-**Remaining blocker:** GitHub Actions is still inactive because available credentials cannot modify workflow files. The complete Python/Docker/frontend workflow is preserved and locally reviewable; it requires owner authentication with workflow permission. Hosted Actions success is not claimed.
+**Remaining blocker:** The [Python/Docker/frontend GitHub Actions workflow](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/blob/main/.github/workflows/ci.yml) is active, but [run #1](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/actions/runs/36724468763) stopped all four jobs before execution. GitHub says the owner's account is locked due to a billing issue. The owner must resolve that account issue and rerun the workflow; hosted Actions success is not claimed.
 
 [Public deployment records](verification/followup.json) · [HTTP smoke](verification/vercel-http-smoke.json) · [Target repair checks](verification/vercel-repaired-queries.json) · [Repeated repair checks](verification/refusal-repair-repetitions.json) · [UI research/QA](../web/DESIGN.md) · [Deployment instructions](VERCEL.md)
 

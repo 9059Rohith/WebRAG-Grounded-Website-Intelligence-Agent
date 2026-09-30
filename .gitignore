@@ -17,6 +17,3 @@ artifacts/
 *.egg-info/
 build/
 dist/
-
-# Owner activation requires a GitHub credential with workflow permission.
-.github/workflows/ci.yml

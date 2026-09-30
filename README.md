@@ -2,7 +2,7 @@
 
 Source code is MIT licensed. Third-party dependencies and crawled website content retain their own licenses.
 
-![CI workflow supplied; hosted execution unverified](https://img.shields.io/badge/CI-workflow%20supplied%20%2F%20unverified-grey) ![Measured local test coverage 94.39%](https://img.shields.io/badge/test%20coverage-94.39%25-green) [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![GitHub Actions: blocked by account billing](https://img.shields.io/badge/CI-account%20billing%20blocked-red)](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/actions/runs/36724468763) ![Measured local test coverage 94.39%](https://img.shields.io/badge/test%20coverage-94.39%25-green) [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 ## Follow-up deployment and refusal repairs
 
@@ -12,7 +12,7 @@ The two formerly false-refused questions now answer correctly in three uncached 
 
 [Follow-up report](evaluation/results/followup_regression/EVALUATION.md) · [Current costs](COST_ANALYSIS.md) · [Vercel setup and limitations](docs/VERCEL.md) · [UI design and research](web/DESIGN.md)
 
-GitHub Actions activation remains blocked: the stored owner's OAuth credential has `repo`, `gist`, and `read:org`, but lacks `workflow`; the available connector cannot access this repository and no authorized SSH key is available. The expanded Python/Docker/frontend workflow is preserved in [docs/ci/ci.yml](docs/ci/ci.yml), with activation instructions. Local checks passing does not mean hosted Actions ran.
+[GitHub Actions is active](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/blob/main/.github/workflows/ci.yml), but [its first run](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/actions/runs/36724468763) could not start any job because GitHub reports that the owner's account is locked due to a billing issue. The owner must resolve that account issue and rerun the workflow before hosted CI can be claimed as passing. Local checks passing does not establish a hosted CI result. See [CI status](docs/ci/README.md).
 
 [Supplementary project walkthrough](docs/video/WebRAG-Walkthrough.mp4): the original paid-run replay is verified at **12 minutes 14 seconds**, with H264/AAC media and decoding checks. Narration is explicitly synthetic; this is not the candidate's voice or webcam recording. See [video notes](docs/video/README.md). A personal Vidyard recording is an optional preferred assessment pro tip. [Personal recording script](docs/VIDEO_SCRIPT.md) and [unsent email draft](docs/EMAIL_REPLY.md) are included.
 
@@ -236,7 +236,7 @@ Final local checks: **181 tests passed in 44.64 seconds**, **93.83% application 
 
 Real paid CLI and host API smoke passed five questions each; API cache hits reported zero new tokens, and invalid input returned 422 with a request ID. The final Docker image built and paid five-query HTTP smoke passed with zero-token cache/422 checks, non-root UID 10001 and empty-index health 200/readiness 503. [Verification records](docs/verification/) preserve actual evidence. Formal paid evaluation has 38 attempts, zero query errors, and the independent-holdout failures reported above.
 
-The earlier local corpus/results and 133-test verification are historical and retained separately. The final paid-provider synthetic walkthrough is verified; see [video verification notes](docs/video/README.md). Personal Vidyard remains optional/unrecorded, email unsent, hosted account deployment and remote CI execution unverified. Independent human/LLM semantic evaluation and account billing reconciliation remain unmeasured.
+The earlier local corpus/results and 133-test verification are historical and retained separately. The final paid-provider synthetic walkthrough is verified; see [video verification notes](docs/video/README.md). Personal Vidyard remains optional/unrecorded and email unsent. The public Vercel deployment passed its follow-up smoke checks; hosted GitHub Actions execution is blocked by the owner's account billing lock. Independent human/LLM semantic evaluation and provider billing reconciliation remain unmeasured.
 <!-- STATUS_END -->
 
 Measured answers include unmatched gold components and conservative refusals; several regex misses are valid paraphrases or formula descriptions. Independent regex coverage and latency targets are unmet. Quote provenance and a model verdict do not prove semantic correctness. Regex scoring can miss valid paraphrases and reward incidental matches; correlated authored questions and small denominators limit generalization. No independent human/LLM faithfulness score, hallucination rate or inter-rater agreement was measured. Local excerpts can be incomplete and segment averaging can dilute meaning. This bounded snapshot is not automatically refreshed. Quotas/cache/concurrency are process-local; timed-out work can finish in a background worker. Sitemap/conditional fetching, true vector MMR, semantic near-deduplication, cross-encoder reranking, SSE and LangSmith are absent.
