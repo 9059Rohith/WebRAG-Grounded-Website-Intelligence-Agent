@@ -110,7 +110,7 @@ def app_action(page: Page, action: str) -> None:
         page.get_by_role("button", name="Open library").click()
         page.locator(".library-rail.is-open").wait_for()
         page.wait_for_timeout(5_000)
-        page.get_by_role("button", name="Close library").click()
+        page.locator(".library-rail .mobile-close").click()
     elif action == "app_close":
         page.set_viewport_size({"width": 1536, "height": 960})
         page.wait_for_timeout(2_000)
@@ -122,35 +122,35 @@ def app_action(page: Page, action: str) -> None:
 
 def readme_action(page: Page, action: str) -> None:
     if action == "readme_cover":
-        page.locator("#readme").wait_for(timeout=30_000)
-        page.locator("#readme").scroll_into_view_if_needed()
+        page.locator("article").first.wait_for(timeout=30_000)
+        page.locator("article").first.scroll_into_view_if_needed()
     elif action == "readme_poster":
         page.get_by_role("link", name="See the full project poster").first.click()
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(8_000)
         page.go_back(wait_until="domcontentloaded")
-        page.locator("#see-the-product").scroll_into_view_if_needed()
+        page.locator("#user-content-see-the-product").scroll_into_view_if_needed()
         page.wait_for_timeout(8_000)
     elif action == "readme_architecture":
-        page.locator("#architecture-at-a-glance").scroll_into_view_if_needed()
+        page.locator("#user-content-architecture-at-a-glance").scroll_into_view_if_needed()
         page.wait_for_timeout(9_000)
         page.get_by_role("link", name="Detailed architecture and graph").first.click()
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(6_000)
         page.go_back(wait_until="domcontentloaded")
     elif action == "readme_results":
-        page.locator("#what-is-working").scroll_into_view_if_needed()
+        page.locator("#user-content-what-is-working").scroll_into_view_if_needed()
         page.wait_for_timeout(8_000)
-        page.locator("#architecture-at-a-glance").scroll_into_view_if_needed()
+        page.locator("#user-content-architecture-at-a-glance").scroll_into_view_if_needed()
         page.wait_for_timeout(8_000)
-        page.locator("#stack-and-repository-map").scroll_into_view_if_needed()
+        page.locator("#user-content-stack-and-repository-map").scroll_into_view_if_needed()
         page.wait_for_timeout(8_000)
         page.get_by_role("link", name="Review measured costs").first.click()
         page.wait_for_load_state("domcontentloaded")
         page.wait_for_timeout(6_000)
         page.go_back(wait_until="domcontentloaded")
     elif action == "close":
-        page.locator("#readme").scroll_into_view_if_needed()
+        page.locator("article").first.scroll_into_view_if_needed()
     else:
         raise ValueError(action)
 
@@ -173,7 +173,7 @@ def record(segment: str, start: int, end: int) -> None:
         page.on("pageerror", lambda error: errors.append(str(error)))
         destination = APP if segment == "app" else REPO
         page.goto(destination, wait_until="domcontentloaded", timeout=60_000)
-        (page.locator(".intro-title") if segment == "app" else page.locator("#readme")).wait_for(timeout=60_000)
+        (page.locator(".intro-title") if segment == "app" else page.locator("article").first).wait_for(timeout=60_000)
         if segment == "app":
             page.locator(".library-stats").get_by_text("40 pages").wait_for(timeout=60_000)
         page.wait_for_timeout(2_000)
