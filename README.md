@@ -38,7 +38,7 @@ Scoped robots-aware crawling, HTML main-content extraction, heading-aware chunks
 
 ## 3 Architecture
 
-![Architecture](docs/architecture.svg)
+![System architecture: offline ingestion feeds a live, verified query path](docs/architecture-showcase.png)
 
 [Architecture source and graph](docs/architecture.md). Ingestion builds a local index. Each query validates input, retrieves evidence, gates relevance, produces excerpts or structured claims, verifies citations and finalizes or refuses. LangGraph exposes those transitions for tests and inspection.
 
