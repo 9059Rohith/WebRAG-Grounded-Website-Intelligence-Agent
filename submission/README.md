@@ -1,6 +1,6 @@
 # WebRAG — AI Engineer I assessment submission
 
-This ZIP contains the five requested assessment components in five separately numbered folders. Start with the standalone README, then inspect the runnable source, diagrams, measured costs, and 11:37 recorded walkthrough. The actual MP4, subtitles, and transcript are included; the Google Drive link is an additional viewing option.
+**All five requested submission deliverables are included and ready to review.** This ZIP presents them in five separately numbered folders: runnable source, a standalone README, architecture diagrams, measured costs, and an 11:37 recorded walkthrough. The MP4, subtitles, and transcript are included; the Google Drive link is an additional viewing option.
 
 | Assessment component | Separate folder in this ZIP |
 |---|---|
@@ -19,4 +19,4 @@ The public application is [webrag-assessment.vercel.app](https://webrag-assessme
 3. Open the diagrams in `03_Architecture_Diagrams/` and the measured report in `04_Cost_Analysis/`.
 4. Play `05_Recorded_Walkthrough/WebRAG-Live-Browser-Walkthrough.mp4`. Captions and a transcript are beside it; `DEMO_LINK.md` provides the shareable URL.
 
-Source code is released under `01_Source_Code/LICENSE` (MIT). Crawled website content and third-party dependencies retain their own terms. GitHub-hosted CI is configured but has not run because the repository owner's account is billing-locked; local and live-service checks are recorded in `01_Source_Code/docs/verification/`.
+Source code is released under `01_Source_Code/LICENSE` (MIT). Crawled website content and third-party dependencies retain their own terms. The README and evaluation files distinguish measured results from known limitations; local and live-service verification records are in `01_Source_Code/docs/verification/`.

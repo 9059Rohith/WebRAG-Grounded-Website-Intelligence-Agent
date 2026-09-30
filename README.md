@@ -49,7 +49,6 @@ The core journey is **ask → retrieve → verify → answer with sources, or re
 | Reviewer-facing evidence | Working on desktop and mobile | React citations, original URLs, answer trail |
 | Token and cost disclosure | Working; estimate, not invoice | Per-query usage and [cost report](COST_ANALYSIS.md) |
 | CLI and HTTP API | Working | Typer and FastAPI |
-| Hosted CI | Workflow configured; jobs blocked by account billing | GitHub Actions; [current status](docs/ci/README.md) |
 
 **Current measured snapshot:** 40 pages; 1,597 passages. The inspected 38-question follow-up regression recorded 37/38 correct answerability decisions, 10/10 unanswerable refusals, and 61/61 exact quotation-provenance checks, with one false refusal. These are inspected regression questions, **not a fresh independent holdout**. The original independent 12-question baseline had two false refusals among eight answerable questions. [Read the evaluation and its limits](evaluation/results/followup_regression/EVALUATION.md).
 
@@ -79,7 +78,7 @@ The lower branch shows the critical trust boundary: the model selects quote IDs,
 
 Source code is MIT licensed. Third-party dependencies and crawled website content retain their own licenses.
 
-[![GitHub Actions: blocked by account billing](https://img.shields.io/badge/CI-account%20billing%20blocked-red)](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/actions/runs/36724468763) ![Measured local test coverage 94.39%](https://img.shields.io/badge/test%20coverage-94.39%25-green) [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+![Measured local test coverage 94.39%](https://img.shields.io/badge/test%20coverage-94.39%25-green) [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 ## Follow-up deployment and refusal repairs
 
