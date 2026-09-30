@@ -10,6 +10,7 @@ import json
 import time
 import wave
 from pathlib import Path
+from urllib.parse import urljoin
 
 from playwright.sync_api import Page, sync_playwright
 
@@ -125,19 +126,19 @@ def readme_action(page: Page, action: str) -> None:
         page.locator("article").first.wait_for(timeout=30_000)
         page.locator("article").first.scroll_into_view_if_needed()
     elif action == "readme_poster":
-        page.get_by_role("link", name="See the full project poster").first.click()
-        page.wait_for_load_state("domcontentloaded")
+        href = page.get_by_role("link", name="See the full project poster").first.get_attribute("href")
+        page.goto(urljoin(REPO, href or ""), wait_until="domcontentloaded", timeout=60_000)
         page.wait_for_timeout(8_000)
-        page.go_back(wait_until="domcontentloaded")
+        page.goto(REPO, wait_until="domcontentloaded", timeout=60_000)
         page.locator("#user-content-see-the-product").scroll_into_view_if_needed()
         page.wait_for_timeout(8_000)
     elif action == "readme_architecture":
         page.locator("#user-content-architecture-at-a-glance").scroll_into_view_if_needed()
         page.wait_for_timeout(9_000)
-        page.get_by_role("link", name="Detailed architecture and graph").first.click()
-        page.wait_for_load_state("domcontentloaded")
+        href = page.get_by_role("link", name="Detailed architecture and graph").first.get_attribute("href")
+        page.goto(urljoin(REPO, href or ""), wait_until="domcontentloaded", timeout=60_000)
         page.wait_for_timeout(6_000)
-        page.go_back(wait_until="domcontentloaded")
+        page.goto(REPO, wait_until="domcontentloaded", timeout=60_000)
     elif action == "readme_results":
         page.locator("#user-content-what-is-working").scroll_into_view_if_needed()
         page.wait_for_timeout(8_000)
@@ -145,10 +146,10 @@ def readme_action(page: Page, action: str) -> None:
         page.wait_for_timeout(8_000)
         page.locator("#user-content-stack-and-repository-map").scroll_into_view_if_needed()
         page.wait_for_timeout(8_000)
-        page.get_by_role("link", name="Review measured costs").first.click()
-        page.wait_for_load_state("domcontentloaded")
+        href = page.get_by_role("link", name="Review measured costs").first.get_attribute("href")
+        page.goto(urljoin(REPO, href or ""), wait_until="domcontentloaded", timeout=60_000)
         page.wait_for_timeout(6_000)
-        page.go_back(wait_until="domcontentloaded")
+        page.goto(REPO, wait_until="domcontentloaded", timeout=60_000)
     elif action == "close":
         page.locator("article").first.scroll_into_view_if_needed()
     else:
