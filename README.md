@@ -8,6 +8,20 @@
 
 The [browser walkthrough](docs/video/WebRAG-Live-Browser-Walkthrough.mp4) begins with the working product, then tours this README, the poster, screenshots, architecture, and evaluation. The candidate's webcam is damaged, so narration is disclosed synthetic speech; all product interactions shown are real browser actions. A separate [14-minute technical walkthrough](docs/video/WebRAG-Assessment-Showcase.mp4) is available with English subtitles and a [transcript](docs/video/WebRAG-Assessment-Showcase-Transcript.md).
 
+## Watch the live browser demonstration
+
+[![Watch WebRAG's live product walkthrough](docs/media/webrag-readme-cover.png)](docs/video/WebRAG-Live-Browser-Walkthrough.mp4)
+
+The [captioned browser walkthrough](docs/video/WebRAG-Live-Browser-Walkthrough.mp4) spends its **first ~7–8 minutes inside the deployed application**, then opens the **published GitHub README** for the architecture, poster, evaluation, cost analysis, and setup. Download the [English subtitles](docs/video/WebRAG-Live-Browser-Walkthrough.srt) or read the [full transcript](docs/video/WebRAG-Live-Browser-Walkthrough-Transcript.md). The cursor actions and responses come from the public deployment; narration is synthetic and disclosed because the candidate's webcam is damaged.
+
+| Approximate time | What is shown |
+|---|---|
+| 00:00–01:29 | Product, source library, navigation, and How it works |
+| 01:29–03:48 | Live list question, citation, original Python page, answer trail, usage, copy with sources |
+| 03:48–06:01 | Comparison, false-premise correction, and honest weather refusal |
+| 06:01–07:54 | Recent questions, new conversation, motion control, mobile answer and evidence |
+| 07:54–end | GitHub cover, poster, screenshots, architecture, evaluation, costs, setup, and limitations |
+
 ## Why this exists
 
 Generic chat can answer confidently without showing where an answer came from. WebRAG treats one crawled website as the authority. It saves original URLs and passages through ingestion, retrieves both semantically and lexically, and returns only answers that its verification path can bind to stored evidence. When the indexed website does not support a question, it says so.
