@@ -67,6 +67,10 @@ def main() -> None:
             vf = "crop=390:844:0:0,pad=1536:960:573:58:color=0x0b2522,format=yuv420p"
         else:
             vf = "format=yuv420p"
+        if index == 10:
+            vf += f",fade=t=out:st={max(0.0, duration - 0.5):.3f}:d=0.5"
+        elif index == 11:
+            vf += ",fade=t=in:st=0:d=0.5"
         run(
             "-ss", f"{offset + start:.3f}", "-i", str(video), "-i", str(audio),
             "-vf", vf, "-af", "apad", "-t", f"{duration:.3f}",

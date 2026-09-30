@@ -1,4 +1,14 @@
-# Current assessment walkthrough
+# Assessment walkthroughs
+
+## Primary: live browser demonstration
+
+[Watch or download the live browser walkthrough](WebRAG-Live-Browser-Walkthrough.mp4) — **11 minutes 37 seconds**, including **7 minutes 54 seconds in the public application** followed by the actual published GitHub README. The 1536×960 H.264 MP4 has audible AAC synthetic narration and a default selectable English subtitle track. [Separate SRT captions](WebRAG-Live-Browser-Walkthrough.srt) · [full transcript](WebRAG-Live-Browser-Walkthrough-Transcript.md) · [recording plan](LIVE_BROWSER_PLAN.md) · [verification](../verification/live-browser-video.json).
+
+![Live browser walkthrough poster frame](WebRAG-Live-Browser-Walkthrough-Poster.png)
+
+The candidate's webcam is damaged, as disclosed in the opening and closing narration. The voice is synthetic and is not represented as the candidate's own. Actual Chromium captures show the public Vercel app answering straightforward, comparison, and misleading questions; refusing a weather request; exposing sources, timing, usage, copy-with-sources, history, motion, and mobile evidence; then visiting the published GitHub cover, poster, architecture, screenshots, technical detail, and cost table. The exact browser actions and narration are in `scripts/record_live_browser_demo.py` and `scripts/live_demo_content.json`. The recording is a demonstration, not a new independent model evaluation.
+
+## Additional technical walkthrough
 
 [Play or download the current walkthrough](WebRAG-Assessment-Showcase.mp4) — **14 minutes 15 seconds**, 1920×1080 H.264 video, AAC narration, and an embedded selectable English subtitle track. [Separate captions](WebRAG-Assessment-Showcase.srt) · [full transcript](WebRAG-Assessment-Showcase-Transcript.md) · [storyboard and research](SHOWCASE_PLAN.md).
 

@@ -1,0 +1,35 @@
+{
+  "live_app_seconds": 474.203,
+  "full_video_seconds": 696.7339999999999,
+  "chapters": 16,
+  "caption_cues": 162,
+  "source": "Real Playwright browser recording of the public Vercel app and GitHub README",
+  "narration": "Disclosed synthetic neural voice",
+  "webcam_note": "Candidate webcam damaged",
+  "sha256": "dbaae5ab9a7b55f1e7c40c708b53ba1fc20ab1c51cf570a1b82e0c811909a043",
+  "bytes": 26955464,
+  "downloads_copy": "C:\\Users\\BhaviChasvi\\Downloads\\WebRAG-Live-Browser-Walkthrough.mp4",
+  "full_decode_exit_code": 0,
+  "video_codec": "H.264 High, 1536x960, 25 fps",
+  "audio_codec": "AAC-LC, 48 kHz mono",
+  "subtitle_codec": "mov_text, English, default",
+  "audio_mean_db_samples": {
+    "00:20": -19.9,
+    "05:00": -20.1,
+    "09:30": -20.1
+  },
+  "sample_frames_seconds": [
+    2,
+    110,
+    340,
+    440,
+    480,
+    525,
+    575,
+    645,
+    690
+  ],
+  "visual_check": "App opening, cited answer, mobile, README cover at 08:00 and closing, poster, architecture, and cost scenarios checked",
+  "browser_capture_status": "Both app and GitHub capture actions completed; recorder raises on browser page errors",
+  "download_sha256_matches_repository": true
+}

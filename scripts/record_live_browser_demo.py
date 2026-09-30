@@ -33,6 +33,27 @@ def pause_for_chapter(page: Page, started: float, index: int) -> None:
         page.wait_for_timeout(round(remaining * 1000))
 
 
+def show(page: Page, selector: str) -> None:
+    """Scroll on GitHub after its client-side tree has settled."""
+    for attempt in range(5):
+        try:
+            page.locator(selector).wait_for(timeout=15_000)
+            page.evaluate(
+                "s => { const node = document.querySelector(s); if (!node) throw new Error(s); node.scrollIntoView({block: 'center', behavior: 'instant'}); }",
+                selector,
+            )
+            return
+        except Exception:
+            if attempt == 4:
+                raise
+            page.wait_for_timeout(1_500)
+
+
+def show_readme_top(page: Page) -> None:
+    show(page, "article h1")
+    page.wait_for_timeout(2_000)
+
+
 def ask(page: Page, question: str, *, answerable: bool) -> None:
     page.locator("#question").fill(question)
     page.get_by_role("button", name="Ask question").click()
@@ -123,35 +144,43 @@ def app_action(page: Page, action: str) -> None:
 
 def readme_action(page: Page, action: str) -> None:
     if action == "readme_cover":
-        page.locator("article").first.wait_for(timeout=30_000)
-        page.locator("article").first.scroll_into_view_if_needed()
+        show_readme_top(page)
+        page.wait_for_timeout(11_000)
+        show(page, "#user-content-watch-the-live-browser-demonstration")
+        page.wait_for_timeout(9_000)
+        show(page, "#user-content-what-is-working")
     elif action == "readme_poster":
         href = page.get_by_role("link", name="See the full project poster").first.get_attribute("href")
         page.goto(urljoin(REPO, href or ""), wait_until="domcontentloaded", timeout=60_000)
         page.wait_for_timeout(8_000)
         page.goto(REPO, wait_until="domcontentloaded", timeout=60_000)
-        page.locator("#user-content-see-the-product").scroll_into_view_if_needed()
+        page.wait_for_timeout(2_000)
+        show(page, "#user-content-see-the-product")
         page.wait_for_timeout(8_000)
     elif action == "readme_architecture":
-        page.locator("#user-content-architecture-at-a-glance").scroll_into_view_if_needed()
+        show(page, "#user-content-architecture-at-a-glance")
         page.wait_for_timeout(9_000)
         href = page.get_by_role("link", name="Detailed architecture and graph").first.get_attribute("href")
         page.goto(urljoin(REPO, href or ""), wait_until="domcontentloaded", timeout=60_000)
         page.wait_for_timeout(6_000)
         page.goto(REPO, wait_until="domcontentloaded", timeout=60_000)
+        page.wait_for_timeout(2_000)
     elif action == "readme_results":
-        page.locator("#user-content-what-is-working").scroll_into_view_if_needed()
+        show(page, "#user-content-what-is-working")
         page.wait_for_timeout(8_000)
-        page.locator("#user-content-architecture-at-a-glance").scroll_into_view_if_needed()
+        show(page, "#user-content-architecture-at-a-glance")
         page.wait_for_timeout(8_000)
-        page.locator("#user-content-stack-and-repository-map").scroll_into_view_if_needed()
+        show(page, "#user-content-stack-and-repository-map")
         page.wait_for_timeout(8_000)
         href = page.get_by_role("link", name="Review measured costs").first.get_attribute("href")
         page.goto(urljoin(REPO, href or ""), wait_until="domcontentloaded", timeout=60_000)
+        show(page, "#user-content-observed-provider-usage-extrapolation--scenario-not-invoice")
+        page.evaluate("window.scrollBy(0, 170)")
         page.wait_for_timeout(6_000)
         page.goto(REPO, wait_until="domcontentloaded", timeout=60_000)
+        page.wait_for_timeout(2_000)
     elif action == "close":
-        page.locator("article").first.scroll_into_view_if_needed()
+        show_readme_top(page)
     else:
         raise ValueError(action)
 
