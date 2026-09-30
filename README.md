@@ -1,5 +1,58 @@
 # WebRAG — Grounded Website Intelligence Agent
 
+![WebRAG: Every answer, rooted in a source](docs/media/webrag-readme-cover.png)
+
+**Ask a public website. Get an answer you can trace to its exact passages—or an honest refusal.** WebRAG is a complete, deployed website-grounded RAG agent built around a 40-page snapshot of the official Python documentation.
+
+[**Try the live application**](https://webrag-assessment.vercel.app/) · [**Watch the browser walkthrough**](docs/video/WebRAG-Live-Browser-Walkthrough.mp4) · [**See the full project poster**](docs/media/webrag-project-poster.png) · [**Inspect the architecture**](docs/architecture.md) · [**Review measured costs**](COST_ANALYSIS.md)
+
+The [browser walkthrough](docs/video/WebRAG-Live-Browser-Walkthrough.mp4) begins with the working product, then tours this README, the poster, screenshots, architecture, and evaluation. The candidate's webcam is damaged, so narration is disclosed synthetic speech; all product interactions shown are real browser actions. A separate [14-minute technical walkthrough](docs/video/WebRAG-Assessment-Showcase.mp4) is available with English subtitles and a [transcript](docs/video/WebRAG-Assessment-Showcase-Transcript.md).
+
+## Why this exists
+
+Generic chat can answer confidently without showing where an answer came from. WebRAG treats one crawled website as the authority. It saves original URLs and passages through ingestion, retrieves both semantically and lexically, and returns only answers that its verification path can bind to stored evidence. When the indexed website does not support a question, it says so.
+
+## See the product
+
+| Start with a question | Inspect the grounded result |
+|---|---|
+| ![WebRAG workspace and source library](docs/media/01-workspace.png) | ![Answer, citations, and original Python documentation evidence](docs/media/04-answer-trail.png) |
+
+The core journey is **ask → retrieve → verify → answer with sources, or refuse**. Select a citation to focus its quotation; open **Inspect the answer trail** to see retrieved page count, supporting passages, decision, stage timings, and a copyable answer with source URLs. [More real desktop and mobile captures](docs/media/README.md) show the explanation dialog, citation focus, refusal, and responsive evidence panel.
+
+## What is working
+
+| Capability | Verified state | Implementation |
+|---|---|---|
+| Public-site ingestion | Working; 40 saved pages | Scoped, robots-aware Python crawler |
+| Searchable knowledge base | Working; 1,597 passages | OpenAI embeddings, persistent Chroma, BM25 |
+| Grounded answering | Working with documented misses | LangGraph, GPT-4o mini, server-restored quotations |
+| Clear refusal | Working with documented false-refusal risk | Relevance gate, source checks, bounded retry |
+| Reviewer-facing evidence | Working on desktop and mobile | React citations, original URLs, answer trail |
+| Token and cost disclosure | Working; estimate, not invoice | Per-query usage and [cost report](COST_ANALYSIS.md) |
+| CLI and HTTP API | Working | Typer and FastAPI |
+| Hosted CI | Workflow configured; jobs blocked by account billing | GitHub Actions; [current status](docs/ci/README.md) |
+
+**Current measured snapshot:** 40 pages; 1,597 passages. The inspected 38-question follow-up regression recorded 37/38 correct answerability decisions, 10/10 unanswerable refusals, and 61/61 exact quotation-provenance checks, with one false refusal. These are inspected regression questions, **not a fresh independent holdout**. The original independent 12-question baseline had two false refusals among eight answerable questions. [Read the evaluation and its limits](evaluation/results/followup_regression/EVALUATION.md).
+
+## Architecture at a glance
+
+![Offline ingestion and live grounded query path](docs/architecture-showcase.png)
+
+The owner-operated crawl cleans and chunks website content, then builds Chroma vectors and a BM25 companion index. The deployed React workspace calls the same-origin FastAPI service; LangGraph retrieves, gates, synthesizes, verifies, and returns an answer with stored URLs or a refusal. The prepared index ships with the Vercel deployment; reingestion is an explicit owner step. [Detailed architecture and graph](docs/architecture.md).
+
+## Stack and repository map
+
+| Layer | Actual technology | Where to inspect |
+|---|---|---|
+| Interface | React, TypeScript, Vite, local fonts | [`web/src`](web/src) |
+| API and agent | FastAPI, Pydantic, LangGraph, LangChain OpenAI | [`src/rag_agent`](src/rag_agent) |
+| Retrieval and storage | OpenAI embeddings, Chroma, BM25, JSON snapshots | [`src/rag_agent/retriever.py`](src/rag_agent/retriever.py), [`vectorstore.py`](src/rag_agent/vectorstore.py) |
+| Deployment | Vercel, bundled index, optional Docker | [`deployment`](deployment), [`Dockerfile`](Dockerfile) |
+| Evaluation and media | Frozen questions, raw results, cost reports, browser captures | [`evaluation`](evaluation), [`docs/media`](docs/media) |
+
+**Run it:** copy [`.env.example`](.env.example) to a private `.env`, install [the locked requirements](requirements.txt), ingest the scoped website, and ask through the CLI or FastAPI. The exact Windows quickstart and provider choices are below. A server-side OpenAI key is needed for the measured paid path; a credential-free local embedding/excerpt mode is also available. Never put credentials in the frontend or repository.
+
 Source code is MIT licensed. Third-party dependencies and crawled website content retain their own licenses.
 
 [![GitHub Actions: blocked by account billing](https://img.shields.io/badge/CI-account%20billing%20blocked-red)](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent/actions/runs/36724468763) ![Measured local test coverage 94.39%](https://img.shields.io/badge/test%20coverage-94.39%25-green) [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)

@@ -1,0 +1,21 @@
+{
+  "duration_seconds": 855.04,
+  "dimensions": "1920x1080",
+  "video": "H.264, 15 fps",
+  "audio": "AAC mono, 48 kHz",
+  "subtitles": "English mov_text, selectable/default",
+  "srt_cues": 211,
+  "architecture_visible_seconds": [
+    51.8,
+    114.5
+  ],
+  "full_decode": "passed, ffmpeg exit 0",
+  "audio_mean_volume_db_samples": {
+    "10": -20.2,
+    "500": -19.3,
+    "830": -19.9
+  },
+  "sha256": "2e76ce6761c1e5bf9b85b0aa2c6ca42cdbd9a5cc79da8c750eec3844ce8b0bc1",
+  "downloads_copy_matches_sha256": true,
+  "narration": "synthetic neural voice, disclosed"
+}

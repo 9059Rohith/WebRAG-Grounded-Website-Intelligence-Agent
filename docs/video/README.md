@@ -1,4 +1,14 @@
-# Recorded project walkthrough
+# Current assessment walkthrough
+
+[Play or download the current walkthrough](WebRAG-Assessment-Showcase.mp4) — **14 minutes 15 seconds**, 1920×1080 H.264 video, AAC narration, and an embedded selectable English subtitle track. [Separate captions](WebRAG-Assessment-Showcase.srt) · [full transcript](WebRAG-Assessment-Showcase-Transcript.md) · [storyboard and research](SHOWCASE_PLAN.md).
+
+![Current walkthrough opening frame](WebRAG-Assessment-Showcase-Poster.png)
+
+The candidate's webcam is damaged. This is a screen presentation with **disclosed synthetic neural narration**, not a claim about his voice or a webcam recording. The public app captures, source evidence, architecture image, and evaluation/cost numbers come from the deployed application and saved repository records. The 15 chapters cover the full crawl-to-answer architecture, desktop and mobile UI, source citations, a misleading-question correction, a real unsupported-question refusal, interaction details, evaluation limitations, cost scenarios, deployment, and next improvements. The [new architecture diagram](../architecture-showcase.png) appears from approximately **0:52 to 1:55**; it was pushed to GitHub before video production.
+
+The current video is generated from `scripts/showcase_content.json`, `scripts/create_showcase_video.py`, and `scripts/synthesize_showcase.py`. The exact public captures used in the video are in `docs/video/assets/`. [Media verification](../verification/showcase-video.json) records duration, streams, decoding, caption count, and download-copy hash. Video rendering is supplementary and not needed to run the RAG service.
+
+## Historical walkthrough
 
 [Play or download the walkthrough](WebRAG-Walkthrough.mp4) — **12 minutes 14 seconds**, H.264 video and AAC audio, 1920×1080. [Transcript](transcript.md).
 

@@ -1,0 +1,113 @@
+[
+  {
+    "kind": "hero",
+    "title": "Every answer, rooted in a source.",
+    "eyebrow": "01 / THE PRODUCT",
+    "points": ["40 public Python documentation pages", "1,597 searchable passages", "A real answer with inspectable website evidence"],
+    "narration": "Hello, I’m Rohith. My webcam is damaged, so this is a screen-based walkthrough with clearly disclosed synthetic narration. The application, repository, evaluation files, and source links are real. This is WebRAG, a website-grounded question-answering agent built for the MyAdvice AI Engineer assessment. The goal is simple: ask about a public website, receive a useful answer only when its crawled content supports it, and see the original URLs and exact supporting quotations. The deployed workspace is at webrag-assessment dot vercel dot app. Here is the core experience: ask what list dot append does, read the answer, then inspect the two cited Python documentation passages beside it. In the next twelve minutes, I’ll explain the data path, show representative answer, refusal, and mobile states, examine measured strengths and failures, and end with cost and deployment tradeoffs."
+  },
+  {
+    "kind": "architecture",
+    "title": "The entire system, in one view",
+    "eyebrow": "02 / ARCHITECTURE — SHOWN WITHIN THE FIRST TWO MINUTES",
+    "points": ["Offline, bounded crawl and index build", "Online hybrid retrieval and LangGraph verification", "Answer, exact sources, usage — or a clear refusal"],
+    "narration": "This architecture diagram is the map for everything that follows. Read its upper lane left to right. An owner-operated ingestion command starts from the public Python documentation site, checks the URL scope and robots rules, extracts useful main content, creates heading-aware chunks, and embeds those chunks into persistent Chroma. The same chunks also feed a lexical B M twenty-five index. The lower lane is the deployed query path. A React workspace sends a question to a same-origin FastAPI endpoint. LangGraph validates the request, performs dense and lexical retrieval, fuses and diversifies the candidates, and applies a relevance gate. For supported questions it generates source-bound claims, restores quotations from server-owned chunks, checks provenance and semantic support, and returns the answer with URLs and usage. If evidence is inadequate, the graph refuses. The Vercel deployment bundles the prepared index; crawling remains a deliberate offline owner step. I created this diagram as a reproducible image in the repository before recording this video."
+  },
+  {
+    "kind": "screenshot",
+    "asset": "desktop-answer.png",
+    "title": "A grounded answer you can inspect",
+    "eyebrow": "03 / LIVE DEPLOYMENT CAPTURE",
+    "points": ["Natural-language question", "Inline citation numbers", "Exact excerpts and clickable original URLs"],
+    "narration": "This is a capture from the public deployment, not a mockup. The question asks what list dot append does in Python. In the center, the answer says that append adds a new item at the end of the list and cites its support inline. On the right, Website evidence shows the retrieved Python documentation sections, the exact stored excerpts, and links back to docs dot python dot org. The left rail shows the selected Python documentation library and recent questions. Evidence is displayed next to the answer so a reviewer can inspect it without leaving the workflow, then follow the original page URL when needed. The application also exposes the number of supporting passages, response time, and an expandable usage detail. An answer with a citation is still something to verify: the source excerpt must genuinely support the claim, not merely share a URL or a keyword. That distinction drives the graph’s checks and the evaluation discussed later."
+  },
+  {
+    "kind": "pipeline",
+    "title": "Forty pages become a searchable corpus",
+    "eyebrow": "04 / INGESTION",
+    "points": ["Robots-aware, scope-limited crawl", "Main content, headings, code, tables", "200-token chunks with 30-token overlap"],
+    "narration": "The chosen site is the official Python documentation under its version-three path. It comfortably exceeds the assignment minimum: the saved bounded crawl contains forty content-rich pages. The crawler performs a sequential breadth-first walk with a half-second minimum delay, validates public destinations and redirects, obeys robots rules, and caps pages, depth, response size, and HTML content. It saves raw HTML and a manifest so the source snapshot can be audited. Extraction removes navigation and scripts but preserves the main prose, headings, lists, code, and table text. Heading-aware chunking aims for two hundred tiktoken tokens including title and section context, with thirty-token overlap. The recorded index contains one thousand five hundred ninety-seven chunks. Each keeps its original URL, title, heading path, crawl time, hash, and stable ID. That metadata is the bridge from a generated sentence back to a particular website passage."
+  },
+  {
+    "kind": "pipeline",
+    "title": "Two retrieval signals, one evidence set",
+    "eyebrow": "05 / EMBEDDING & SEARCH",
+    "points": ["OpenAI text-embedding-3-small → Chroma", "BM25 from the same stored chunks", "Rank fusion, comparison facets, source diversity"],
+    "narration": "The measured path uses text-embedding-three-small: real fifteen-hundred-thirty-six-dimensional vectors persisted in Chroma. This is not a fake embedding call or a keyword-only vector store. The same chunk snapshot builds a B M twenty-five lexical index. At query time, the question is embedded, twelve dense and twelve lexical candidates are retrieved, reciprocal-rank fusion combines them, and up to eight passages are selected with a greedy repeated-source penalty. Explicit comparisons or conjunctions can reserve evidence for complementary facets. That helps when one page explains one half of a question and a second page explains the other. A cosine relevance threshold is a conservative first gate; it does not replace answer verification. The index records embedding identity, so switching to the credential-free local MiniLM fallback requires a separate reingestion. This is a small, inspectable architecture: embedded Chroma avoids operating a remote database server while leaving a path to a larger managed store if scale demands it."
+  },
+  {
+    "kind": "pipeline",
+    "title": "LangGraph makes refusals explicit",
+    "eyebrow": "06 / AGENT CONTROL FLOW",
+    "points": ["Validate → retrieve → gate", "Generate → restore source quotes → verify", "One bounded retry, then answer or refuse"],
+    "narration": "LangGraph controls the answer path rather than a single unconstrained prompt. Validation checks length and request shape. Retrieval produces stored chunks, then a gate asks whether the evidence is relevant enough. The paid synthesis path asks GPT-four-o-mini for structured claims tied to server-provided quote IDs and chunk IDs. The server resolves those IDs against actual retrieved chunks and restores the quotation itself, instead of trusting model-supplied quote text or a model-invented URL. A deterministic verifier checks source occurrence and provenance. A separate model check then judges whether claims are supported and whether the question’s parts were covered. When verification fails, one bounded expanded retrieval attempt is possible; otherwise the graph returns its standard insufficient-evidence message. The local fallback instead returns extractive passages. Both modes use the same source validation. This layered path reduces accidental unsupported claims, but it cannot guarantee perfect semantic truth: the production model’s own check is not an independent human audit."
+  },
+  {
+    "kind": "evidence",
+    "asset": "desktop-answer.png",
+    "title": "Citation means a real stored passage",
+    "eyebrow": "07 / GROUNDING CONTRACT",
+    "points": ["URL comes from chunk metadata", "Quoted text is restored from the chunk", "Unknown quote IDs and mismatches are rejected"],
+    "narration": "Let’s zoom into the source rail. Each card names its original page and shows a passage from the crawled snapshot. The answer references these cards with citation numbers; selecting a citation focuses the corresponding evidence. The server’s response includes the source URL, title, evidence text, and chunk ID, plus a retrieval URL trace. It requires the evidence to occur in the stored chunk, checks the claimed chunk against retrieved hits, and refuses unknown or mismatched references. This prevents a model from manufacturing a plausible-looking source link inside the final response. It does not prove logical entailment by itself. A quote may be real yet irrelevant or incomplete, which is why the semantic support and completeness check follows. Website content is treated as untrusted data rather than instructions. This matters for prompt-injection-shaped text on public pages: the site can supply evidence, but it does not get to rewrite the agent’s rules."
+  },
+  {
+    "kind": "screenshot",
+    "asset": "repaired-answer.png",
+    "title": "Correct the premise, don’t echo it",
+    "eyebrow": "08 / MISLEADING QUESTION",
+    "points": ["A for-loop else clause after break?", "The premise is false", "Grounded correction with cited documentation"],
+    "narration": "A strong grounded assistant should correct a false premise when the website supports the correction. This real capture asks whether a for-loop’s else clause runs after break. The answer explains that it does not: the else clause executes only if the loop completes without break, and it cites the Python tutorial. That is different from refusing the whole question. The graph’s answerable field means there is enough site evidence to respond, including a supported negative answer. It does not mean a yes-or-no proposition is true. Misleading questions are deliberately included in the evaluation set to test this behavior. This particular behavior was repaired after an earlier run had false refusals. The screenshot is from the deployed revision; the benchmark figures later distinguish the independent original baseline from the inspected follow-up regression. That separation matters because a corrected example cannot be presented as fresh, unseen evaluation."
+  },
+  {
+    "kind": "refusal",
+    "title": "When the website cannot answer",
+    "eyebrow": "09 / REFUSAL & LIMITS",
+    "points": ["No reliable relevant passage → refuse", "No private, live, or off-site guessing", "Out-of-snapshot facts remain unknown"],
+    "narration": "The website, not the pretrained model’s memory, is the authority. A question about a private company detail, current weather, or another fact absent from this Python documentation snapshot should not receive a confident answer. The agent’s standard response says it does not have enough information on the indexed website. It includes no invented supporting source. This can happen at the relevance gate or after generation and verification fail. The tradeoff is important: a conservative refusal path can also reject answerable questions. In the original twelve-question independent holdout, all four unanswerable questions were refused, but two of eight answerable questions were also refused. The follow-up repair run on previously inspected questions has ten of ten unknown refusals and one false refusal among twenty-eight answerables. That is useful regression evidence, not proof of generalization. A new, genuinely unseen set and human review would be needed to claim broader reliability."
+  },
+  {
+    "kind": "screenshot",
+    "asset": "how-it-works.png",
+    "title": "The workspace stays understandable",
+    "eyebrow": "10 / INTERACTION DETAILS",
+    "points": ["Question suggestions and keyboard submit", "Recent questions and new conversation", "Copy answer, usage disclosure, motion toggle"],
+    "narration": "Now look at the entire workspace without an answer loaded. The center offers a natural-language composer and suggested starter questions. Control or command plus Enter submits from the keyboard. The left library rail reports the indexed corpus, keeps recent questions on this device, and offers a new conversation action. Answers remain in the current session; the question history can reopen them. The header links to the repository and opens a How it works explainer. It also has a motion toggle. Subtle entrance animation and pointer-responsive graphics were added to make the interface feel polished, but users who prefer reduced motion are respected. The answer panel has a copy action, an explicit loading state, error recovery, citation navigation, and a Usage disclosure with token count and estimated new API cost. These details support inspection and accessibility; they do not change the grounding contract. The same backend is also usable through a CLI and HTTP API."
+  },
+  {
+    "kind": "mobile",
+    "asset": "mobile-answer.png",
+    "asset2": "mobile-evidence.png",
+    "title": "The evidence travels to mobile",
+    "eyebrow": "11 / RESPONSIVE APPLICATION",
+    "points": ["Focused question and answer layout", "Expandable website evidence", "Original source links remain reachable"],
+    "narration": "The responsive layout keeps the central question and answer readable on a narrow phone viewport. The library becomes an accessible menu, while the source evidence remains available as its own expandable section. These captures are from the public deployment: one shows the answer state, and the other shows the evidence panel with the original Python documentation links and quotations. The mobile treatment does not hide attribution behind a decorative icon or discard sources to gain space. We checked both desktop and mobile against the deployed site. The interface uses semantic buttons, visible labels, a keyboard submit shortcut, and reduced-motion behavior. A reviewer can inspect the same answer provenance on either screen. The app is intentionally a thin client: the key safety, citation, and cost behavior lives in the Python service and is also tested without the browser. That keeps a visually rich interface from becoming the sole proof that the RAG system works."
+  },
+  {
+    "kind": "metrics",
+    "title": "Measured behavior, including the miss",
+    "eyebrow": "12 / EVALUATION",
+    "points": ["Original independent 12: 4/4 unknown refusals; 2/8 false refusals", "Inspected follow-up 38: 37/38 answerability; 61/61 exact quotes", "One follow-up false refusal remains"],
+    "narration": "The project includes a thirty-eight-question evaluation set spanning straightforward, paraphrased, multi-page, misleading, and unanswerable cases, with saved gold source patterns and raw response records. I preserve the original twelve-question independent slice as the headline baseline: it refused all four unknown questions and retrieved an expected URL for all eight answerables, but it falsely refused two of those eight. Its regex keypoint coverage was seventy-five percent. After repairing the known refusal cases, a thirty-eight-question follow-up regression produced thirty-seven of thirty-eight correct answerability decisions, ten of ten unknown refusals, and sixty-one of sixty-one quotations matching stored passages. One answerable question still refused. Crucially, those follow-up questions had been inspected during repair, so this is regression evidence, not a fresh holdout. Exact quotation provenance proves that displayed text came from the stored corpus; it does not prove every claim is semantically entailed. Raw failures, Wilson intervals, retrieval ablations, and limitations are in the repository."
+  },
+  {
+    "kind": "cost",
+    "title": "A cost estimate that can be audited",
+    "eyebrow": "13 / TOKEN & COST ACCOUNTING",
+    "points": ["Example query: 11,518 input / 190 output tokens", "Observed estimate: $0.001842 for that query", "100 / 1,000 / 10,000 queries: $0.1559 / $1.5585 / $15.5851"],
+    "narration": "Token and cost accounting is part of the answer, not an afterthought. The API response records input and output usage, any query embedding estimate, provider identity, timing, and estimated United States dollars. In the saved follow-up run, thirty-eight uncached questions used three hundred sixty-six thousand five hundred eighty-seven input tokens and seven thousand fifty-eight output tokens, for an estimated cost just under six cents across the run. The concrete list dot append example used eleven thousand five hundred eighteen input and one hundred ninety output tokens, at just under one fifth of a cent. The mean was about sixteen hundredths of a cent per query. Extrapolating that same mix gives about sixteen cents for one hundred, a dollar fifty-six for one thousand, and fifteen dollars fifty-nine for ten thousand queries before hosting. The initial ingestion embedding estimate is about half a cent separately. These are standard-rate scenarios from returned usage, not an invoice or a load test."
+  },
+  {
+    "kind": "deployment",
+    "title": "Reproducible, deployed, and honest about limits",
+    "eyebrow": "14 / DELIVERY & ENGINEERING JUDGMENT",
+    "points": ["React + FastAPI deployed together on Vercel", "CLI, tests, evaluation, architecture, costs in GitHub", "Account-locked hosted CI; local checks passed"],
+    "narration": "The repository includes the source code, example environment file, setup commands, architecture diagram, formal evaluation questions, raw results, a cost analysis, and a CLI. The public Vercel deployment runs the React frontend and FastAPI LangGraph backend together with a prepared index bundle. Server-side credentials are not exposed in the browser or repository. The bounded crawl and reingestion are owner-operated steps, followed by a new bundle and deployment; this is not a live web search engine. The current index is a snapshot of the Python documentation and can become stale. Hosted GitHub Actions is configured, but its job has not executed because GitHub reports an account billing lock; I do not claim a green CI run. Local checks passed. I would next add a genuinely unseen human-rated benchmark, investigate the remaining conservative refusal, shorten verification prompts to reduce token use, and move the index to durable shared storage if query volume or update frequency warranted it."
+  },
+  {
+    "kind": "close",
+    "title": "Inspect the answer. Inspect the evidence.",
+    "eyebrow": "15 / THANK YOU",
+    "points": ["Live app: webrag-assessment.vercel.app", "Source: WebRAG-Grounded-Website-Intelligence-Agent", "Architecture, evaluation, cost report, and transcript included"],
+    "narration": "To recap, this assessment delivers a bounded forty-page crawl, a real searchable vector index, hybrid retrieval, an explicit LangGraph answer-and-refusal workflow, visible original source URLs, and measured token and cost records. The best way to judge it is to ask a question in the public app, inspect the passage cards and original Python documentation links, then compare the behavior with the raw evaluation report. The implementation has meaningful limitations, especially the remaining false refusal and the lack of an independent semantic audit, and those are documented rather than hidden. The source, reproducible architecture image, cost analysis, and this narrated walkthrough are linked in the repository. Thank you for reviewing the project. Again, my webcam is damaged, so this recording uses a screen presentation and synthetic narration; it is not a claim that this is my voice."
+  }
+]

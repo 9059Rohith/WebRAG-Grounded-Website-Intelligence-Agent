@@ -1,0 +1,843 @@
+﻿1
+00:00:00,102 --> 00:00:03,635
+Hello, I’m Rohith. My webcam is damaged, so this is a
+
+2
+00:00:03,447 --> 00:00:09,715
+screen-based walkthrough with clearly disclosed synthetic narration. The application, repository, evaluation
+
+3
+00:00:09,526 --> 00:00:14,484
+files, and source links are real. This is WebRAG, a website-grounded
+
+4
+00:00:14,295 --> 00:00:18,744
+question-answering agent built for the MyAdvice AI Engineer assessment. The goal
+
+5
+00:00:18,612 --> 00:00:22,394
+is simple: ask about a public website, receive a useful answer
+
+6
+00:00:22,206 --> 00:00:25,570
+only when its crawled content supports it, and see the original
+
+7
+00:00:25,381 --> 00:00:30,553
+URLs and exact supporting quotations. The deployed workspace is at webrag-assessment
+
+8
+00:00:30,523 --> 00:00:34,305
+dot vercel dot app. Here is the core experience: ask what
+
+9
+00:00:34,116 --> 00:00:37,627
+list dot append does, read the answer, then inspect the two
+
+10
+00:00:37,439 --> 00:00:41,583
+cited Python documentation passages beside it. In the next twelve minutes,
+
+11
+00:00:41,620 --> 00:00:45,820
+I’ll explain the data path, show representative answer, refusal, and mobile
+
+12
+00:00:45,632 --> 00:00:49,640
+states, examine measured strengths and failures, and end with cost and
+
+13
+00:00:49,451 --> 00:00:50,646
+deployment tradeoffs.
+
+14
+00:00:51,883 --> 00:00:55,824
+This architecture diagram is the map for everything that follows. Read
+
+15
+00:00:55,635 --> 00:00:59,530
+its upper lane left to right. An owner-operated ingestion command starts
+
+16
+00:00:59,341 --> 00:01:03,225
+from the public Python documentation site, checks the URL scope and
+
+17
+00:01:03,037 --> 00:01:08,412
+robots rules, extracts useful main content, creates heading-aware chunks, and embeds
+
+18
+00:01:08,224 --> 00:01:11,949
+those chunks into persistent Chroma. The same chunks also feed a
+
+19
+00:01:11,761 --> 00:01:15,645
+lexical B M twenty-five index. The lower lane is the deployed
+
+20
+00:01:15,456 --> 00:01:19,600
+query path. A React workspace sends a question to a same-origin
+
+21
+00:01:19,468 --> 00:01:25,341
+FastAPI endpoint. LangGraph validates the request, performs dense and lexical retrieval,
+
+22
+00:01:25,423 --> 00:01:29,816
+fuses and diversifies the candidates, and applies a relevance gate. For
+
+23
+00:01:29,627 --> 00:01:34,957
+supported questions it generates source-bound claims, restores quotations from server-owned chunks,
+
+24
+00:01:35,029 --> 00:01:39,003
+checks provenance and semantic support, and returns the answer with URLs
+
+25
+00:01:38,814 --> 00:01:43,523
+and usage. If evidence is inadequate, the graph refuses. The Vercel
+
+26
+00:01:43,334 --> 00:01:47,851
+deployment bundles the prepared index; crawling remains a deliberate offline owner
+
+27
+00:01:47,663 --> 00:01:51,332
+step. I created this diagram as a reproducible image in the
+
+28
+00:01:51,143 --> 00:01:53,400
+repository before recording this video.
+
+29
+00:01:54,633 --> 00:01:57,579
+This is a capture from the public deployment, not a mockup.
+
+30
+00:01:57,763 --> 00:02:01,003
+The question asks what list dot append does in Python. In
+
+31
+00:02:00,814 --> 00:02:03,952
+the center, the answer says that append adds a new item
+
+32
+00:02:03,764 --> 00:02:06,472
+at the end of the list and cites its support inline.
+
+33
+00:02:06,645 --> 00:02:11,298
+On the right, Website evidence shows the retrieved Python documentation sections,
+
+34
+00:02:11,346 --> 00:02:15,174
+the exact stored excerpts, and links back to docs dot python
+
+35
+00:02:14,985 --> 00:02:19,344
+dot org. The left rail shows the selected Python documentation library
+
+36
+00:02:19,223 --> 00:02:23,333
+and recent questions. Evidence is displayed next to the answer so
+
+37
+00:02:23,144 --> 00:02:26,678
+a reviewer can inspect it without leaving the workflow, then follow
+
+38
+00:02:26,489 --> 00:02:30,769
+the original page URL when needed. The application also exposes the
+
+39
+00:02:30,580 --> 00:02:35,142
+number of supporting passages, response time, and an expandable usage detail.
+
+40
+00:02:35,315 --> 00:02:38,656
+An answer with a citation is still something to verify: the
+
+41
+00:02:38,468 --> 00:02:42,046
+source excerpt must genuinely support the claim, not merely share a
+
+42
+00:02:41,858 --> 00:02:46,047
+URL or a keyword. That distinction drives the graph’s checks and
+
+43
+00:02:45,858 --> 00:02:47,595
+the evaluation discussed later.
+
+44
+00:02:48,824 --> 00:02:52,741
+The chosen site is the official Python documentation under its version-three
+
+45
+00:02:52,553 --> 00:02:57,126
+path. It comfortably exceeds the assignment minimum: the saved bounded crawl
+
+46
+00:02:56,983 --> 00:03:01,759
+contains forty content-rich pages. The crawler performs a sequential breadth-first walk
+
+47
+00:03:01,571 --> 00:03:06,630
+with a half-second minimum delay, validates public destinations and redirects, obeys
+
+48
+00:03:06,441 --> 00:03:11,410
+robots rules, and caps pages, depth, response size, and HTML content.
+
+49
+00:03:11,583 --> 00:03:15,342
+It saves raw HTML and a manifest so the source snapshot
+
+50
+00:03:15,154 --> 00:03:19,207
+can be audited. Extraction removes navigation and scripts but preserves the
+
+51
+00:03:19,019 --> 00:03:24,824
+main prose, headings, lists, code, and table text. Heading-aware chunking aims
+
+52
+00:03:24,635 --> 00:03:29,073
+for two hundred tiktoken tokens including title and section context, with
+
+53
+00:03:28,884 --> 00:03:34,056
+thirty-token overlap. The recorded index contains one thousand five hundred ninety-seven
+
+54
+00:03:33,867 --> 00:03:38,949
+chunks. Each keeps its original URL, title, heading path, crawl time,
+
+55
+00:03:39,077 --> 00:03:42,611
+hash, and stable ID. That metadata is the bridge from a
+
+56
+00:03:42,422 --> 00:03:45,560
+generated sentence back to a particular website passage.
+
+57
+00:03:46,800 --> 00:03:53,339
+The measured path uses text-embedding-three-small: real fifteen-hundred-thirty-six-dimensional vectors persisted in Chroma.
+
+58
+00:03:53,512 --> 00:03:56,549
+This is not a fake embedding call or a keyword-only vector
+
+59
+00:03:56,360 --> 00:04:00,628
+store. The same chunk snapshot builds a B M twenty-five lexical
+
+60
+00:04:00,440 --> 00:04:04,911
+index. At query time, the question is embedded, twelve dense and
+
+61
+00:04:04,723 --> 00:04:09,477
+twelve lexical candidates are retrieved, reciprocal-rank fusion combines them, and up
+
+62
+00:04:09,288 --> 00:04:13,556
+to eight passages are selected with a greedy repeated-source penalty. Explicit
+
+63
+00:04:13,367 --> 00:04:18,528
+comparisons or conjunctions can reserve evidence for complementary facets. That helps
+
+64
+00:04:18,340 --> 00:04:21,286
+when one page explains one half of a question and a
+
+65
+00:04:21,097 --> 00:04:25,004
+second page explains the other. A cosine relevance threshold is a
+
+66
+00:04:24,815 --> 00:04:29,411
+conservative first gate; it does not replace answer verification. The index
+
+67
+00:04:29,222 --> 00:04:34,394
+records embedding identity, so switching to the credential-free local MiniLM fallback
+
+68
+00:04:34,273 --> 00:04:39,898
+requires a separate reingestion. This is a small, inspectable architecture: embedded
+
+69
+00:04:39,709 --> 00:04:43,717
+Chroma avoids operating a remote database server while leaving a path
+
+70
+00:04:43,529 --> 00:04:46,124
+to a larger managed store if scale demands it.
+
+71
+00:04:47,347 --> 00:04:51,491
+LangGraph controls the answer path rather than a single unconstrained prompt.
+
+72
+00:04:51,664 --> 00:04:56,531
+Validation checks length and request shape. Retrieval produces stored chunks, then
+
+73
+00:04:56,342 --> 00:04:59,932
+a gate asks whether the evidence is relevant enough. The paid
+
+74
+00:04:59,744 --> 00:05:04,769
+synthesis path asks GPT-four-o-mini for structured claims tied to server-provided quote
+
+75
+00:05:04,580 --> 00:05:09,086
+IDs and chunk IDs. The server resolves those IDs against actual
+
+76
+00:05:08,897 --> 00:05:13,504
+retrieved chunks and restores the quotation itself, instead of trusting model-supplied
+
+77
+00:05:13,316 --> 00:05:18,183
+quote text or a model-invented URL. A deterministic verifier checks source
+
+78
+00:05:17,994 --> 00:05:22,194
+occurrence and provenance. A separate model check then judges whether claims
+
+79
+00:05:22,006 --> 00:05:25,867
+are supported and whether the question’s parts were covered. When verification
+
+80
+00:05:25,678 --> 00:05:30,387
+fails, one bounded expanded retrieval attempt is possible; otherwise the graph
+
+81
+00:05:30,199 --> 00:05:35,970
+returns its standard insufficient-evidence message. The local fallback instead returns extractive
+
+82
+00:05:35,781 --> 00:05:40,377
+passages. Both modes use the same source validation. This layered path
+
+83
+00:05:40,188 --> 00:05:45,417
+reduces accidental unsupported claims, but it cannot guarantee perfect semantic truth:
+
+84
+00:05:45,488 --> 00:05:49,056
+the production model’s own check is not an independent human audit.
+
+85
+00:05:50,292 --> 00:05:53,577
+Let’s zoom into the source rail. Each card names its original
+
+86
+00:05:53,388 --> 00:05:56,990
+page and shows a passage from the crawled snapshot. The answer
+
+87
+00:05:56,801 --> 00:06:01,284
+references these cards with citation numbers; selecting a citation focuses the
+
+88
+00:06:01,095 --> 00:06:06,347
+corresponding evidence. The server’s response includes the source URL, title, evidence
+
+89
+00:06:06,158 --> 00:06:10,584
+text, and chunk ID, plus a retrieval URL trace. It requires
+
+90
+00:06:10,396 --> 00:06:13,568
+the evidence to occur in the stored chunk, checks the claimed
+
+91
+00:06:13,447 --> 00:06:18,574
+chunk against retrieved hits, and refuses unknown or mismatched references. This
+
+92
+00:06:18,385 --> 00:06:22,676
+prevents a model from manufacturing a plausible-looking source link inside the
+
+93
+00:06:22,487 --> 00:06:26,665
+final response. It does not prove logical entailment by itself. A
+
+94
+00:06:26,476 --> 00:06:30,112
+quote may be real yet irrelevant or incomplete, which is why
+
+95
+00:06:29,923 --> 00:06:34,451
+the semantic support and completeness check follows. Website content is treated
+
+96
+00:06:34,387 --> 00:06:39,480
+as untrusted data rather than instructions. This matters for prompt-injection-shaped text
+
+97
+00:06:39,291 --> 00:06:42,700
+on public pages: the site can supply evidence, but it does
+
+98
+00:06:42,512 --> 00:06:44,780
+not get to rewrite the agent’s rules.
+
+99
+00:06:46,012 --> 00:06:49,478
+A strong grounded assistant should correct a false premise when the
+
+100
+00:06:49,289 --> 00:06:53,297
+website supports the correction. This real capture asks whether a for-loop’s
+
+101
+00:06:53,221 --> 00:06:56,608
+else clause runs after break. The answer explains that it does
+
+102
+00:06:56,420 --> 00:07:00,111
+not: the else clause executes only if the loop completes without
+
+103
+00:06:59,923 --> 00:07:03,298
+break, and it cites the Python tutorial. That is different from
+
+104
+00:07:03,109 --> 00:07:06,666
+refusing the whole question. The graph’s answerable field means there is
+
+105
+00:07:06,477 --> 00:07:10,926
+enough site evidence to respond, including a supported negative answer. It
+
+106
+00:07:10,737 --> 00:07:14,486
+does not mean a yes-or-no proposition is true. Misleading questions are
+
+107
+00:07:14,297 --> 00:07:18,633
+deliberately included in the evaluation set to test this behavior. This
+
+108
+00:07:18,444 --> 00:07:22,486
+particular behavior was repaired after an earlier run had false refusals.
+
+109
+00:07:22,671 --> 00:07:26,351
+The screenshot is from the deployed revision; the benchmark figures later
+
+110
+00:07:26,163 --> 00:07:31,199
+distinguish the independent original baseline from the inspected follow-up regression. That
+
+111
+00:07:31,010 --> 00:07:35,222
+separation matters because a corrected example cannot be presented as fresh,
+
+112
+00:07:35,429 --> 00:07:36,759
+unseen evaluation.
+
+113
+00:07:37,989 --> 00:07:42,020
+The website, not the pretrained model’s memory, is the authority. A
+
+114
+00:07:41,832 --> 00:07:45,998
+question about a private company detail, current weather, or another fact
+
+115
+00:07:45,809 --> 00:07:49,919
+absent from this Python documentation snapshot should not receive a confident
+
+116
+00:07:49,731 --> 00:07:53,422
+answer. The agent’s standard response says it does not have enough
+
+117
+00:07:53,234 --> 00:07:57,604
+information on the indexed website. It includes no invented supporting source.
+
+118
+00:07:57,788 --> 00:08:00,870
+This can happen at the relevance gate or after generation and
+
+119
+00:08:00,681 --> 00:08:05,638
+verification fail. The tradeoff is important: a conservative refusal path can
+
+120
+00:08:05,450 --> 00:08:10,983
+also reject answerable questions. In the original twelve-question independent holdout, all
+
+121
+00:08:10,795 --> 00:08:15,187
+four unanswerable questions were refused, but two of eight answerable questions
+
+122
+00:08:14,999 --> 00:08:19,572
+were also refused. The follow-up repair run on previously inspected questions
+
+123
+00:08:19,440 --> 00:08:23,211
+has ten of ten unknown refusals and one false refusal among
+
+124
+00:08:23,022 --> 00:08:27,878
+twenty-eight answerables. That is useful regression evidence, not proof of generalization.
+
+125
+00:08:28,051 --> 00:08:31,765
+A new, genuinely unseen set and human review would be needed
+
+126
+00:08:31,576 --> 00:08:33,291
+to claim broader reliability.
+
+127
+00:08:34,522 --> 00:08:37,717
+Now look at the entire workspace without an answer loaded. The
+
+128
+00:08:37,528 --> 00:08:42,497
+center offers a natural-language composer and suggested starter questions. Control or
+
+129
+00:08:42,308 --> 00:08:46,238
+command plus Enter submits from the keyboard. The left library rail
+
+130
+00:08:46,049 --> 00:08:50,306
+reports the indexed corpus, keeps recent questions on this device, and
+
+131
+00:08:50,117 --> 00:08:54,114
+offers a new conversation action. Answers remain in the current session;
+
+132
+00:08:54,185 --> 00:08:57,278
+the question history can reopen them. The header links to the
+
+133
+00:08:57,090 --> 00:09:00,714
+repository and opens a How it works explainer. It also has
+
+134
+00:09:00,525 --> 00:09:04,997
+a motion toggle. Subtle entrance animation and pointer-responsive graphics were added
+
+135
+00:09:04,808 --> 00:09:08,341
+to make the interface feel polished, but users who prefer reduced
+
+136
+00:09:08,153 --> 00:09:12,014
+motion are respected. The answer panel has a copy action, an
+
+137
+00:09:11,825 --> 00:09:16,862
+explicit loading state, error recovery, citation navigation, and a Usage disclosure
+
+138
+00:09:16,673 --> 00:09:21,179
+with token count and estimated new API cost. These details support
+
+139
+00:09:20,990 --> 00:09:25,417
+inspection and accessibility; they do not change the grounding contract. The
+
+140
+00:09:25,228 --> 00:09:29,541
+same backend is also usable through a CLI and HTTP API.
+
+141
+00:09:30,774 --> 00:09:34,421
+The responsive layout keeps the central question and answer readable on
+
+142
+00:09:34,232 --> 00:09:38,410
+a narrow phone viewport. The library becomes an accessible menu, while
+
+143
+00:09:38,221 --> 00:09:42,512
+the source evidence remains available as its own expandable section. These
+
+144
+00:09:42,323 --> 00:09:45,699
+captures are from the public deployment: one shows the answer state,
+
+145
+00:09:45,770 --> 00:09:48,818
+and the other shows the evidence panel with the original Python
+
+146
+00:09:48,629 --> 00:09:53,123
+documentation links and quotations. The mobile treatment does not hide attribution
+
+147
+00:09:52,935 --> 00:09:56,875
+behind a decorative icon or discard sources to gain space. We
+
+148
+00:09:56,686 --> 00:10:00,593
+checked both desktop and mobile against the deployed site. The interface
+
+149
+00:10:00,404 --> 00:10:05,543
+uses semantic buttons, visible labels, a keyboard submit shortcut, and reduced-motion
+
+150
+00:10:05,354 --> 00:10:09,261
+behavior. A reviewer can inspect the same answer provenance on either
+
+151
+00:10:09,072 --> 00:10:13,238
+screen. The app is intentionally a thin client: the key safety,
+
+152
+00:10:13,197 --> 00:10:16,775
+citation, and cost behavior lives in the Python service and is
+
+153
+00:10:16,587 --> 00:10:20,437
+also tested without the browser. That keeps a visually rich interface
+
+154
+00:10:20,248 --> 00:10:23,273
+from becoming the sole proof that the RAG system works.
+
+155
+00:10:24,520 --> 00:10:30,675
+The project includes a thirty-eight-question evaluation set spanning straightforward, paraphrased, multi-page,
+
+156
+00:10:30,645 --> 00:10:35,128
+misleading, and unanswerable cases, with saved gold source patterns and raw
+
+157
+00:10:34,939 --> 00:10:39,603
+response records. I preserve the original twelve-question independent slice as the
+
+158
+00:10:39,414 --> 00:10:43,976
+headline baseline: it refused all four unknown questions and retrieved an
+
+159
+00:10:43,787 --> 00:10:48,112
+expected URL for all eight answerables, but it falsely refused two
+
+160
+00:10:47,923 --> 00:10:52,451
+of those eight. Its regex keypoint coverage was seventy-five percent. After
+
+161
+00:10:52,263 --> 00:10:57,469
+repairing the known refusal cases, a thirty-eight-question follow-up regression produced thirty-seven
+
+162
+00:10:57,280 --> 00:11:02,012
+of thirty-eight correct answerability decisions, ten of ten unknown refusals, and
+
+163
+00:11:01,823 --> 00:11:06,837
+sixty-one of sixty-one quotations matching stored passages. One answerable question still
+
+164
+00:11:06,648 --> 00:11:11,583
+refused. Crucially, those follow-up questions had been inspected during repair, so
+
+165
+00:11:11,394 --> 00:11:15,900
+this is regression evidence, not a fresh holdout. Exact quotation provenance
+
+166
+00:11:15,711 --> 00:11:19,143
+proves that displayed text came from the stored corpus; it does
+
+167
+00:11:18,954 --> 00:11:24,070
+not prove every claim is semantically entailed. Raw failures, Wilson intervals,
+
+168
+00:11:24,028 --> 00:11:27,347
+retrieval ablations, and limitations are in the repository.
+
+169
+00:11:28,582 --> 00:11:31,516
+Token and cost accounting is part of the answer, not an
+
+170
+00:11:31,328 --> 00:11:36,511
+afterthought. The API response records input and output usage, any query
+
+171
+00:11:36,323 --> 00:11:41,653
+embedding estimate, provider identity, timing, and estimated United States dollars. In
+
+172
+00:11:41,464 --> 00:11:46,354
+the saved follow-up run, thirty-eight uncached questions used three hundred sixty-six
+
+173
+00:11:46,256 --> 00:11:50,976
+thousand five hundred eighty-seven input tokens and seven thousand fifty-eight output
+
+174
+00:11:50,787 --> 00:11:54,389
+tokens, for an estimated cost just under six cents across the
+
+175
+00:11:54,200 --> 00:11:58,366
+run. The concrete list dot append example used eleven thousand five
+
+176
+00:11:58,178 --> 00:12:02,299
+hundred eighteen input and one hundred ninety output tokens, at just
+
+177
+00:12:02,110 --> 00:12:05,237
+under one fifth of a cent. The mean was about sixteen
+
+178
+00:12:05,048 --> 00:12:08,526
+hundredths of a cent per query. Extrapolating that same mix gives
+
+179
+00:12:08,337 --> 00:12:11,837
+about sixteen cents for one hundred, a dollar fifty-six for one
+
+180
+00:12:11,648 --> 00:12:15,735
+thousand, and fifteen dollars fifty-nine for ten thousand queries before hosting.
+
+181
+00:12:15,908 --> 00:12:19,521
+The initial ingestion embedding estimate is about half a cent separately.
+
+182
+00:12:19,694 --> 00:12:23,578
+These are standard-rate scenarios from returned usage, not an invoice or
+
+183
+00:12:23,389 --> 00:12:24,267
+a load test.
+
+184
+00:12:25,506 --> 00:12:30,238
+The repository includes the source code, example environment file, setup commands,
+
+185
+00:12:30,275 --> 00:12:35,583
+architecture diagram, formal evaluation questions, raw results, a cost analysis, and
+
+186
+00:12:35,394 --> 00:12:39,414
+a CLI. The public Vercel deployment runs the React frontend and
+
+187
+00:12:39,225 --> 00:12:44,522
+FastAPI LangGraph backend together with a prepared index bundle. Server-side credentials
+
+188
+00:12:44,333 --> 00:12:48,364
+are not exposed in the browser or repository. The bounded crawl
+
+189
+00:12:48,175 --> 00:12:52,116
+and reingestion are owner-operated steps, followed by a new bundle and
+
+190
+00:12:51,927 --> 00:12:55,359
+deployment; this is not a live web search engine. The current
+
+191
+00:12:55,170 --> 00:12:58,625
+index is a snapshot of the Python documentation and can become
+
+192
+00:12:58,436 --> 00:13:02,478
+stale. Hosted GitHub Actions is configured, but its job has not
+
+193
+00:13:02,289 --> 00:13:05,925
+executed because GitHub reports an account billing lock; I do not
+
+194
+00:13:05,736 --> 00:13:09,405
+claim a green CI run. Local checks passed. I would next
+
+195
+00:13:09,217 --> 00:13:14,570
+add a genuinely unseen human-rated benchmark, investigate the remaining conservative refusal,
+
+196
+00:13:14,641 --> 00:13:18,457
+shorten verification prompts to reduce token use, and move the index
+
+197
+00:13:18,268 --> 00:13:22,424
+to durable shared storage if query volume or update frequency warranted
+
+198
+00:13:22,235 --> 00:13:22,593
+it.
+
+199
+00:13:23,830 --> 00:13:28,267
+To recap, this assessment delivers a bounded forty-page crawl, a real
+
+200
+00:13:28,079 --> 00:13:34,381
+searchable vector index, hybrid retrieval, an explicit LangGraph answer-and-refusal workflow, visible
+
+201
+00:13:34,192 --> 00:13:38,607
+original source URLs, and measured token and cost records. The best
+
+202
+00:13:38,419 --> 00:13:40,574
+way to judge it is to ask a question in the
+
+203
+00:13:40,385 --> 00:13:45,083
+public app, inspect the passage cards and original Python documentation links,
+
+204
+00:13:45,154 --> 00:13:49,241
+then compare the behavior with the raw evaluation report. The implementation
+
+205
+00:13:49,052 --> 00:13:53,716
+has meaningful limitations, especially the remaining false refusal and the lack
+
+206
+00:13:53,595 --> 00:13:57,095
+of an independent semantic audit, and those are documented rather than
+
+207
+00:13:56,906 --> 00:14:02,135
+hidden. The source, reproducible architecture image, cost analysis, and this narrated
+
+208
+00:14:01,946 --> 00:14:05,288
+walkthrough are linked in the repository. Thank you for reviewing the
+
+209
+00:14:05,099 --> 00:14:09,356
+project. Again, my webcam is damaged, so this recording uses a
+
+210
+00:14:09,167 --> 00:14:12,893
+screen presentation and synthetic narration; it is not a claim that
+
+211
+00:14:12,705 --> 00:14:13,854
+this is my voice.
