@@ -8,6 +8,9 @@ export type Answer = {
   cached: boolean
   mode: string
   request_id?: string
+  retrieved_urls?: string[]
+  attempts?: number
+  retrieval_score?: number
 }
 export type Stats = {
   pages: number
