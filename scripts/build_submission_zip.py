@@ -1,13 +1,10 @@
-"""Build a focused, credential-free assessment ZIP from the tracked project.
-
-The archive keeps the normal repository layout so README links and setup commands
-remain usable. Recorded media lives at the public Drive URL in 05_DEMO_LINK.md.
-"""
+"""Build the five separately packaged, credential-free assessment components."""
 
 from __future__ import annotations
 
 import hashlib
 import json
+import posixpath
 import re
 import shutil
 import subprocess
@@ -19,6 +16,14 @@ PREFIX = "WebRAG-Assessment-Submission"
 ZIP_PATH = ROOT / "submission" / f"{PREFIX}.zip"
 DOWNLOAD = Path.home() / "Downloads" / ZIP_PATH.name
 DRIVE_URL = "https://drive.google.com/file/d/1KYgEdw04ZEYN9u-ptXm3PXSmMiI-nF47/view?usp=sharing"
+SOURCE = "01_Source_Code"
+README = "02_README"
+ARCHITECTURE = "03_Architecture_Diagrams"
+COST = "04_Cost_Analysis"
+VIDEO = "05_Recorded_Walkthrough"
+COMPONENTS = (SOURCE, README, ARCHITECTURE, COST, VIDEO)
+VIDEO_BASENAME = "WebRAG-Live-Browser-Walkthrough"
+LINK = re.compile(r"(!?\[[^\]]*\]\()([^)]+)(\))")
 
 SKIP_PREFIXES = ("docs/video/", "docs/superpowers/", "submission/")
 SKIP_FILES = {
@@ -57,18 +62,40 @@ def tracked_files() -> list[str]:
     return sorted(selected)
 
 
-def local_readme_links_are_packaged(paths: set[str]) -> None:
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    links = re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", readme)
+def rewrite_links(markdown: str, original_directory: str, output_directory: str,
+                  special: dict[str, str] | None = None) -> str:
+    """Keep local Markdown links valid after a document moves into its own folder."""
+    special = special or {}
+
+    def replace(match: re.Match[str]) -> str:
+        target = match.group(2)
+        if target.startswith(("https://", "http://", "#", "mailto:")):
+            return match.group(0)
+        path, marker, fragment = target.partition("#")
+        if not path:
+            return match.group(0)
+        original = posixpath.normpath(posixpath.join(original_directory, path))
+        destination = special.get(original, f"{SOURCE}/{original}")
+        relative = posixpath.relpath(destination, output_directory)
+        return f"{match.group(1)}{relative}{marker}{fragment}{match.group(3)}"
+
+    return LINK.sub(replace, markdown)
+
+
+def check_markdown_links(name: str, content: bytes, members: set[str]) -> None:
+    markdown = content.decode("utf-8")
+    links = [match[1] for match in LINK.findall(markdown)]
     missing = []
+    folder = posixpath.dirname(name)
     for link in links:
         if link.startswith(("https://", "http://", "#", "mailto:")):
             continue
         target = link.split("#", 1)[0]
-        if target and target not in paths and not any(p.startswith(target.rstrip("/") + "/") for p in paths):
+        resolved = posixpath.normpath(posixpath.join(folder, target))
+        if target and resolved not in members and not any(p.startswith(resolved.rstrip("/") + "/") for p in members):
             missing.append(link)
     if missing:
-        raise RuntimeError(f"README links omitted from ZIP: {missing}")
+        raise RuntimeError(f"Broken local links in {name}: {missing}")
 
 
 def clean_archive_info(name: str) -> ZipInfo:
@@ -90,36 +117,73 @@ def main() -> None:
         raise RuntimeError(f"Missing required submission files: {sorted(required - set(paths))}")
     if not any(p.startswith("tests/") for p in paths):
         raise RuntimeError("Tests are missing from the submission")
-    local_readme_links_are_packaged(set(paths))
-    extra = {
-        "SUBMISSION_INDEX.md": (ROOT / "submission" / "README.md").read_bytes(),
-        "05_DEMO_LINK.md": (ROOT / "submission" / "05_DEMO_LINK.md").read_bytes(),
+
+    members: dict[str, bytes] = {}
+    for name in paths:
+        source = (ROOT / name).resolve()
+        if ROOT.resolve() not in source.parents or not source.is_file():
+            raise RuntimeError(f"Unsafe or missing tracked path: {name}")
+        members[f"{SOURCE}/{name}"] = source.read_bytes()
+
+    architecture_files = {
+        "docs/architecture-showcase.png": f"{ARCHITECTURE}/architecture-showcase.png",
+        "docs/architecture.svg": f"{ARCHITECTURE}/architecture.svg",
+        "docs/langgraph.mmd": f"{ARCHITECTURE}/langgraph.mmd",
     }
-    if DRIVE_URL.encode() not in extra["05_DEMO_LINK.md"]:
+    readme_special = {**architecture_files, "COST_ANALYSIS.md": f"{COST}/COST_ANALYSIS.md"}
+    members[f"{README}/README.md"] = rewrite_links(
+        (ROOT / "README.md").read_text(encoding="utf-8"), "", README, readme_special
+    ).encode("utf-8")
+    for source, destination in architecture_files.items():
+        members[destination] = (ROOT / source).read_bytes()
+    members[f"{ARCHITECTURE}/README.md"] = (
+        "# Architecture diagrams\n\n"
+        "Open [the presentation diagram](architecture-showcase.png) for the complete system flow, "
+        "[the technical SVG](architecture.svg) for retrieval and verification branches, and "
+        "[the LangGraph source](langgraph.mmd) for state transitions. "
+        "[The annotated architecture notes](../01_Source_Code/docs/architecture.md) explain the boundaries and deployment.\n"
+    ).encode("utf-8")
+    members[f"{COST}/COST_ANALYSIS.md"] = rewrite_links(
+        (ROOT / "COST_ANALYSIS.md").read_text(encoding="utf-8"), "", COST
+    ).encode("utf-8")
+    for extension in ("mp4", "srt"):
+        filename = f"{VIDEO_BASENAME}.{extension}"
+        members[f"{VIDEO}/{filename}"] = (ROOT / "docs" / "video" / filename).read_bytes()
+    transcript = f"{VIDEO_BASENAME}-Transcript.md"
+    members[f"{VIDEO}/{transcript}"] = (ROOT / "docs" / "video" / transcript).read_bytes()
+    members[f"{VIDEO}/DEMO_LINK.md"] = (ROOT / "submission" / "05_DEMO_LINK.md").read_bytes()
+    members["START_HERE.md"] = (ROOT / "submission" / "README.md").read_bytes()
+
+    if DRIVE_URL.encode() not in members[f"{VIDEO}/DEMO_LINK.md"]:
         raise RuntimeError("Demo link changed or missing")
+    recording = members[f"{VIDEO}/{VIDEO_BASENAME}.mp4"]
+    if len(recording) < 20_000_000 or recording[4:8] != b"ftyp":
+        raise RuntimeError("The MP4 walkthrough is missing or incomplete")
+    all_names = set(members)
+    for name in (f"{SOURCE}/README.md", f"{README}/README.md", f"{COST}/COST_ANALYSIS.md",
+                 f"{ARCHITECTURE}/README.md", "START_HERE.md"):
+        check_markdown_links(name, members[name], all_names)
+    for name, content in members.items():
+        if any(pattern.search(content) for pattern in SECRET_PATTERNS):
+            raise RuntimeError(f"Credential-like string detected in {name}")
+    if not members[f"{SOURCE}/.env.example"].decode().split("OPENAI_API_KEY=", 1)[1].startswith("\n"):
+        raise RuntimeError(".env.example contains a nonblank key")
+
     ZIP_PATH.parent.mkdir(parents=True, exist_ok=True)
-    count = 0
     with ZipFile(ZIP_PATH, "w", compression=ZIP_DEFLATED, compresslevel=7) as archive:
-        for name in paths:
-            source = (ROOT / name).resolve()
-            if ROOT.resolve() not in source.parents or not source.is_file():
-                raise RuntimeError(f"Unsafe or missing tracked path: {name}")
-            content = source.read_bytes()
-            if any(pattern.search(content) for pattern in SECRET_PATTERNS):
-                raise RuntimeError(f"Credential-like string detected in {name}")
-            archive.writestr(clean_archive_info(name), content, compress_type=ZIP_DEFLATED, compresslevel=7)
-            count += 1
-        for name, content in sorted(extra.items()):
-            archive.writestr(clean_archive_info(name), content, compress_type=ZIP_DEFLATED, compresslevel=7)
-            count += 1
+        for name, content in sorted(members.items()):
+            archive.writestr(clean_archive_info(name), content)
     with ZipFile(ZIP_PATH) as archive:
         if archive.testzip() is not None:
             raise RuntimeError("ZIP integrity check failed")
-        names = archive.namelist()
-        if len(names) != count or any("/docs/video/" in item or item.endswith("/.env") for item in names):
+        actual = {item.removeprefix(f"{PREFIX}/") for item in archive.namelist()}
+        if actual != all_names:
             raise RuntimeError("Unexpected ZIP members")
-        if not archive.read(f"{PREFIX}/.env.example").decode().split("OPENAI_API_KEY=", 1)[1].startswith("\n"):
-            raise RuntimeError(".env.example contains a nonblank key")
+        top_level = {name.split("/", 1)[0] for name in actual}
+        if top_level != {"START_HERE.md", *COMPONENTS}:
+            raise RuntimeError(f"Incorrect component folders: {top_level}")
+        if hashlib.sha256(archive.read(f"{PREFIX}/{VIDEO}/{VIDEO_BASENAME}.mp4")).digest() != hashlib.sha256(recording).digest():
+            raise RuntimeError("Archived recording differs from source")
     shutil.copy2(ZIP_PATH, DOWNLOAD)
     digest = hashlib.sha256(ZIP_PATH.read_bytes()).hexdigest()
     if digest != hashlib.sha256(DOWNLOAD.read_bytes()).hexdigest():
@@ -128,12 +192,13 @@ def main() -> None:
         "archive": str(ZIP_PATH),
         "downloads_copy": str(DOWNLOAD),
         "bytes": ZIP_PATH.stat().st_size,
-        "members": count,
+        "members": len(members),
         "sha256": digest,
-        "components": ["source", "README", "architecture diagrams", "cost analysis", "Drive demo link"],
+        "components": list(COMPONENTS),
         "credential_scan": "passed",
         "readme_relative_links": "passed",
         "zip_integrity": "passed",
+        "recording": "MP4, subtitles and transcript included",
     }
     (ROOT / "submission" / "verification.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2))

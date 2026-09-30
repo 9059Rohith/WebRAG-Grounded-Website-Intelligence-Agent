@@ -1,22 +1,22 @@
 # WebRAG — AI Engineer I assessment submission
 
-This ZIP is a focused, credential-free copy of the project. Its standard repository layout keeps setup commands and relative README images working. The video itself is hosted on Google Drive, so the archive stays small and easy to inspect.
+This ZIP contains the five requested assessment components in five separately numbered folders. Start with the standalone README, then inspect the runnable source, diagrams, measured costs, and 11:37 recorded walkthrough. The actual MP4, subtitles, and transcript are included; the Google Drive link is an additional viewing option.
 
-| Assessment component | File or folder in this ZIP |
+| Assessment component | Separate folder in this ZIP |
 |---|---|
-| 1. Source code | `src/rag_agent/`, `web/`, `tests/`, `evaluation/`, `scripts/`, `deployment/`, dependencies, `.env.example`, and `LICENSE` |
-| 2. README | `README.md` — setup, architecture, design choices, evaluation, security, and limitations |
-| 3. Architecture | `docs/architecture-showcase.png`, `docs/architecture.svg`, `docs/architecture.md`, and `docs/langgraph.mmd` |
-| 4. Cost analysis | `COST_ANALYSIS.md` — observed ingestion, an example query, and 100/1,000/10,000-query scenarios |
-| 5. Recorded walkthrough | `05_DEMO_LINK.md` — the shareable Google Drive URL |
+| 1. Source code | `01_Source_Code/` — full runnable repository layout, `.env.example`, dependencies, tests, evaluation, and MIT `LICENSE` |
+| 2. README | `02_README/README.md` — setup, architecture, design choices, evaluation, security, and limitations; links work within this ZIP |
+| 3. Architecture | `03_Architecture_Diagrams/` — presentation PNG, detailed SVG, LangGraph Mermaid, and a guide |
+| 4. Cost analysis | `04_Cost_Analysis/COST_ANALYSIS.md` — observed ingestion, an example query, and 100/1,000/10,000-query scenarios |
+| 5. Recorded walkthrough | `05_Recorded_Walkthrough/` — narrated 11:37 MP4 with embedded subtitles, separate SRT, transcript, and Drive link |
 
 The public application is [webrag-assessment.vercel.app](https://webrag-assessment.vercel.app/). The canonical source is [GitHub](https://github.com/9059Rohith/WebRAG-Grounded-Website-Intelligence-Agent).
 
 ## Start here
 
-1. Read `README.md` for architecture and exact setup/evaluation commands.
-2. Copy `.env.example` to a private `.env` and set credentials only if using the paid provider. No credentials are included in this ZIP.
-3. Open the diagrams in `docs/` and the reports in `evaluation/` and `COST_ANALYSIS.md`.
-4. Use `05_DEMO_LINK.md` for the recorded presentation.
+1. Read `02_README/README.md` for architecture and exact setup/evaluation commands.
+2. Open `01_Source_Code/` as the project root. Copy its `.env.example` to a private `.env` only if you use the paid provider. No credentials are included in this ZIP.
+3. Open the diagrams in `03_Architecture_Diagrams/` and the measured report in `04_Cost_Analysis/`.
+4. Play `05_Recorded_Walkthrough/WebRAG-Live-Browser-Walkthrough.mp4`. Captions and a transcript are beside it; `DEMO_LINK.md` provides the shareable URL.
 
-Source code is released under the included MIT `LICENSE`. Crawled website content and third-party dependencies retain their own terms. GitHub-hosted CI is configured but has not run because the repository owner's account is billing-locked; local and live-service checks are recorded in `docs/verification/`.
+Source code is released under `01_Source_Code/LICENSE` (MIT). Crawled website content and third-party dependencies retain their own terms. GitHub-hosted CI is configured but has not run because the repository owner's account is billing-locked; local and live-service checks are recorded in `01_Source_Code/docs/verification/`.

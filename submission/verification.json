@@ -1,17 +1,18 @@
 {
   "archive": "C:\\Users\\BhaviChasvi\\Downloads\\advice\\submission\\WebRAG-Assessment-Submission.zip",
   "downloads_copy": "C:\\Users\\BhaviChasvi\\Downloads\\WebRAG-Assessment-Submission.zip",
-  "bytes": 3331159,
-  "members": 190,
-  "sha256": "b7f5a5fbda484abf19790b19e0cd31d42bb29aa023692a8573a6840d2ab397b9",
+  "bytes": 29509562,
+  "members": 199,
+  "sha256": "98073238f6b7b05efc4e43757354f2ef70fadb6bec30628c663df5cac20769a4",
   "components": [
-    "source",
-    "README",
-    "architecture diagrams",
-    "cost analysis",
-    "Drive demo link"
+    "01_Source_Code",
+    "02_README",
+    "03_Architecture_Diagrams",
+    "04_Cost_Analysis",
+    "05_Recorded_Walkthrough"
   ],
   "credential_scan": "passed",
   "readme_relative_links": "passed",
-  "zip_integrity": "passed"
+  "zip_integrity": "passed",
+  "recording": "MP4, subtitles and transcript included"
 }
